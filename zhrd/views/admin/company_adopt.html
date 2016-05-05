@@ -1,0 +1,21 @@
+<form method="POST" action="<?php echo site_url('/admin/company/adopt'); ?>" id="push_form" name="push_form"> 
+<input type="hidden" name="dopost" value="adopt">
+<input type="hidden" name="formid" value="<?php echo $formid; ?>">
+
+<div>
+<?php if( $beAdopted['status']){ ?>
+	<span style="display:block;color: #DB2B2B;">已经填写过接洽内容</span>
+<?php } ?>
+	<span>接洽结果：</span>
+	<input type="radio" id="jieqia_1" name="adoptStatus" value="1" <?php if( $beAdopted['status'] && $beAdopted['STATUS'] == '63') echo 'checked="checked"';?>><span>通过</span>
+	<input type="radio" id="jieqia_2" name="adoptStatus" value="0" <?php if( $beAdopted['status'] && $beAdopted['STATUS'] == '209') echo 'checked="checked"';?>><span>不通过</span>
+	<div id="jieqia_insert">
+		<?php if( $beAdopted['status'] ) echo htmlspecialchars_decode( $beAdopted['MANAGERIDEA']);?>
+<!-- 		<span style="display:block;">结果反馈：</span>
+		<textarea name="manageview" cols="25" rows="5" style="display:block;margin-bottom: 10px;"><?php if( $beAdopted['status'] ) echo htmlspecialchars_decode( $beAdopted['MANAGERIDEA']);?></textarea> -->
+	</div>
+	<input type="submit" class="button deepblue" value="提交" style="float: right;">
+</div>
+  
+</form>
+

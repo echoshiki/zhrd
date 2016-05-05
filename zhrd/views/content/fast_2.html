@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>融资快捷通道</title>
+	<link rel="stylesheet" href="<?php echo base_url('statics/css/table.css') ?>"> 
+	<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+	<style type="text/css">
+		table th, table td { border:0px;}
+		.title { font-size:20px; line-height:40px; margin-left:10px; }
+		.zh_table td { font-size:16px; text-align: center; line-height: 32px}
+		.zh_table .con_in { text-align: left; padding-left:15px;}
+	</style>
+</head>
+<body>
+	<form action="<?php echo site_url("/fast"); ?>" method="POST">
+		<table class="form_mid zh_table bordered zebra">
+			<th colspan="2"><span class="title">融资步骤二</span></th>
+			<tr>
+				<td width="240">您的姓名：</td>
+				<td class="con_in"><input type="text" name="fast[NAME]" data-rule="required" data-msg-required="请填写姓名" /></td>
+			</tr>
+			<tr>
+				<td>手机号码：</td>
+				<td class="con_in"><input type="text" name="fast[TEL]" data-rule="required;mobile;" data-msg-required="请填写手机号"  /></td>
+			</tr>
+			<tr>
+				<td>您的身份：</td>
+				<td class="con_in"><?php echo $this->linkage->getSelect('365',$list['DEGREE'],'fast','','',' data-rule="required" data-msg-required="请选择身份"','DEGREE'); ?></td>
+			</tr>
+			<tr>
+				<td>年龄：</td>
+				<td class="con_in"><input type="text" name="fast[AGE]" /></td>
+			</tr>
+			<tr>
+				<td>婚姻状况：</td>
+				<td class="con_in"><?php echo $this->linkage->getSelect('361',$list['MARRY'],'fast','','',' data-rule="required" data-msg-required="请选择婚姻状况"','MARRY'); ?></td>
+			</tr>
+			<tr>
+				<td>企业类型：</td>
+				<td class="con_in"><?php echo $this->linkage->getSelect('26',$list['TRADEID'],'fast','','',' data-rule="required" data-msg-required="请选择企业类型"','TRADEID'); ?></td>
+			</tr>
+			<tr>
+				<td>所有房产状况：</td>
+				<td class="con_in"><?php echo $this->linkage->getSelect('369',$list['STATUS'],'fast','','',' data-rule="required" data-msg-required="请选择房产状况"','STATUS'); ?></td>
+			</tr>
+			<tr>
+				<td>信用状况：</td>
+				<td class="con_in"><?php echo $this->linkage->getSelect('375',$list['AREAID'],'fast','','',' data-rule="required" data-msg-required="请选择信用状况"','CREDIT'); ?></td>
+			</tr>
+			<tr>
+				<td>现所在地：</td>
+				<td class="con_in"><?php echo $this->linkage->getSelect('35',$list['AREAID'],'fast','','',' data-rule="required" data-msg-required="请选择所在地"','AREAID'); ?></td>
+			</tr>
+			<tr>
+				<td>是否申请智慧网贷综合服务卡：</td>
+				<td class="con_in"><input type="checkbox" name="fast[ISAPPLY]" value="1" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="button deepblue" style="height:50px; width:130px; margin:5px 0 5px 0;">一键申请</button></td>
+			</tr>
+		</table>
+		<input type="hidden" name="process" value="2" />
+	</form>
+</body>
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url('statics/js/validator/jquery.validator.css'); ?>"/>
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url('statics/js/password/jquery.password.css'); ?>"/>
+<script type = "text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js');?>"></script>
+<script type = "text/javascript" src="<?php echo base_url('statics/js/password/jquery.password.js');?>"></script>  
+<script type = "text/javascript" src="<?php echo base_url('statics/js/validator/local/zh_CN.js');?>"></script>
+<script type = "text/javascript" src="<?php echo base_url('statics/js/validator/jquery.validator.js');?>"></script>
+</html>

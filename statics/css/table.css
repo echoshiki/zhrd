@@ -1,0 +1,339 @@
+@charset "utf-8";
+
+/*首字母*/
+.zh_table .firstletter:first-letter{ font-size:200%;}
+/**
+ +------------------------------------------------------------------------------
+ * Public Class
+ +------------------------------------------------------------------------------
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+.zh_table .clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden; }.clearfix {display:block;}.clear{ clear:both;}/* 清除浮动*/
+.zh_table .colwrapper { overflow:hidden; zoom:1 /*for ie*/; margin:5px auto; }/* 高度自适应 */ 
+.zh_table .strong{ font-weight: bold;} .left{ float: left;} .right{ float: right;} .center{ margin:0 auto; text-align:center;}
+.zh_table .show{ display:block; visibility:visible;}.hide{ display: none !important; /*visibility:hidden;*/}
+.zh_table .block{ display:block;} .inline{ display:inline;}
+.zh_table .transparent{filter:alpha(opacity=50); -moz-opacity:0.5;/** Firefox 3.5即将原生支持opacity属性，所以本条属性只在Firefox3以下版本有效 ***/ -khtml-opacity: 0.5; opacity: 0.5; } .break{ word-wrap:break-word;overflow:hidden; /*word-break:break-all;*/}
+
+.zh_table .canvas { position: relative; }
+.zh_table .relative { position: relative; }
+code, pre { border-radius: 3px 3px 3px 3px; color: #333333; font-family: Menlo,Monaco,"Courier New",monospace; font-size: 12px; padding: 0 3px 2px; }
+
+.zh_table abbr{background: none repeat scroll 0 0 whiteSmoke;
+    border-bottom: medium none;
+    border-left: 0.25em solid #3387C4;
+    display: inline-block;
+    margin-right: 0.5em;
+    padding: 0 0.25em;} abbr:hover{ background:#f9d949;}
+
+.zh_table pre{ font-family:consolas,"Courier New",courier,monospace; /*color:#0088CC;*/ background-color: #F7F7F9; border: 1px solid #E1E1E8; border-radius: 4px 4px 4px 4px; display: block; font-size: 12.025px; line-height: 18px; margin: 0 0 9px; padding: 8.5px; white-space: pre-wrap; word-break: break-all; word-wrap: break-word;}
+
+.zh_table code { background-color: #F7F7F9; border: 1px solid #E1E1E8; color: #0088CC; padding: 2px 4px; }
+.zh_table pre ol{
+	margin: 0 0 0 14px;
+}
+.zh_table pre.unstyled{
+	background:none; color:#333; border:none;
+}
+
+/*插入flash默认灰色*/
+.zh_table object{ /* background:gray; */ display:block;}
+
+.zh_table .pink{ color:#ff00ff;}
+/*.zh_table .blue{ color:#0000ff;} */
+.zh_table .deepblue{ color:#000099;} 
+.zh_table .gray{ color:#999999;} 
+.zh_table .red{ color:#ff0000;} 
+.zh_table .black{ color:#000;} 
+.zh_table .white{ color:white;} 
+.zh_table .green{color:green;}
+
+
+
+
+
+.zh_table .underline{ text-decoration:underline;} .dashedline{ border-bottom:dashed 1px #666;} ol.dashedline{ border:none; } ol.dashedline li{ border-bottom:dashed 1px #666; padding:5px; }
+
+
+/* 固定不动 */
+.zh_table .fixed{
+	position:fixed; clip:rect(0 100% 100% 0); _position:absolute;
+	
+	/* 底部 */
+	bottom:0px; left:0px; _top:expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight);
+	/*_left:expression(document.documentElement.scrollLeft + document.documentElement.clientWidth - offsetWidth);*/
+	
+	/* 左侧 */
+	/*left:0px;*/
+	/*_top:expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight);*/
+	/*_left:expression(document.documentElement.scrollLeft + document.documentElement.clientWidth - offsetWidth);*/
+}
+.zh_table .fixed.scrolltotop, .fixed.livechat{
+	 bottom:75px; right:20px; left:auto; background:#ddd; width:50px; height:50px; text-align:center; line-height:50px; font-size:40px; color:#fff; display:block; _display:none; text-shadow:#bbb 1px 1px;
+}
+.zh_table .fixed.scrolltotop{ display:none;}
+.zh_table a:hover.fixed.scrolltotop, a:hover.fixed.livechat{
+	background:#ccc; text-decoration:none;
+}
+.zh_table .fixed.livechat{
+	bottom:20px;
+}
+.zh_table .fixed.scrolltotop.blue, .fixed.livechat.blue{
+	background:#85c2f2; text-shadow:#2d96e9 1px 1px;
+}
+.zh_table a:hover.fixed.scrolltotop.blue, a:hover.fixed.livechat.blue{
+	background:#2d96e9; text-decoration:none;
+}
+
+
+
+/* png透明 */
+.zh_table .pngfix{filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/x.png');}
+
+/* 渐变 */
+.zh_table .gradient{filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#dedede);
+    background: -moz-linear-gradient(top, #ffffff, #dedede);}
+	
+.zh_table .radius
+{	
+-webkit-border-radius: 4px;   /*只支持webkit内核的浏览器*/
+border-radius: 4px;  /*只支持IE内核的浏览器（IE>=7)*/
+-moz-border-radius : 4px; /*只支持Mozilla内核的浏览器*/
+border:#ddd solid 1px;
+padding:4px;
+}
+
+.zh_table .highlighted {
+    background: none repeat scroll 0 0 #00ADEE;
+    color: #FFFFFF;
+    padding: 0 5px;
+}
+
+/*超出省略号显示*/
+.zh_table .ellipsis{
+	white-space:nowrap;/*设置不折行*/
+	text-overflow:ellipsis;/*这就是省略号喽*/
+	-o-text-overflow:ellipsis;/*兼容opera*/
+	width:80px;
+	overflow:hidden;
+}
+/*文字闪动*/
+.zh_table .blink{
+	text-decoration:blink;
+}
+
+
+/* 解决ie下连接加粗的鼠标样式问题*/
+.zh_table a strong{ cursor:pointer;}
+
+/**
+ +------------------------------------------------------------------------------
+ * FCK 兼容解决方案
+ +------------------------------------------------------------------------------
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+.zh_table em{ font-style:italic !important;} strike{ text-decoration:line-through !important;} strong{ font-weight:bold !important;} u{ text-decoration:underline !important;}
+
+/**
+ +------------------------------------------------------------------------------
+ * 表单样式
+ +------------------------------------------------------------------------------
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+/* input[type=text]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus {  border-color:#666;} */
+.zh_table input{/*behavior:url(input.htc);*/ border:1px #ccc solid; margin:1px; padding:1px;}/*Only for ie 5.0+*/
+/*label input{width:14px;height:14px;border:0;}*/ /*For input type is Radio*/
+.zh_table input:hover{}/*For orther browsers*/
+ form{}
+
+.zh_table input[type=text],
+textarea, .text{ background:#fff; border: 1px solid #ccc; box-shadow: 0 1px 1px #ccc inset; font-size: 14px;  line-height: 100%; display:inline-block; margin: 0; outline: medium none; padding:0.5em; margin:1px; border-radius: 3px;}
+.zh_table .text.radius{ border-radius: 15px;}
+
+.zh_table input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditable{
+    float: none;
+    margin-left: 0;
+}
+.zh_table input:focus, textarea:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;}
+	
+	
+	
+.zh_table fieldset{ padding:20px; border:#ccc solid 1px; }
+.zh_table label{ display:block; font-size:14px; margin:10px 0 0 0; }
+
+
+/**
+ +------------------------------------------------------------------------------
+ * 网站整体颜色总汇
+ +------------------------------------------------------------------------------
+ * @codex  颜色:使用颜色的名称或者16进制代码,如 
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+.zh_table .ff8600,ff86aa a{ color:#ff8600;}
+
+/**
+ +------------------------------------------------------------------------------
+ * 网站整字体大小
+ +------------------------------------------------------------------------------
+ * @codex   字体大小,直接使用"font+字体大小"作为名称,如
+ * @package  ORG
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+.zh_table .font14px{ font-size:14px;}
+.zh_table .font9pt{ font-size:9pt;}
+
+/**
+ +------------------------------------------------------------------------------
+ * 网站整布局命名规范
+ +------------------------------------------------------------------------------
+ * @codex   id和class命名采用该版块的英文单词或组合命名 如:newRelease
+ * @package  ORG
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+ 
+/*外部链接*/
+.zh_table  a[rel=external]{
+ 	background:url(../imgs/external.png) no-repeat right center; padding:0 12px 0 0;
+ }
+ 
+ /*格子系统*/
+ 
+/* keqie.com grid system */
+.zh_table .row{
+	height:auto; overflow:hidden; clear:both; margin-left:-20px;
+}
+
+ 
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve , .aside, .main{
+  display: inline; float: left; margin-left: 20px; /*margin-right: 10px;*/
+}
+ 
+/* 第一个元素 */ .alpha { margin-left: 0; } /* 最后一个元素 */ .omega { margin-right: 0; }
+
+
+.zh_table .wrapper{ width:960px ; height: ; margin:0 auto; padding: ; background:url(../imgs/grid.png) repeat; clear:both; height:auto; overflow:hidden; margin-top:20px;
+	
+	/*解决ie8居中的问题*/
+	/*position:relative;
+	left:50%;
+	margin-left:-480px;*/
+}
+
+.zh_table 	.one{ width: 60px;} .two, .aside{ width: 140px; } .three{ width: 220px; } .four{ width: 300px; } .five{ width: 380px; }.six{ width: 460px; } .seven{ width: 540px; } .eight{ width: 620px; } .nine{ width: 700px; } .ten, .main{ width: 780px; } .eleven{ width: 860px; } .twelve{ width: 940px; }
+
+@media (min-width: 1250px) and (max-width: 1440px) {
+.zh_table 	.wrapper{ width:1200px ;}
+.one{ width: 80px;} .two, .aside{ width: 180px; } .three{ width: 280px; } .four{ width: 380px; } .five{ width: 480px; }.six{ width: 580px; } .seven{ width: 680px; } .eight{ width: 780px; } .nine{ width: 880px; } .ten, .main{ width: 980px; } .eleven{ width: 1080px; } .twelve{ width: 1180px; }
+	
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+	.wrapper{ width:768px ; }
+	.one{ width: 44px;} .two, .aside{ width: 108px; } .three{ width: 172px; } .four{ width: 236px; } .five{ width: 300px; }.six{ width: 364px; } .seven{ width: 428px; } .eight{ width: 492px; } .nine{ width: 556px; } .ten, .main{ width: 620px; } .eleven{ width: 684px; } .twelve{ width: 748px; }
+	
+}
+/*@media (min-width: 320px) and (max-width: 768px) {
+	.wrapper{ width:720px ; height: ; margin:0 auto; padding: ;clear:both; height:auto; overflow:hidden; }
+	.one{ width: 40px;} .two, .aside{ width: 100px; } .three{ width: 160px; } .four{ width: 220px; } .five{ width: 280px; }.six{ width: 340px; } .seven{ width: 400px; } .eight{ width: 460px; } .nine{ width: 520px; } .ten, .main{ width: 580px; } .eleven{ width: 640px; } .twelve{ width: 700px; }
+}*/
+@media (min-width: 0px) and (max-width: 768px) {
+.zh_table 	.wrapper{ width:auto; padding:0 20px;}
+.zh_table 	.row{ margin:0;}
+.zh_table 	.one, .two, .aside, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .main, .eleven, .twelve{ width:100%; margin:0;}
+}
+ @media only screen and (device-width 768px) {  
+   /*For general iPad layouts*/  
+   
+}  
+ 
+@media only screen and (min-device-width 481px) and (max-device-width 1024px) and (orientationportrait) {  
+   /*For portrait layouts only */ 
+}  
+ 
+@media only screen and (min-device-width 481px) and (max-device-width 1024px) and (orientationlandscape) {  
+   /*For landscape layouts only*/  
+} 
+
+
+
+
+/* 网站外围阴影 */
+.zh_table .shardow{}
+
+
+
+
+.zh_table .topbar{
+	background:#333; height: 67px; line-height: 67px; text-align:center; padding:0 20px; box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3); position:relative;
+}
+.zh_table .topbar.blue{ background:#488fce;} .topbar.blue a{ color:#fff !important;}
+.zh_table .topbar.yellow{ background:#FB761B;} .topbar.yellow a{ color:#fff !important;}
+.zh_table .topbar.red{ background:#E9192A;} .topbar.red a{ color:#fff !important;}
+.zh_table .topbar.unstyled{ background:none;} .topbar.unstyled a{ color:#333 !important;} .topbar.unstyled a:hover, .topbar.unstyled a.selected{ background:none !important;}
+
+.zh_table .topbar.fixed{
+	position:fixed; top:0; width:100%; _position:absolute; _top: expression(documentElement.scrollTop + "px"); z-index:999; opacity:0.8;
+}
+.zh_table .topbar .wrapper{
+	overflow:visible; margin-top:0;  display:inline-block;
+}
+.zh_table .topbar .module a, .topbar .sub a, .topbar .logo a{ 
+    color: #fff; font-size:14px; padding: 0px 20px; position: relative; white-space: nowrap; display:inline-block;   _border-color:tomato; _filter:chroma(color=tomato); /*ie6下边框透明解决方案*/
+}
+.zh_table .topbar .module a:hover, .topbar .sub a:hover, .topbar .logo a:hover{
+	background:#35393b; color:#c8cacb; text-decoration:none;
+} 
+.zh_table .topbar .module a.selected, .topbar .sub a.selected{
+	background: linear-gradient(135deg, #349EE0 0%, #0086DA 40%, #0086DA 100%) repeat scroll 0 0 transparent;
+}
+.zh_table .topbar .module{
+	float: left; margin-right:10px;
+}
+.zh_table .topbar .search{
+	float:left; display:inline;  _background:none;
+}
+.zh_table .topbar .sub{
+	float: right; height: 32px; margin-right: -5px;
+}
+.zh_table .topbar .sub a:hover{
+}
+.zh_table .topbar .logo{
+	float:left; display:inline; margin:0 20px 0 0; 
+}
+.topbar .logo a{
+	font-size:20px;
+}
+
+
+.zh_table { background-color: transparent; _background:none !important; border-collapse: collapse; border-spacing: 0; max-width: 100%; font-size:13px;  margin-bottom: 20px; width: 100%; }
+.zh_table td.selected, .zh_table th.selected{ background:#F9F9F9; }
+.zh_table th, .zh_table td { border-top: 1px solid #DDDDDD; line-height: 20px; padding: 4px 5px; text-align: left; vertical-align: top; }
+.zh_table th { font-weight: bold; }
+.zh_table thead th, .zh_table thead td { vertical-align: bottom; background:#DBEFF9; }
+.zh_table.bordered { -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-collapse: separate; border-color: #DDDDDD #DDDDDD #DDDDDD -moz-use-text-color; border-image: none; border-radius: 4px 4px 4px 4px; border-style: none solid solid none; border-width: 1px 1px 1px 0; padding:0 !important; }
+.zh_table.bordered th, table.bordered td { border-left: 1px solid #DDDDDD; border-top: 1px solid #DDDDDD; }
+
+.zh_table .d-border td{ border: 0;}
+
+.zh_table .table.bordered thead:first-child tr:first-child th:first-child, .table.bordered tbody:first-child tr:first-child td:first-child {
+    border-radius: 4px 0 0 0;
+}
+
+.zh_table .bordered{ border: 1px solid #DDDDDD; border-radius: 4px 4px 4px 4px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055); padding:5px; }
+.bordered:hover{ border-color:#bbb; }
+
+/*斑马条纹*/
+.zh_table.zebra tr:nth-child(odd){ }
+.zh_table.zebra tr:nth-child(even){
+	background:#F9F9F9;
+}
+
+ 

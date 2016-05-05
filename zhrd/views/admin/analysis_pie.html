@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+<!-- artDialog -->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+
+<script type="text/javascript" src="<?php echo base_url('statics/js/highcharts/js/highcharts.js'); ?>"></script>
+<!-- <script type="text/javascript" src="../js/themes/gray.js"></script> -->
+<!-- <script type="text/javascript" src="../js/modules/exporting.js"></script> -->
+<style>
+.zyc tr td{ text-align:center;}
+</style>
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+
+          <div class="datatable">
+       	    <div class="tip">
+             	<div class="left">
+                    <abbr> 统计分析</abbr>
+					<a href="<?php echo site_url('admin/analysis');?>">柱状图分析</a>
+                </div>
+                <div class="right">
+                  <!--<span  onclick="settingFormSubmit()" class="button deepblue">保存</span>-->
+                  <a href="javascript:history.go(-1)" class="button deepblue">返回</a>
+                </div>
+            </div>
+             <div class=" head" >
+<div style="width:800px;margin:0 auto">
+
+		
+		选择时间：
+		<select name="start_year" >
+		<option value="">--请选择--</option>
+<?php for($a = 2013; $a<=2016; $a++) {?>
+		<option value="<?php echo $a;?>" <?php if( $a == (int)$select['start_year']){ echo 'selected'; } ?> ><?php echo $a;?></option>
+<?php } ?>
+		</select>年
+		
+		<select name="start_month" >
+		<option value="">--请选择--</option>
+<?php for($a = 1; $a<=12; $a++) {?>
+		<option value="<?php echo $a;?>" <?php if( $a == (int)$select['start_month']){ echo 'selected'; } ?> ><?php echo $a;?></option>
+<?php } ?>
+		</select>月
+		--
+		<select name="end_year" >
+		<option value="">--请选择--</option>
+<?php for($a = 2013; $a<=2016; $a++) {?>
+		<option value="<?php echo $a;?>" <?php if( $a == (int)$select['end_year']){ echo 'selected'; } ?> ><?php echo $a;?></option>
+<?php } ?>
+		</select>年
+		
+		<select name="end_month" >
+		<option value="">--请选择--</option>
+<?php for($a = 1; $a<=12; $a++) {?>
+		<option value="<?php echo $a;?>" <?php if( $a == (int)$select['end_month']){ echo 'selected'; } ?> ><?php echo $a;?></option>
+<?php } ?>
+		</select>月
+		<a href="javascript:void(0)" onclick="z()" class='button deepblue small' title="查找">查询</a>
+</div>
+             </div>
+             <div class="body">
+
+						<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+						<div id="container2" style="width: 800px; height: 400px; margin: 0 auto"></div>
+						<div id="container3" style="width: 800px; height: 400px; margin: 0 auto"></div>
+						<div id="container4" style="width: 800px; height: 400px; margin: 0 auto"></div>
+						
+
+
+						
+             </div>
+				<div class="foot">
+				</div>
+          </div>
+    </div>
+
+	</body>
+<script type="text/javascript">
+function z(){
+var url = '<?php echo site_url('admin/analysis'); ?>?pie=pie';
+//var $('')
+var redirect = url
+			+'&start_year='+$("select[name='start_year']").val()
+			+'&start_month='+$("select[name='start_month']").val()
+			+'&end_year='+$("select[name='end_year']").val()
+			+'&end_month='+$("select[name='end_month']").val()
+window.location.href= redirect;
+}
+		
+			var chart;
+			var chart2;
+			var chart3;
+			var chart4;
+			$(document).ready(function() {
+				chart = new Highcharts.Chart({
+					chart: {
+						renderTo: 'container',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false
+					},
+					title: {
+						text: '申请金额比重'
+					},
+					tooltip: {
+						formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(个) '+ this.percentage.toFixed(2) +' %';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								connectorColor: '#000000',
+								formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(个) '+ this.percentage.toFixed(2) +' %';
+								}
+							},
+							showInLegend: true
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share',
+						data: [
+						<?php 
+							echo "['";  echo $x[0]; echo "',"; echo $y[0]; echo '],';
+							echo "['";  echo $x[1]; echo "',"; echo $y[1]; echo '],';
+							echo "['";  echo $x[2]; echo "',"; echo $y[2]; echo '],';
+							echo "['";  echo $x[3]; echo "',"; echo $y[3]; echo '],';
+							echo "['";  echo $x[4]; echo "',"; echo $y[4]; echo ']';
+						?>
+						]
+					}]
+				});
+				
+				chart2 = new Highcharts.Chart({
+					chart: {
+						renderTo: 'container2',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false
+					},
+					title: {
+						text: '销售收入申请客户数比重'
+					},
+					tooltip: {
+						formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(个) '+ this.percentage.toFixed(2) +' %';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								connectorColor: '#000000',
+								formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(个) '+ this.percentage.toFixed(2) +' %';
+								}
+							},
+							showInLegend: true
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share',
+						data: [
+						<?php 
+							echo "['";  echo $x2[0]; echo "',"; echo $y2[0]; echo '],';
+							echo "['";  echo $x2[1]; echo "',"; echo $y2[1]; echo '],';
+							echo "['";  echo $x2[2]; echo "',"; echo $y2[2]; echo '],';
+							echo "['";  echo $x2[3]; echo "',"; echo $y2[3]; echo ']';
+						?>
+						]
+					}]
+				});
+				
+				
+				chart3 = new Highcharts.Chart({
+					chart: {
+						renderTo: 'container3',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false
+					},
+					title: {
+						text: '销售收入客户申请金额比重'
+					},
+					tooltip: {
+						formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(万元) '+ this.percentage.toFixed(2) +' %';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								connectorColor: '#000000',
+								formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(万元) '+ this.percentage.toFixed(2) +' %';
+								}
+							},
+							showInLegend: true
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share',
+						data: [
+						<?php 
+							echo "['";  echo $x2[0]; echo "',"; echo $y3[0]; echo '],';
+							echo "['";  echo $x2[1]; echo "',"; echo $y3[1]; echo '],';
+							echo "['";  echo $x2[2]; echo "',"; echo $y3[2]; echo '],';
+							echo "['";  echo $x2[3]; echo "',"; echo $y3[3]; echo ']';
+						?>
+						]
+					}]
+				});
+				
+				
+				chart4 = new Highcharts.Chart({
+					chart: {
+						renderTo: 'container4',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false
+					},
+					title: {
+						text: '行业申请金额比重'
+					},
+					tooltip: {
+						formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(万元) '+ this.percentage.toFixed(2) +' %';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								connectorColor: '#000000',
+								formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+this.point.y+'(万元) '+ this.percentage.toFixed(2) +' %';
+								}
+							},
+							showInLegend: true
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share',
+						data: [
+<?php $num = count($x4); foreach( $x4 as $k => $v){
+echo "['";  echo $v['NAME']; echo "',"; echo $y4[$k]; echo ']';echo ($num == $k+1)?"":",";
+} 
+						?>
+						]
+					}]
+				});
+				
+				
+				
+			});
+					
+		</script>
+	
+</html>

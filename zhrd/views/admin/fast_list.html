@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+ 
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<style type="text/css">
+	.workflow { margin:0; padding:0; display:block; }
+	.workflow li{ width:85px;list-style:none; list-style:none; padding-right:30px; background:url(/statics/images/process/flow_r.jpg) right 5px no-repeat; float:left} 
+	.workflow li a{ display:block;width:80px; height:42px; background:url(/statics/images/process/flow_1.jpg) left top no-repeat; text-decoration:none; height:42px; line-height:42px; text-align:center; color:#FFF; font-size:small;font-weight:bold; font-family:"微软雅黑","黑体"}
+	.workflow .t2{background:url(/statics/images/process/flow_r2.jpg) right 5px no-repeat; }
+	.workflow .t3{background:url(/statics/images/process/flow_r2.jpg) right 5px no-repeat; }
+	.workflow .nbg{ background:none}
+	.workflow .t2 a{ background:url(/statics/images/process/flow_2.jpg) left top no-repeat;}
+	.workflow .t3 a{ background:url(/statics/images/process/flow_1.jpg) left top no-repeat;}
+	.nfl li{ float:none!important}
+	.zyc{float:left;width: 80px;_margin-top:-20px;}
+	.zyc li{list-style:none;padding-left:20px;text-align: center;padding-top:22px;}
+	.zyc li a{color:#fff;font-weight:bold;font-size:small;}
+</style>
+</head>
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+		$('#checkbox_all').click(function(){
+			if($('#checkbox_all').attr('checked')=='checked'){
+				$("#c_list :checkbox").attr('checked','checked');	
+			}else{
+				$("#c_list :checkbox").removeAttr('checked');	
+			}								  
+		});
+		
+		$('#export_selected').click(function(){
+			$('#dopost').val('selected');
+			$('#company_f').submit();
+		});
+		
+		$('#export_all').click(function(){
+			$('#dopost').val('all');
+			$('#company_f').submit();
+		});
+		
+		$('#dosearch').click(function(){
+			$('#search').submit();
+		});
+
+	});
+</script>
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">	          
+      	<div class="datatable">
+      	 	<div class="tip">
+             	<div class="left">
+                    <abbr>快捷通道管理</abbr>
+                </div>
+                <div class="right"></div>
+             </div>
+             <div class="head">             	
+                <div class="left">
+                    <form name="search" id="search" action="<?php echo site_url('admin/company/').'/fast'; ?>" method="post">
+                    <?php 
+                    	$udata  = $this->session->all_userdata();
+          						$result=$this->db->select('GROUPID,ROLEIDS')->where('GROUPID',$udata[GROUPID])->get('ADMIN_GROUP')->result_array();
+          						$roleids=$result[0][ROLEIDS];
+                    	$area 	= empty($area) ? '0' : $area;
+                      $trade 	= empty($trade) ? '0' : $trade;
+                      $status = empty($status) ? '0' : $status;                        
+                    	$area_linkage  = $this->linkage->getSelect('35',$area,'area','','','','','选择区域');
+                    	$trade_linkage = $this->linkage->getSelect('26',$trade,'trade','','','','','选择类型');
+	        			      $uareaid     = $udata['AREAID'];
+                    	if(($uareaid==35) || ($udata['GROUPID']=='1')){ echo '<span>'.$area_linkage.'</span>'; }
+                    	echo '<span>'.$trade_linkage.'</span>';
+                    ?>
+                    <select name="cType">
+                        <option value="1" <?php if($ctype=='1'){echo ' selected';} ?> >企业名称</option>
+                        <option value="2" <?php if($ctype=='2'){echo ' selected';} ?> >执照代码</option>
+                        <option value="3" <?php if($ctype=='3'){echo ' selected';} ?> >联系电话</option>
+                    </select>
+                    <input name="keys" type="text" style="padding:2px;" value="<?php echo $keys;?>">
+                    <input type="hidden" name="dopost" value="search">
+                    <button id="dosearch" class="button medium2 green">查询</button>
+                    </form>
+                </div>
+             </div>
+             <div class="body">
+             
+             <form name="company_f" id="company_f" action="<?php echo site_url('admin/company/fast_export'); ?>" method="post">
+             	<table width="100%" border="0" class="table bordered zebra" id="c_list">
+                      <thead>
+                      <tr>
+                        <td width="2%"><input name="checkbox_all" type="checkbox" class="select_box " id="checkbox_all"></td>
+                        <td width="2%">ID</td>
+                        <td>姓名</td>
+                        <td>贷款额度(万)</td>
+                        <td>贷款期限(年)</td>
+                        <td>企业类型</td>
+                        <!-- <td>企业名称</td> -->
+                        <td>电话</td>
+                        <td>所在地</td> 
+                        <td>身份</td>
+                        <td>是否申请服务卡</td>
+                        <td>详情</td>
+                      </tr>
+                      </thead>
+                        <?php foreach ($list['data'] as $key => $value): ?>
+                            <tr>
+                              <td><input type="checkbox" name="checkbox[]" id="checkbox_<?php echo $value['ID'] ;?>" class="checkboxForDel" value="<?php echo $value['ID'] ;?>"></td>
+                              <td>&nbsp;<?php echo $value['ID']; ?></td>
+                              <td>&nbsp;<?php echo $value['NAME']; ?></td>
+                              <td>&nbsp;<?php echo $value['PRICE']; ?></td>
+                              <td>&nbsp;<?php echo $value['TIME']; ?></td>
+                              <td>&nbsp;<?php echo get_area($value['TRADEID']); ?></td> 
+                              <!-- <td>&nbsp;<?php echo $value['COMPANY']; ?></td>  -->
+                              <td>&nbsp;<?php echo $value['TEL']; ?></td>
+                              <td>&nbsp;<?php echo get_area($value['AREAID']); ?></td>                                     <td>&nbsp;<?php echo get_area($value['DEGREE']); ?></td>
+                              <td>&nbsp;<?php echo $value['ISAPPLY']=='1' ? '是' : '否'; ?></td>
+                              <td><a href="javascript:void(0)" class="button medium2 green" onclick="art.dialog({title: '详细资料',content:getC('<?php echo site_url('admin/company/fast/'.$value['ID'].''); ?>')});">详细</a></td>
+                            </tr>                          
+                        <?php endforeach ?>           
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="11">&nbsp;
+                        <input type="hidden" name="dopost" id="dopost" value="1">
+                        <input type="hidden" name="ex_where" value="<?php echo $companyList['where'];?>">
+                        <input type="hidden" name="post_action" id="post_action" value="<?php echo $action; ?>">
+                        <button class="button medium2 green" target="_blank" id="export_selected">导出选中项</button>
+                        <button  class="button medium2 green" target="_blank" id="export_all">导出全部</button>
+                        <a id="del_selected" class="button medium2 red" onClick="delAll()" href="javascript:void(0)">删除选中项目</a>
+                        </td>
+                       </tr>
+                    </table>
+                </form>    
+            </div>
+            <div class="foot">
+             	<div class="left">每页显示<?php echo $per_page;?>条，共<?php echo $list['total'] ?>条 </div>
+                <div class="right">                    
+                    <div class="pager">
+                    <?php echo $page; ?>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+             </div>
+          </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+function delAll(){
+    art.dialog({
+      title:'删除确认',
+      content:'确认删除所选项<span style="color:#ccc">(删除用户提交的表单会同时删除用户上传的文件)</span>',
+      button: [
+		  { name: '确认',
+            focus: true,
+			callback: function () {
+				var delstring = '';
+				$('.checkboxForDel:checked').each(function(){
+					delstring = delstring + $(this).val()+',';
+				});
+				if(delstring == ''){
+					art.dialog({title: '系统提示',content: '请选择删除项',okValue: '确定',ok: function(){}});
+				}else{
+					delstring = delstring.substr(0,delstring.length-1); 
+					$.post("<?php echo site_url('admin/company/fast_del');?>",{formid:delstring},
+						function(data){
+							switch(data.code){
+								case  "1": location.reload(); break;
+								case  "0": art.dialog({title: '系统提示',content: '删除失败',okValue: '确定',ok: function(){}});break;
+							}
+						}, 'json');
+				}
+			}
+          },
+		  {name :'关闭'}
+		  ]
+	});
+}
+</script>
+</html>

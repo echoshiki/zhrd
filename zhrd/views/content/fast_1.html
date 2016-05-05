@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>融资快捷通道</title>
+	<link rel="stylesheet" href="<?php echo base_url('statics/css/table.css') ?>"> 
+	<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+	<style type="text/css">
+		table th, table td { border:0px;}
+		.title { font-size:20px; line-height:40px; margin-left:10px; }
+		.zh_table td { font-size:16px; text-align: center; line-height: 32px}
+		.zh_table .con_in { text-align: left; padding-left:15px;}
+	</style>
+</head>
+<body>
+	<form action="<?php echo site_url("/fast"); ?>" method="POST">
+		<table class="form_mid zh_table bordered zebra">
+			<th colspan="2"><span class="title">快速融资步骤一</span></th>
+			<tr>
+				<td width="200">贷款金额&nbsp;(单位 万)：</td>
+				<td class="con_in"><input type="text" name="fast[PRICE]" data-rule="required" data-msg-required="请填写贷款金额" > </td>
+			</tr>
+			<tr>
+				<td>贷款期限&nbsp;(单位 年)：</td>
+				<td class="con_in"><input type="text" name="fast[TIME]" data-rule="required" data-msg-required="请填写贷款期限" > </td>
+			</tr>
+			<tr><td colspan="2"><button class="button deepblue" style="height:50px; width:150px; margin:5px 0 5px 0;">轻松进入下一步</button></td></tr>
+		</table>
+		<input type="hidden" name="process" value="1" />
+	</form>
+</body>
+
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url('statics/js/validator/jquery.validator.css'); ?>"/>
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url('statics/js/password/jquery.password.css'); ?>"/>
+<script type = "text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js');?>"></script>
+<script type = "text/javascript" src="<?php echo base_url('statics/js/password/jquery.password.js');?>"></script>  
+<script type = "text/javascript" src="<?php echo base_url('statics/js/validator/local/zh_CN.js');?>"></script>
+<script type = "text/javascript" src="<?php echo base_url('statics/js/validator/jquery.validator.js');?>"></script>
+
+</html>

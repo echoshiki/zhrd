@@ -1,0 +1,246 @@
+<script type="text/javascript">
+function rewrite(){
+      art.dialog({
+          title:'重新填写确认',
+          content:'该操作将删除表单数据无法恢复，确认要重新填写么？',
+          button: [
+              {  
+                  name: '确认',
+                  callback: function () {
+                      window.location.href="<?php echo site_url('/member/reform'); ?>";
+                  },
+                  focus: true
+              },
+              {
+                 name: '关闭'
+              }
+          ]
+      });
+  }	
+</script>
+<style type="text/css">
+	.process { margin:10px 0 8px 0; }
+	.link_dqwz { color:#333;}
+	.workflow { margin:0; padding:0; display:block;}
+	.workflow li{ width:85px;list-style:none; list-style:none; padding-right:30px; background:url(/statics/images/process/flow_r.gif) right 5px no-repeat; float:left} 
+	.workflow li a{ display:block;width:80px; height:42px; background:url(/statics/images/process/flow_1.jpg) left top no-repeat; text-decoration:none; height:42px; line-height:42px; text-align:center; color:#FFF !important; font-size:small;font-weight:bold; font-family:"微软雅黑","黑体"}
+	.workflow .t2{background:url(/statics/images/process/flow_r2.gif) right 5px no-repeat; }
+	.workflow .t3{background:url(/statics/images/process/flow_r2.gif) right 5px no-repeat; }
+	.workflow .nbg{ background:none}
+	.workflow .t2 a{ background:url(/statics/images/process/flow_2.jpg) left top no-repeat;}
+	.workflow .t3 a{ background:url(/statics/images/process/flow_1.jpg) left top no-repeat;}
+	.nfl li{ float:none!important}
+	.zyc{float:left;width: 40px;_margin-top:-20px; margin-top: 0;padding-left: 0;width: 80px;}
+	.zyc li{list-style:none; padding-left:20px; text-align: center; padding-top:20px;}
+	.zyc li a{color:#fff !important;font-weight:bold;font-size:small;}
+</style>
+
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+    <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+        <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+    </div>
+    <div style="margin-top:25px;">
+        <!--  内容start -->
+        <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;当前申请状态
+        <!--  短信验证  -->
+        <?php if($this->session->userdata('member_status') !== '1'){ ?>
+		<div style="padding-top:13px; padding-left:5px">
+			<h3>
+			尊敬的用户您好，您需要验证手机短信激活您的账号<span style="color:#ccc">(<?php echo $this->session->userdata('member_mobile'); ?>)</span>
+			</h3>
+			<div style="float:left">
+			
+				<span >短信验证码</span>
+				<input name="smscode" type="text" size="8" class="" >
+				<button class="sendsms">点击发送验证短信</button>
+				<span id="error"></span>
+				<input id="submitCaptcha" name="submit" type="submit" value="提交" class="member_buttom" style="display:block;margin-top:5px;">
+			</div>
+			<div style="clear:both"></div>
+			<p style="color:#ccc">如果您连续多次无法收到手机短信验证码，请在周一至周五9:00-17:00拨打网站右上角的客服热线。</p>
+		</div>
+		<!--  尚未融资  -->
+		<?php }else if($existForm === false) { ?> 
+		<div style="padding-top:13px; padding-left:5px"> 
+			<h3>尊敬的用户，您尚未申请过智慧网贷，立即申请请点击此处 &nbsp;<a href="<?php echo site_url('/apply'); ?>" title="融资申请" style="color:#B20E0D; font-size:16px;">融资申请</a></h3>
+		</div>
+		<?php }else{ ?>
+
+<?php 
+/* css样式
+默认 绿色框 绿色箭头
+t2 灰色框 灰色箭头
+t3 绿色框 灰色箭头
++ nbg 无箭头
+
+tob 绿色箭头
+tob2 灰色箭头
+样式再 member/index.html admin/compamy.html
+*/
+?>
+		<div class="process">
+			<ul class="workflow">
+		    	<li class="<?php echo $process[0]['flag'] ? ( $process[1]['flag'] ? '' :  't3' ) :  't2'
+				?>"><a href="#">注册</a></li>
+		        <li class="<?php echo $process[1]['flag'] ? ( $process[2]['flag'] ? '' :  't3' ) :  't2'
+				?>"><a href="#">申请</a></li>
+		        <li class="<?php echo $process[2]['flag'] ? ( $process[3]['flag'] ?  '' : 't3' ) : 't2';
+				?>"><a href="#">预审核</a></li>
+		        <li class="<?php echo $process[3]['flag'] ? '' : 't2';
+		        ?>  "><a style="width:84px;" href="#">通知客户经理</a></li>
+		       	<li class="<?php echo $process[9]['flag'] ? '' : 't2';
+		        ?>  "><a href="#">报批</a></li>
+		       	<li class="<?php echo $process[10]['flag'] ? '' : 't2';
+		        ?>  nbg"><a href="#">批复</a></li>
+				<div style="clear:both"></div>
+		    </ul>
+			<div style="clear:both"></div>
+		    <ul class="zyc"  style="margin-left:230px;_margin-left:115px; height: 133px;background-image: url(/statics/images/process/<?php echo $process[5]['flag'] ? '1_1' : ( $process[6]['flag'] ? '1_2': ( $process[4]['flag'] ? '1_3': '1_4' ) ) ?>.gif); ">
+		    	<li class=""><a href="#">已通过</a></li>
+		    	<li class=""><a href="#">需要担保</a></li>
+		    	<li class=""><a href="#">未通过</a></li>
+		    </ul>
+		    <ul class="zyc"  style=" margin-left:35px; height: 89px;background-image: url(/statics/images/process/<?php echo $process[7]['flag'] ? '2_1' : ( $process[8]['flag'] ? '2_2': '2_3' ) ?>.gif);  ">
+		    	<li class=""><a href="#">已通知</a></li>
+		    	<li class=""><a href="#">未通知</a></li>
+		    </ul>
+		    <ul class="zyc"  style=" margin-left:35px; height: 89px;background-image: url(/statics/images/process/<?php echo $process[12]['flag'] ? '2_1' : ( $process[11]['flag'] ? '2_2': '2_3' ) ?>.gif);  ">
+		        <li class=""><a href="#">已报批</a></li>
+		        <li class=""><a href="#">未报批</a></li>
+		    </ul>
+		    <ul class="zyc"  style="margin-left:35px; height: 133px;background-image: url(/statics/images/process/<?php echo $process[15]['flag'] ? '1_1' : ( $process[14]['flag'] ? '1_2': ( $process[13]['flag'] ? '1_3': '1_4' ) ) ?>.gif); ">
+		        <li class=""><a href="#">已批复</a></li>
+		        <li class="" style="padding-left:10px;"><a  href="#">需优化方案</a></li>
+		        <li class=""><a href="#">未批复</a></li>
+		    </ul> 
+		</div>
+        <table width="100%" class="messageStatus" >
+			<tr>
+				<td height="12" width="10%">申请状态</td>
+				<td height="12" width="40%">
+				<?php if( $status['form']){ ?>
+					<span style=" float: left; line-height:48px">已全部填写完成&nbsp;&nbsp;</span>
+					<a id="newform" href="javascript::void(0)"  title="如果您有新增、年审等需求，请点击此处重新申请" style="color:#B20E0D;float: right;display: block;width: 156px;" >如果您有新增、年审等需求，请点击此处重新申请</a>
+				<?php }else{
+					$href = '';
+					switch( $form_message['STEP']){
+						case '1' : $href='/apply/step1';break;
+						case '2' : $href='/apply/step2';break;
+						case '3' : $href='/apply/step3';break;
+						default: $href='/apply/';
+					}
+					if($this->session->userdata('stepex')=='2ex' and $this->session->userdata('form_finish')!=1){
+						$href = 'apply/stepex';
+					} ?>
+					表单填写尚未完成&nbsp;<a href="<?php echo site_url($href);?>" title="继续填写表单" style="color:#B20E0D">继续填写表单</a>
+				<?php } ?>	
+				</td>
+				<td height="12" width="15%">审核状态</td>
+				<td height="12" width="35%">
+				<?php
+					if( $status['verify']){
+						if($form_message['statusName']=='废弃数据') $form_message['statusName']='您的申请没有通过审核';
+						echo $form_message['statusName'];
+						if($form_message['STATUS']=='390'){
+							echo "&nbsp;&nbsp;金额{$form_message['PIFUDEMAND']}万元";
+						}
+						if($form_message['statusName']=='需要担保'){ ?>
+			                <button onClick="art.dialog({title: '接受',content:getC('<?php echo site_url("member/setok/"); ?>')});" >接受</button>
+			                <button onClick="window.location.href='<?php echo site_url("member/setno/"); ?>'" >拒绝</button>
+						<?php } ?>
+
+				<?php }else{ 
+					echo '<span style="color:#ccc">表单申请完成后，您将会看到审核状态</span>'; 
+				} ?>
+				</td>
+			</tr>
+			<tr>
+				<td height="12" colspan="1">企业信息</td>
+				<td height="12" colspan="3">
+				<?php if( $this->session->userdata('form_id') != -1){?>
+					<a href="javascript:void(0)" onclick="window.open('/member/showformdetail/<?php echo $this->session->userdata('form_id');?>','newwindow','height=600,width=600,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,status=no');" title="查看表单详细" style="color:#B20E0D">详细信息</a>
+				<?php } else{  echo '<span style="color:#ccc">暂无最近的融资申请</span>';}?>
+				<?php if($enableReForm){ ?>
+					<a href="javascript:void(0)" onclick="rewrite();" title="删除所有表单信息，重新填写表单" style="color:#B20E0D">重新填写</a>
+					<span style="color:#7a7a7a">重新填写会删除所有表单信息，请慎重选择</span>
+				<?php } ?>
+						
+				</td>
+			</tr>
+        </table>
+        <table width="100%" class="messageStatus" style="margin-top:20px;">
+			<tr>
+				<td height="12" width="10%">公司名称</td>
+				<td height="12" width="40%"><?php if(  isset($form_message['COMPANY']) ){ echo $form_message['COMPANY']; }else{ echo '&nbsp;';}?></td>
+				<td height="12" width="15%">地区</td>
+				<td height="12" width="35%">苏州-<?php echo $form_message['areaName']; ?></td>
+			</tr>
+            <tr>
+				<td height="12" >授信需求</td>
+				<td height="12" ><?php if(isset($form_message['DEMAND'])){ echo $form_message['DEMAND']; echo '(万元)';}else{ echo '&nbsp;'; } ?></td>
+				<td height="12" >行业</td>
+				<td height="12" >
+				<?php
+					$a = is_numeric($form_message['TRADE_I']) ? get_area($form_message['TRADE_I']) : $form_message['TRADE_I'];
+					echo $a?$a:'&nbsp;';
+					if($form_message['TRADEID']>0)
+					if(isset($form_message['tradeName']) ) echo '('.$form_message['tradeName'].')'; else echo '&nbsp;';
+					else echo '&nbsp;';
+				?></td>
+			</tr>
+            <tr>
+				<td height="12" >填写时间</td>
+				<td height="12" ><?php if($form_message['CREATETIME']){ echo date('Y-m-d',$form_message['CREATETIME']); }else{ echo '&nbsp;'; } ?></td>
+				<td height="12">填写结束时间</td>
+				<td height="12" ><?php if( $form_message['ENDTIME'] ) echo date('Y-m-d',$form_message['ENDTIME']); else{ echo '&nbsp;';}?></td>
+			</tr>
+        </table>		
+		<?php } ?>
+
+<script type="text/javascript">
+	$(function(){
+		$("#cks :input").live("click",function(){
+			cl = $("input:checked");							
+			if(cl.length>2){$(this).removeAttr('checked')}					
+		});
+
+		$('#newform').click(function(){
+			art.dialog({
+				title: '发起新的申请？',
+				content: '<?php if( $this->session->userdata('form_can_new') === TRUE ) { 
+						echo '确定发起新的申请？';
+}else{
+						echo '您上次申请未填写完成，或当月授信申请已超过3次，如需再次申请，请在六个月后发起。';
+				}?>',
+				okValue: '确定',
+				ok: function(){
+<?php  if( $this->session->userdata('form_can_new') === TRUE ) { ?>
+					location.href = '<?php echo site_url('/member/newform'); ?>';
+<?php } ?>
+				}
+			});
+		});		
+	});
+</script>
+
+        <!--  内容end   -->
+    </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div style="width:2px; height:80px; border:1px solid #333"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

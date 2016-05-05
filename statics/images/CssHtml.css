@@ -1,0 +1,117 @@
+/* 通用默认样式-------------------------------------- */
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;}
+td {font-family:"宋体";font-size: 12px;color: #2f2f2f;}
+A:link   {font-family:"宋体";font-size:12px;color: #2F2F2F;;text-decoration: none;}
+A:visited{font-family:"宋体";font-size:12px;color: #2F2F2F;;text-decoration: none;}
+A:hover  {font-family:"宋体";font-size:12px;color: #FF0000;;text-decoration: none;}
+A:active {font-family:"宋体";font-size:12px;color: #FF0000;;text-decoration: none;}
+
+/* 导航样式-------------------------------------- */
+td.toplink {font-family:"宋体";font-size: 12px;color: #ffffff;}
+td.SystemLeft A:link {color: #003EBD;text-decoration: none;}
+td.SystemLeft A:visited {color: #003EBD;text-decoration: none;}
+td.SystemLeft A:hover {color: #ffffff;text-decoration: none;}
+
+/* 其他样式-------------------------------------- */
+input.AllSearch  {border-top: #ffffff 1px solid;border-bottom: #ffffff 1px solid;border-left:#ffffff 1px solid;border-right:#ffffff 1px solid;font-size:11px; background: #ffffff; font-family:Verdana,Arial,"宋体";color: #2F2F2F;}
+input.ipt  {border-top: #ababab 1px solid;border-bottom: #ababab 1px solid;border-left:#ababab 1px solid;border-right:#ababab 1px solid;font-size:14px; background: #ffffff; font-family:Verdana,Arial,"宋体";color: #2F2F2F;padding:6px 6px 6px}
+
+.bq {font-size: 12px;color: #707070;font-family: Arial;LINE-HEIGHT: 180%;}
+.dqwz {font-size: 12px;color: #777777;}
+.td180 {font-size:12px; color:#3A3A3A;LINE-HEIGHT: 180%;}
+.td170 {font-size:12px; color:#666666;LINE-HEIGHT: 190%;}
+.td160 {font-size:14px; color:#000	;font-family: "宋体";LINE-HEIGHT: 160%;}
+.td150 {font-size:12px; color:#666666;LINE-HEIGHT: 180%;}
+.td140 {font-size:12px; color:#3A3A3A;font-family: Arial;LINE-HEIGHT: 150%;}
+.txt01 {font-size: 12px;color: #000000;}
+.txt02 {font-size: 14px;color: #ad0a33;font-family: Century Gothic;font-weight: bold;}
+.txt03 {font-size: 14px;color: #000000;font-family: Century Gothic;font-weight: bold;}
+.txt04 {font-size: 12px;color: #ad0a19;font-weight: bold;LINE-HEIGHT: 160%;}
+.txt05 {font-size: 12px;color: #777676;LINE-HEIGHT: 180%;}
+.txt06 {font-size: 12px;color: #ffffff;}
+.txt07 {font-size: 14px;color: #ffffff;font-family: Century Gothic;font-weight: bold;}
+.txt08 {font-size: 16px;color: #000000;font-family: 微软雅黑;font-weight: bold;}
+.txt09 {font-size: 12px;color: #999999;font-family: Arial;}
+.txt10 {font-size: 14px;color: #ffffff;}
+.txt11 {font-size: 14px;color: #555555;}
+.newsbt {font-size: 25px;color: #333333;font-weight: bold;}
+
+A.toplink:link {font-size:14px; text-decoration: none;color:#ffffff;font-family:Arial;font-weight: bold;}
+A.toplink:visited {font-size:14px; text-decoration: none;color:#ffffff;font-family:Arial;font-weight: bold;}
+A.toplink:active {font-size:14px; text-decoration: none;color:#ffffff;font-family:Arial;font-weight: bold;}
+A.toplink:hover {font-size:14px; text-decoration: none;color:#000000;font-family:Arial;font-weight: bold;}
+
+A.link_01:link {font-size:12px; text-decoration: none;color:#000000;font-family:Arial;}
+A.link_01:visited {font-size:12px; text-decoration: none;color:#000000;font-family:Arial;}
+A.link_01:active {font-size:12px; text-decoration: none;color:#000000;font-family:Arial;}
+A.link_01:hover {font-size:12px; text-decoration: underline;color:#a6010d;font-family:Arial;}
+
+A.link_02:link {font-size:12px; text-decoration: none;color:#707070;font-family:Arial;}
+A.link_02:visited {font-size:12px; text-decoration: none;color:#707070;font-family:Arial;}
+A.link_02:active {font-size:12px; text-decoration: none;color:#707070;font-family:Arial;}
+A.link_02:hover {font-size:12px; text-decoration: underline;color:#a6010d;font-family:Arial;}
+
+A.link_03:link {font-size:14px; text-decoration: none;color:#888888;font-family:微软雅黑;font-weight: bold;}
+A.link_03:visited {font-size:14px; text-decoration: none;color:#888888;font-family:微软雅黑;font-weight: bold;}
+A.link_03:active {font-size:14px; text-decoration: none;color:#888888;font-family:微软雅黑;font-weight: bold;}
+A.link_03:hover {font-size:14px; text-decoration: none;color:#a6010d;font-family:微软雅黑;font-weight: bold;}
+
+A.link_04:link {font-size:14px; text-decoration: none;color:#555555;font-family:微软雅黑;}
+A.link_04:visited {font-size:14px; text-decoration: none;color:#555555;font-family:微软雅黑;}
+A.link_04:active {font-size:14px; text-decoration: none;color:#555555;font-family:微软雅黑;}
+A.link_04:hover {font-size:14px; text-decoration: underline;color:#a6010d;font-family:微软雅黑;}
+
+A.link_dqwz:link {font-size:12px; text-decoration: none;color:#777777;}
+A.link_dqwz:visited {font-size:12px; text-decoration: none;color:#777777;}
+A.link_dqwz:active {font-size:12px; text-decoration: none;color:#777777;}
+A.link_dqwz:hover {font-size:12px; text-decoration: underline;color:#a6010d;}
+
+/*--pages分页---*/
+.pages{padding: 14px 0 10px;}
+.pages strong {padding: 14px 0 10px;padding: 0 5px;}
+.pages a{display: inline-block;height: 22px;line-height: 22px;background-color: rgb(255, 255, 255);border: 1px solid rgb(227, 227, 227);text-align: center;color: rgb(51, 51, 51);padding: 0 8px;}
+.pages a:visited {font-size:12px; text-decoration: none;color:#777777;}
+.pages a:active {font-size:12px; text-decoration: none;color:#777777;}
+.pages a:hover {font-size:12px; text-decoration: underline;color:#a6010d;}
+
+#getUserName a {text-decoration: underline;}
+/*-------------*/
+.messageStatus{
+border-right: 1px solid #DDD;
+border-bottom: 1px solid #DDD;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+border-spacing: 0;
+}
+.messageStatus th, .messageStatus td {
+border-left: 1px solid #DDD;
+border-top: 1px solid #DDD;
+line-height: 20px;
+padding: 4px 5px;
+text-align: left;
+vertical-align: top;
+}
+/*-------------*/
+.member_buttom{
+display: inline-block;
+zoom: 1;
+vertical-align: baseline;
+margin: 0 2px;
+outline: none;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+font-size: 10px;
+line-height: 100%;
+padding: 0.5em 0.7em 0.55em;
+_padding: 6px;
+_padding-bottom: 2px;
+_padding-left: 1px;
+_padding-right: 1px;
+_font-size: 10px;
+border: none;
+border-radius: 2px;
+color: #FFF;
+background: #A7A9AA;
+}
+.midtableborder{ border-bottom-color: #fff !important;}

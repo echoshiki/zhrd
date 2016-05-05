@@ -1,0 +1,18 @@
+<table style="width:500px;">
+	<tr>
+		<td width="15%">标题：</td>
+        <td><?php echo $TITLE; ?></td>
+	</tr>
+	<tr>
+		<td>发布人：</td>
+        <td><?php echo $USERNAME; ?><?php if(!empty($GROUP)){ echo "[".$GROUP."]"; } ?></td>
+	</tr>
+	<tr>
+		<td>发布日期：</td>
+        <td><?php echo $TIME; ?></td>
+	</tr>
+	<tr>
+		<td>内容：</td>
+        <td><?php echo $CONTENT; ?></td>
+	</tr>
+</table>

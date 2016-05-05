@@ -1,0 +1,88 @@
+
+
+<div class="con2">
+<?php 
+$urlid=explode("/",$_SERVER['REQUEST_URI']);
+	if($urlid[2]!=81){
+	?>
+	<div style="text-align:center; padding-top:25px;">
+		<span class="txt01">智慧资讯 NEWS</span><br>
+	</div>
+	
+	<div class="news1_dh" style="width:750px; display:none"><?php }?>
+	<?php 
+	//print_r ($categoryList);
+	if( !empty($categoryList)) { foreach($categoryList as $k => $v) { 
+	//$urlid=explode("/",$_SERVER['REQUEST_URI']);
+	if($urlid[2]!=81){
+	?>
+		<dt class="<?php if($urlid[2]==$v['CATID']){?>news1_on<?php }else{?>news1_off<?php }?>" id="news1_tit1" onClick="javascript:window.location.href='<?php echo site_url($v['URL']); ?>'" style="cursor:pointer"><?php echo str_cut($v['CATNAME'],'50',''); ?></dt>
+		<?php 
+		}
+		} } ?>
+		<!--<dt class="news1_off" id="news1_tit2" onClick="news1(2,1,2)" style="cursor:pointer">中银公告</dt>-->
+	</div>
+	<div class="clear"></div>
+	<div class="news1_con">
+	<div id="news1_con1">
+		<div class="news1_con_con">
+        	<ul>
+			<?php  if( !empty($lists)){ foreach($lists as $k=> $v) { ?>
+				<li>
+					<div style="width:152px; float:left;"><a href="<?php echo site_url($v['URL']); ?>"><img src="<?php if(img( $v['THUMB'])){?><?php echo img( $v['THUMB']);?><?php }else{?><?php echo base_url('statics/image/') ; ?>/03.jpg<?php }?>" width="152" height="115" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="<?php echo site_url($v['URL']); ?>" class="link_02"><?php echo str_cut($v['TITLE'],55); ?></a></p>
+						<p class="txt03">　　<?php echo str_cut($v['DESCRIPTION'],216); ?>……</p>
+					</div>
+				</li>
+				<?php } }else{echo '<tr><td><p style="color:#CCC;font-size: 17px;font-weight: bold;">暂无数据</p></td></tr>';}?>
+				
+			</ul>
+			<?php  echo $paginationLink; ?>
+        </div>
+		<div class="clear"></div>
+	 </div>
+	 <div id="news1_con2" style="display:none;">
+	  	<div class="news1_con_con">
+        	<ul>
+				<li>
+					<div style="width:152px; float:left;"><a href="#"><img src="images/03.jpg" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="#" class="link_02">小企业大市场，供应链融资作保障</a></p>
+						<p class="txt03">　　为适应互联网金融的大趋势，年初以来，苏州中行在市政府金融办、市经信委的指导下，对接“智慧苏州”规划，启动了面向中小企业，以融资服务为先导的“中银智慧融贷”项目……</p>
+					</div>
+				</li>
+				<li>
+					<div style="width:152px; float:left;"><a href="#"><img src="images/03.jpg" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="#" class="link_02">小企业大市场，供应链融资作保障</a></p>
+						<p class="txt03">　　为适应互联网金融的大趋势，年初以来，苏州中行在市政府金融办、市经信委的指导下，对接“智慧苏州”规划，启动了面向中小企业，以融资服务为先导的“中银智慧融贷”项目……</p>
+					</div>
+				</li>
+				<li>
+					<div style="width:152px; float:left;"><a href="#"><img src="images/03.jpg" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="#" class="link_02">小企业大市场，供应链融资作保障</a></p>
+						<p class="txt03">　　为适应互联网金融的大趋势，年初以来，苏州中行在市政府金融办、市经信委的指导下，对接“智慧苏州”规划，启动了面向中小企业，以融资服务为先导的“中银智慧融贷”项目……</p>
+					</div>
+				</li>
+				<li>
+					<div style="width:152px; float:left;"><a href="#"><img src="images/03.jpg" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="#" class="link_02">小企业大市场，供应链融资作保障</a></p>
+						<p class="txt03">　　为适应互联网金融的大趋势，年初以来，苏州中行在市政府金融办、市经信委的指导下，对接“智慧苏州”规划，启动了面向中小企业，以融资服务为先导的“中银智慧融贷”项目……</p>
+					</div>
+				</li>
+			</ul>
+        </div>
+		<div class="clear"></div>
+	 </div>
+	 <div style=" padding:30px 0;"></div>
+  </div>
+</div>
+
+
+
+</body>
+
+</html>		

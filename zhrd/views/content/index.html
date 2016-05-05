@@ -1,0 +1,159 @@
+<link href="<?php echo base_url('statics/css/sw.css') ; ?>" rel="stylesheet" type="text/css" />
+
+<div class="yz_banner">
+	<div align="center">
+		<div class="focus" id="focus">
+		<div id="focus_m" class="focus_m">
+			<ul style="opacity: 1;">
+			<?php $count = 0; foreach($shouyepics as $k => $v ) { ?>
+				<li style="display: block;background:url('<?php echo base_url($v['URL']) ; ?>') top center no-repeat;">
+					<div class="sub_i"><img src="<?php echo base_url('statics/image/') ; ?>/01.png" /><br><br><a href="javascript:;" alt="融资快速通道" title="融资快速通道" onclick="art.dialog.open('/fast', {title: '融资快速通道',width:700});"><img src="<?php echo base_url('statics/image/') ; ?>/03.png" border="0" style="margin-right:150px;" /></a><br><a href="https://e.boc.cn/ezsela/home" target="_blank" alt="网络通宝" title="网络通宝"><img src="<?php echo base_url('statics/image/') ; ?>/02.png" border="0" style="margin-right:150px; margin-top:10px;" /></a></div>
+				</li>
+				<?php $count++; } ?>
+			</ul>
+		</div>
+		<script type="text/javascript" src="<?php echo base_url('statics/js/banner.js') ; ?>"></script>
+		<a href="javascript:;" class="focus_l" id="focus_l" hidefocus="true" title="上一张"><b></b><span></span></a>
+		<a href="javascript:;" class="focus_r" id="focus_r" hidefocus="true" title="下一张"><b></b><span></span></a>
+        </div>
+	</div>
+</div>
+
+<div class="con1">
+	<div style="text-align:center; padding-top:40px;">
+		<span class="txt01">一种崭新的网络金融服务模式</span><br>
+		<span class="txt02">以网站、微信、APP等为入口，运用多平台进行立体作业，实现中小企业授信网络化、图像化、自动化和智能化的金融服务。</span>
+		<img src="<?php echo base_url('statics/image/') ; ?>/01.jpg" style="margin-top:35px;" />
+	</div>
+</div>
+
+
+
+<!--////////////////////////// 轮播图js START ////////////////////////////////-->
+<script type="text/javascript">
+    var IMAGE_DOMAIN = '1';
+</script>
+<section class="vi-online-finance" style="padding-top:0px; padding-bottom:0px; height:666px;">
+	<div class="vi-carousel">
+		<div class="vi-carousel-list">
+			<?php foreach ($lunbo as $key => $value): ?>
+				<?php if ($key==0): ?>
+					<div class="carousel-item project project-done middle">
+						<img src="<?php echo $value['THUMB']; ?>" alt="">
+					</div>	
+				<?php endif ?>
+				<?php if ($key = count($lunbo) -1 ): ?>
+					<div class="carousel-item project project-done left">
+						<img src="<?php echo $value['THUMB']; ?>" alt="">
+					</div>	
+				<?php endif ?>
+					<div class="carousel-item project project-done left left-1">
+						<img src="<?php echo $value['THUMB']; ?>" alt="">
+					</div>		
+			<?php endforeach ?>
+		</div>
+		<div class="vi-arrow-dir">
+			<a href="#" class="left"></a>
+			<a href="#" class="right"></a>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="<?php echo base_url('statics/js/lunbo.js') ; ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('statics/js/lunboz.js') ; ?>"></script>
+<!--////////////////////////// 轮播图js END ////////////////////////////////-->
+
+
+
+
+
+<div class="con2">
+  <div style="text-align:center; padding-top:25px;">
+		<span class="txt01">智慧产品 PRODUCTS</span>
+		<div class="products">
+			<ul>
+				<li>
+					<a href="<?php echo site_url($tongyongMore); ?>">
+					<?php if( !empty($tongyong)) { foreach($tongyong as $v) { ?>
+					<div><img src="<?php echo img($v['THUMB']); ?>" width="320" height="161" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > <?php echo str_cut($v['TITLE'], 30,''); ?></div>
+						<div class="products_3"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></div>
+					</div>
+					<?php break; } } else{ echo '<td>暂无数据</td>'; } ?>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo site_url($kejiMore); ?>">
+					<?php if( !empty($keji)) { foreach($keji as $v) { ?>
+					<div><img src="<?php echo base_url($v['THUMB']); ?>" width="320" height="161" /></div>
+					<div class="products_1">
+						<div class="products_2">科技产品 > <?php echo str_cut($v['TITLE'], 30,''); ?></div>
+						<div class="products_3"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></div>
+					</div>
+					<?php break; } } else{echo '<td>暂无数据</td>';} ?>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo site_url($shenongMore); ?>">
+					<?php if( !empty($shenong)) { foreach($shenong as $v) { ?>
+					<div><img src="<?php echo img($v['THUMB']); ?>" width="320" height="161" /></div>
+					<div class="products_1">
+						<div class="products_2">涉农产品 > <?php echo str_cut($v['TITLE'], 30,''); ?></div>
+						<div class="products_3"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></div>
+					</div>
+					<?php break; } } else{echo '<td>暂无数据</td>';} ?>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	    <div style=" padding:30px 0;"><a href="<?php echo site_url('product/47'); ?>" class="link_01">查看更多 +</a></div>
+</div>
+
+<div class="con3">
+	<div style="text-align:center; padding-top:30px;">
+		<span class="txt01">智慧资讯 NEWS</span><br>
+	</div>
+	<div class="news1_dh">
+		<dt class="news1_on" id="news1_tit1" onClick="news1(1,1,2)" style="cursor:pointer">中银新闻</dt>
+		<dt class="news1_off" id="news1_tit2" onClick="news1(2,1,2)" style="cursor:pointer">中银公告</dt>
+	</div>
+	<div class="clear"></div>
+	<div class="news1_con">
+	<div id="news1_con1">
+		<div class="news1_con_con">
+        	<ul>
+			<?php 
+			if( !empty($bocNews)) { $flag = 1; foreach($bocNews as $v) { ?>
+				<li>
+					<div style="width:152px; float:left;"><a href="<?php echo site_url( $v['URL'] );?>"><img src="<?php echo site_url( $v['THUMB'] );?>" width="152" height="115" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="<?php echo site_url( $v['URL'] );?>" class="link_02"><?php echo str_cut($v['TITLE'] ,'55'); ?></a></p>
+						<p class="txt03">　　<?php echo str_cut($v['DESCRIPTION'] ,'220'); ?>……</p>
+					</div>
+				</li>
+				<?php if($flag++ > 3){break;} } } else{echo '暂无内容';}?>
+			</ul>
+        </div>
+	 </div>
+	 <div id="news1_con2" style="display:none;">
+	  	<div class="news1_con_con">
+        	<ul>
+			<?php if( !empty($bocGonggao)) { $flag = 1; foreach($bocGonggao as $k => $v) { ?>
+				<li>
+					<div style="width:152px; float:left;"><a href="<?php echo site_url( $v['URL'] );?>"><img src="<?php echo site_url( $v['THUMB'] );?>" width="152" height="115" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="<?php echo site_url( $v['URL'] );?>" class="link_02"><?php echo str_cut($v['TITLE'] ,'55'); ?></a></p>
+						<p class="txt03">　　<?php echo str_cut($v['DESCRIPTION'] ,'220'); ?>……</p>
+					</div>
+				</li>
+				<?php if($flag++ > 3){break;} } } else{echo '暂无内容';}?>
+				
+			</ul>
+        </div>
+	 </div>
+  </div>
+</div>
+
+
+	

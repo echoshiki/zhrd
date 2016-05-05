@@ -1,0 +1,58 @@
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a>
+<?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php }  } ?>
+	</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  
+<?php if( !empty($categoryLeft)){  echo $categoryLeft;} ?>
+	
+	<td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="28" align="left" valign="top" class="txt08"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?></td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>
+            <table width="50%" height="20" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<?php  if( !empty($lists)){ foreach($lists as $k=> $v) { ?>
+              <tr>
+                <td width="85%" height="26" align="left"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['TITLE']; ?>" class="link_04"><?php echo str_cut($v['TITLE'],100); ?></a></td>
+                <td width="15%" align="left" class="txt09">[ <?php echo date('Y-m-d',$v['UPDATETIME']); ?>]</td>
+              </tr>
+<?php /*样式  虚线 前台 */ if(($k+1)%5 == 0){ ?>
+              <tr>
+                <td height="12" colspan="2"></td>
+              </tr>
+              <tr>
+                <td height="1" colspan="2" background="<?php echo base_url('statics/images/') ; ?>/40.jpg"></td>
+              </tr>
+              <tr>
+                <td height="12" colspan="2"></td>
+              </tr>
+<?php } ?>
+<?php } }else{echo '<tr><td><p style="color:#CCC;font-size: 17px;font-weight: bold;">暂无数据</p></td></tr>';}?>
+			<tr>
+				<td height="12" colspan="2" style="text-align:right">
+					<?php  echo $paginationLink; ?>
+				</td>
+			</tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>

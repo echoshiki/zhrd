@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>">
+<script src="<?php echo base_url('statics/js/jquery-1.3.2.min.js') ?>"></script>
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script>
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<style type="text/css">
+	#table_1 th{ font-size:17px; margin:7px 0 0 0; height: 30px; line-height: 35px;}	
+</style>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+
+          <div class="datatable">
+          	 <div class="tip" >
+             	<div class="left">
+                    <abbr> 查看详细</abbr>
+                </div>
+                 <div class="right">
+                 	<a href="javascript:window.history.go(-1);" class="button deepblue" id="show_add" >返回</a>
+                    <a href="<?php echo site_url('admin/company/edit/'.$list['ID']);?>" class="button deepblue" id="show_add" >编辑内容</a>
+                </div> 
+             </div>
+             <div class="head"></div>
+             <div class="body">
+				<div class="form_1" >
+		           <table width="100%" id="table_1"  class="table bordered zebra">
+		              <tr>
+                       	<th colspan="2">总括</th>
+		              </tr>
+		              <?php if(!empty($list['IMPORTUSERID'])){ ?>
+		              <tr>
+		                <td width='180'>导入者：</td>
+		                <td><?php $userinfo = $this->admin->userInfo_id($list['IMPORTUSERID']); echo $userinfo['USERNAME']; ?></td>
+		              </tr>
+		              <?php } ?>
+		              
+		              <tr>
+		                <td width='180'>所在区域：</td>
+		                <td><?php echo get_area($list['AREAID']); ?></td>
+		              </tr>
+
+		              <tr>
+		                <td>公司名称：</td>
+		                <td><?php echo $list['COMPANY']; ?></td>
+		              </tr>
+		              <tr>
+		                <td>营业执照编号：</td>
+		                <td><?php echo $list['LICENCE']; ?></td>
+		              </tr>
+
+
+		              <tr id="trade_tr">
+		                <td>行业：</td>
+		                <td><?php echo $list['TRADE_I']; ?></td>
+		              </tr>
+
+
+		              <tr>
+		                <td>上年度销售收入：</td>
+		                <td><?php if($list['SALE_LAST']){echo $list['SALE_LAST'];}else{ echo "未填";} ?>(万元)</td>
+		              </tr>
+					<tr>
+		                <td>授信需求：</td>
+		                <td><?php if($list['DEMAND']){echo $list['DEMAND'];}else{ echo "未填";} ?>(万元)</td>
+		            </tr>
+		              <tr id="trade_tr">
+		                <td>联系方式：</td>
+		                <td><?php echo $list['TEL']; ?></td>
+		              </tr>
+
+				    <!-- 测算公式 -->
+		            <tr>
+                        <th colspan="2">财务测算结果</th>
+                    </tr> 
+		              <tr>
+		                <td width='180'>新增流动资金贷款额度：</td>
+		                <td><?php echo $mainField[0]; ?>（万元）</td>
+		              </tr>
+		              <tr>
+		                <td width='180'>净利润率：</td>
+		                <td><?php echo $mainField[1]."%"; ?></td>
+		              </tr>
+		              <tr>
+		                <td width='180'>资产负债率：</td>
+		                <td><?php echo $mainField[2]."%"; ?></td>
+		              </tr>		              
+		              <tr>
+		                <td width='180'>应收账款占比：</td>
+		                <td><?php echo $mainField[3]."%"; ?></td>
+		              </tr>
+		              <tr>
+		                <td width='180'>存货占比：</td>
+		                <td><?php echo $mainField[4]."%"; ?></td>
+		              </tr>
+		              <tr>
+		                <td width='180'>固定资产占比：</td>
+		                <td><?php echo $mainField[5]."%"; ?></td>
+		              </tr>
+		              <tr>
+		                <td width='180'>应收账款平均余额：</td>
+		                <td><?php echo $mainField[6]; ?>（万元）</td>
+		              </tr>
+		              <tr>
+		                <td width='180'>平均存货余额：</td>
+		                <td><?php echo $mainField[7]; ?>（万元）</td>
+		              </tr>
+		              <tr>
+		                <td width='180'>应付账款平均余额：</td>
+		                <td><?php echo $mainField[8]; ?>（万元）</td>
+		              </tr>
+		              <tr>
+		                <td width='180'>应收账款的周转天数：</td>
+		                <td><?php echo $mainField[9]; ?>（天）</td>
+		              </tr>
+		              <tr>
+		                <td width='180'>存货余额的周转天数：</td>
+		                <td><?php echo $mainField[10]; ?>（天）</td>
+		              </tr>
+		              <tr>
+		                <td width='180'>应付账款的周转天数：</td>
+		                <td><?php echo $mainField[11]; ?>（天）</td>
+		              </tr>
+
+
+		        	<tr>
+                        <th colspan="2">详细情况</th>
+                    </tr>  
+	             <tr>
+	                <td width='180'>主营业务：</td>
+	                <td><?php echo $list['MAIN']; ?></td>
+	              </tr>
+	              <tr>
+	                <td>行业内地位：</td>
+					<td><?php if($list['PLACE'] == '1'){ echo "领先";}elseif($list['PLACE'] == '2'){ echo "一般";}else{ echo '落后';} ?></td>
+	              </tr>
+	              <tr>
+	                <td>所属的文化行业：</td>
+					<td><?php echo get_area($list['TRADE_2']); ?></td>
+	              </tr>                            
+	              <tr>
+	                <td>本年度预计销售收入：</td>
+	                <td><?php echo $list['SALE_THIS'] ?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>上年销售成本：</td>
+	                <td><?php echo $list['COST'] ?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>上年净利润：</td>
+	                <td><?php echo $list['PROFIT'] ?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>当前企业资产总额：</td>
+	                <td><?php echo $list['ASSET'] ?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>当前企业负债总额：</td>
+	                <td><?php echo $list['DEBT'] ?>（万元）</td>
+	              </tr>
+
+
+	              <tr>
+	                <td>应收账款余额：</td>
+	                <td>去年末：<?php echo $list['ACCOUNT_LAST_C']; ?>（万元）
+						前年末：<?php echo $list['ACCOUNT_BEFORE_C'];?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>存货余额：</td>
+	                <td>去年末：<?php echo $list['STOCK_LAST']; ?>（万元）
+						前年末：<?php echo $list['STOCK_BEFORE'];?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>应付账款余额：</td>
+	                <td>去年末：<?php echo $list['ACCOUNT_LAST_P']; ?>（万元）
+						前年末：<?php echo $list['ACCOUNT_BEFORE_P'];?>（万元）</td>
+	              </tr>
+
+	              <tr>
+	                <td>资金用途：</td>
+	                <td><?php echo get_area($list['USE']); ?></td>
+	              </tr>
+
+	              <tr>
+	                <td>当前主要合作银行：</td>
+	                <td><?php foreach($list['COOPERATION'] as $v){ echo get_area($v).'<br />'; } ?></td>
+	              </tr>
+	              <tr>
+	                <td>当前在外融资金额：</td>
+	                <td><?php echo $list['FINANCE_THIS'] ?>（万元）</td>
+	              </tr>
+	              <tr>
+	                <td>企业主籍贯：</td>
+	                <td><?php echo $list['OWNER_HOME'] ?></td>
+	              </tr>
+	              <tr>
+	                <td>企业主职称：</td>
+	                <td><?php echo $list['OWNER_TITLE'] ?></td>
+	              </tr>
+	              <tr>
+	                <td>企业主从业年限：</td>
+	                <td><?php echo $list['OWNER_TIME'] ?>（年）</td>
+	              </tr>
+	              <tr>
+	                <td>企业经营年限：</td>
+	                <td><?php echo $list['COM_TIME'] ?>（年）</td>
+	              </tr>
+	              <tr>
+	                <td>企业员工数：</td>
+	                <td><?php echo $list['STAFF'] ?></td>
+	              </tr>
+
+	              <tr>
+                	<td>企业荣誉：</td>
+                	<td><?php foreach($list['COM_HONOR'] as $key=>$val){
+                				if ($key !== 'about') {
+                					echo get_area($val)."&nbsp;";
+                				}     	
+                				if($key === 'about'){
+                					echo $val;
+                				}
+
+                	}?></td>
+              	  </tr> 
+
+	              <tr>
+	                <td>是否有上市预期：</td>
+	                <td><?php if($list['ISLIST'] == '1'){ echo "是";}elseif($list['ISLIST'] == '2'){ echo "否";}else{ echo '未填';} ?></td>
+	              </tr>
+	             <tr>
+	                <td>经营场所权属</td>
+	                <td><?php if($list['BELONG'] == '1'){ echo "自有";}elseif($list['BELONG'] == '2'){ echo "租赁";}else{ echo '';} ?></td>
+	              </tr>
+	              <tr>              
+	                <td>当前固定资产：</td>
+	                <td><?php echo $list['ASSET_FIXED'] ?>（万元）</td>
+	              </tr>
+
+	              <tr>
+	                <td>担保方式：</td>
+	                <td>
+	                	<?php foreach($list['WARRANT'] as $key=>$val){  
+	       					 	if($key === 0){
+	       					 		echo get_area($val);
+	       					 	}
+	       					 	if($key === 1){
+	       					 		echo "-".get_area($val);
+	       					 	}
+	       					 	if($key === 'price2'){
+	       					 		echo "&nbsp;第三方销售收入：".$val."（万元）";
+	       					 	}
+	       					 	if($key === 'price3'){
+							 		echo "&nbsp;原值：".$val."（万元）";
+							 	}
+	       					 	if($key === 'about'){
+	       					 		echo "&nbsp;对外担保情况：".$val;
+	       					 	}
+	       					 	if($key === 'good'){
+	       					 		echo "&nbsp;质押物：".$val;
+	       					 	}
+	       					 	if($key === 'price'){
+	       					 		echo "&nbsp;市值：".$val."（万元）";
+	       					 	}
+	       					 	if($key === 'com'){
+	       					 		echo ":";
+	       					 		foreach($val as $v){
+	       					 			echo get_area($v)."&nbsp;";
+	       					 		}
+	       					 	}
+
+	                	} ?>
+	                </td>
+	              </tr>
+
+	<tr>
+		<td>担保方式二：</td>
+		<td>
+        	<?php 
+        			if (empty($list['WARRANT_2'])) {
+        				$list['WARRANT_2'] = array();
+        			}
+
+        			foreach($list['WARRANT_2'] as $key=>$val){  
+					 	if($key === 0){
+					 		echo get_area($val);
+					 	}
+					 	if($key === 1){
+					 		echo "-".get_area($val);
+					 	}
+					 	if($key === 'price2'){
+					 		echo "&nbsp;第三方销售收入：".$val."（万元）";
+					 	}
+					 	if($key === 'price3'){
+					 		echo "&nbsp;房产原值：".$val."（万元）";
+					 	}
+					 	if($key === 'about'){
+					 		echo "&nbsp;对外担保情况：".$val;
+					 	}
+					 	if($key === 'good'){
+					 		echo "&nbsp;质押物：".$val;
+					 	}
+					 	if($key === 'price'){
+					 		echo "&nbsp;评估价值：".$val."（万元）";
+					 	}
+					 	if($key === 'com'){
+					 		echo ":";
+					 		foreach($val as $v){
+					 			echo get_area($v)."&nbsp;";
+					 		}
+					 	}
+        			} 
+        	?>
+		</td>
+	</tr>
+
+	<tr>
+		<td>担保方式三：</td>
+		<td>
+        	<?php 
+        			if (empty($list['WARRANT_3'])) {
+        				$list['WARRANT_3'] = array();
+        			}
+
+        			foreach($list['WARRANT_3'] as $key=>$val){  
+					 	if($key === 0){
+					 		echo get_area($val);
+					 	}
+					 	if($key === 1){
+					 		echo "-".get_area($val);
+					 	}
+					 	if($key === 'price2'){
+					 		echo "&nbsp;第三方销售收入：".$val."（万元）";
+					 	}
+					 	if($key === 'price3'){
+					 		echo "&nbsp;房产原值：".$val."（万元）";
+					 	}
+					 	if($key === 'about'){
+					 		echo "&nbsp;对外担保情况：".$val;
+					 	}
+					 	if($key === 'good'){
+					 		echo "&nbsp;质押物：".$val;
+					 	}
+					 	if($key === 'price'){
+					 		echo "&nbsp;评估价值：".$val."（万元）";
+					 	}
+					 	if($key === 'com'){
+					 		echo ":";
+					 		foreach($val as $v){
+					 			echo get_area($v)."&nbsp;";
+					 		}
+					 	}
+        			} 
+        	?>
+		</td>
+	</tr>
+
+	<tr>
+		<td>其他担保方式</td>
+		<td><?php echo $list['WARRANT_O']; ?></td>
+	</tr>
+
+
+	              
+	              <tr>
+	                <td>企业主是否愿意连带责任担保：</td>
+	                <td><?php if($list['ISRELATE'] == '1'){ echo "是";}elseif($list['ISRELATE'] == '2'){ echo "否";}else{ echo '未填写';} ?></td>
+	              </tr>
+
+	              <tr>
+	                <td>企业现场照片：</td>
+	                <td>
+					<?php if(!empty($list['THUMB'])) foreach( $list['THUMB'] as $k => $v) { ?>
+					<a target="_blank" href="<?php echo getDownloadLink($v['path'],$formId);?>" title="<?php echo $v['name']?>" style="display:block;"><?php echo $v['name']; ?></a>
+					<?php }?>
+					</td>
+	              </tr>
+
+	              <tr>
+	                <td>其他补充情况：</td>
+	                <td><?php if(!empty($list['THUMB2'])) echo $list['THUMB2'];?></td>
+	              </tr>
+
+	              <tr>
+	                <td>视频：</td>
+	                <td>
+					<?php if(!empty($list['VIDEO']) ) {?>
+					<a target="_blank" href="<?php echo getDownloadLink($list['VIDEO'][0]['path'],$formId); ?>" title="<?php echo $list['VIDEO'][0]['name']; ?>"><?php echo $list['VIDEO'][0]['name']; ?></a>
+					<?php } ?>					</td>
+	              </tr>			              
+
+ <?php if ($list['PS']) {  ?>
+	              <tr>
+	            	<td>资金需求补充说明：</td>
+	            	<td>
+	            	<?php if(!empty($list['PS'][0])) echo $list['PS'][0]; ?></td>
+	              </tr>
+	              <?php } ?>
+
+
+
+		            </table>  
+				</div> 
+
+             </div>
+          </div>    
+    </div>
+
+  </body>
+  </html>

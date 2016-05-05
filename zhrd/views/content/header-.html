@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php if(isset($meta['contentTitle'])){ echo $meta['contentTitle'].'-';} if(isset($meta['categoryTitle'])){ echo $meta['categoryTitle'].'-';} echo $setting['siteTitle']; ?></title>
+<meta name="keywords" content="<?php echo (isset($meta['keywords']))?$meta['keywords']:$setting['keywords']; ?>"/>
+<meta name="description" content="<?php  echo (isset($meta['description']))?$meta['description']:$setting['description']; ?>"/>
+<meta name="author" content="boc">
+
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url('statics/images/') ; ?>/CssHtml.css?v=13072713"/>
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<?php /*加载 更多的css*/ if( isset($css)){  foreach($css as $v){	if($v ==''){continue;} ?>
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url($v); ?>"/>
+<?php }  } ?>
+
+<?php if(isset($jquery)){?>
+<script type="text/javascript" src="<?php echo base_url($jquery) ?>"></script> 
+<?php }else{ ?>
+<script type="text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<?php } ?>
+
+<!--/*dialog__start*/-->
+
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<?php /*加载 更多的js*/ if( isset($js)){  foreach($js as $v){		if($v ==''){continue;} ?>
+<script src="<?php echo base_url($v);?>" type="text/javascript"></script>
+<?php }  } ?>
+
+<script type="text/javascript">
+    var site_url = "<?php echo site_url(); ?>"; 
+    var warrant_com = '<?php echo $this->linkage->getCheckbox("203","warrant[com]"); ?>';
+    var warrant2_com = '<?php echo $this->linkage->getCheckbox("203","warrant2[com]"); ?>';
+    var warrant3_com = '<?php echo $this->linkage->getCheckbox("203","warrant3[com]"); ?>';
+</script>
+<script type="text/javascript" src="<?php echo base_url('statics/js/apply.js') ?>"></script>
+
+<script type="text/javascript" language="javascript">
+    var time = 500;
+    var h = 0;
+    function addCount()
+    {
+        if(time>0)
+        {
+            time--;
+            h = h+5;
+        }
+        else
+        {
+            return;
+        }
+        if(h>380)  //高度
+        {
+            return;
+        }
+        document.getElementById("ads").style.display = "";
+        document.getElementById("ads").style.height = h+"px";
+        setTimeout("addCount()",30); 
+    }
+    
+    window.onload = function showAds()
+    {
+        addCount();
+        setTimeout("noneAds()",4000); //停留时间自己适当调整
+    }
+    </script>
+    
+    <script type="text/javascript" language="javascript">
+    var T = 380;
+    var N = 380; //高度
+    function noneAds()
+    {
+        if(T>0)
+        {
+            T--;
+            N = N-5;
+        }
+        else
+        {
+            return;
+        }
+        if(N<0)
+        {
+            document.getElementById("ads").style.display = "none";
+            return;
+        }
+        
+        document.getElementById("ads").style.height = N+"px";
+        setTimeout("noneAds()",30); 
+    }
+    </script>
+
+</head>
+
+<body>
+<? $url=$_SERVER['REQUEST_URI'];
+$array=explode("/",$url);
+//print_r ($array);
+if($array[1]=='' || $array[1]=='index'){
+
+$que1 = $this->db->select('ITEMID,URL,URLTO,ADID,ISCHECK')->where('ADID',182)->get('AD_ITEM') ->result_array();
+//print_r ($que1);
+foreach($que1 as $v1) {
+if($v1['ISCHECK']){
+$iss=1;
+}
+}
+
+if($iss){
+?>
+<div id="ads" style="margin:auto; display:none; width:960px; top:0px; height:0px;overflow:hidden; text-align:center;">
+<td width="960">
+<? $que = $this->db->select('ITEMID,URL,URLTO,ADID,ISCHECK')->where('ADID',182)->get('AD_ITEM') ->result_array();
+foreach($que as $v) { 
+if($v['ISCHECK']){
+?>
+<a href="<?=$v['URLTO']?>" target="_blank"><img src="<?=$v['URL']?>" border="0"></a>
+<? 
+}
+}?>
+</td>
+</div>
+	<? 
+	}
+	}?>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" background="<?php echo base_url('statics/images/') ; ?>/01.jpg"><table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="210"><img src="<?php echo base_url('statics/images/') ; ?>/02.jpg"  style=" width: 358px; " height="78" /></td>
+        <td align="right"><table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="right"><span id="getUserName"></span>&nbsp;&nbsp;&nbsp;<font class="txt01">客服热线：</font><font class="txt02"><?php echo $setting['customServicePhone']; ?></font>　</font></td>
+          </tr>
+          
+        </table>
+          <table width="10%" height="10" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+          <table border="0" cellspacing="0" cellpadding="0">
+<form id="searchForm" action="<?php echo site_url( $searchURL); ?>" method="post">
+            <tr>
+              <td width="140" align="center">
+              	<div style="font-size:13px;width:140px;height:23px; line-height:23px;border:none;background:url(<?php echo base_url('statics/images/'); ?>/search_bg.jpg) left top no-repeat;overflow:hidden; ">
+				<input name="q" type="text" class="AllSearch"  value="" size="12" style="width:136px;height:20px; line-height:20px; border:none; background:none">
+			  	</div>
+              </td>
+              <td width="35" align="right">
+				<input type="image" name="submit" style=" width:30px;height:22px" value="" src="<?php echo base_url('statics/images/') ; ?>/search.jpg" >
+			  </td>
+            </tr>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#searchForm").submit(function(){
+		var q = $("input[name=q]").val();
+		if( q != '') location.href="<?php echo site_url( $searchURL); ?>?q="+q;
+		return false;
+	});
+	
+	
+	$.post("<?php echo site_url('getu');?>",function(data){if(data.enable == 1){var str = '尊敬的<a href="<?php echo site_url('member'); ?>" title="用户中心">'+data.uname+'</a>(<a href="<?php echo site_url("member/logout"); ?>" title="退出登录">退出</a>)';$("#getUserName").html(str);}},"json");
+});
+</script>
+          </table>
+		  </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" height="34" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" background="<?php echo base_url('statics/images/') ; ?>/03.jpg"><table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="120" align="center" onmouseover="this.style.background='url(<?php echo base_url('statics/images/') ; ?>/05.jpg)';" onmouseout="this.style.background='';"><a href="<?php echo base_url(); ?>" class="toplink">首　页</a></td>
+<!-- 
+			<td width="2" align="center"><img src="<?php echo base_url('statics/images/') ; ?>/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(<?php echo base_url('statics/images/') ; ?>/05.jpg)';" onmouseout="this.style.background='';"><a href="<?php echo site_url($rongzishengqing); ?>" class="toplink" target="_blank" >融资申请</a></td>   
+-->
+<?php
+$count_banner = count($banner);
+ foreach($banner as $key => $value){ ?>
+ 
+ <?php //倒数第二个是客户留言
+ if( ($count_banner-1) == $key ){?>
+ 			<td width="2" align="center"><img src="<?php echo base_url('statics/images/') ; ?>/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(<?php echo base_url('statics/images/') ; ?>/05.jpg)';" onmouseout="this.style.background='';"><a href="<?php echo site_url('contactus'); ?>" class="toplink">客户留言</a></td>   
+ <?php } ?>
+			<td width="2" align="center"><img src="<?php echo base_url('statics/images/') ; ?>/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(<?php echo base_url('statics/images/') ; ?>/05.jpg)';" onmouseout="this.style.background='';">
+				<a href="<?php echo site_url($value['URL']); ?>" title="<?php echo $value['CATNAME']; ?>" class="toplink"><?php echo $value['CATNAME']; ?></a>
+<?php if( $value['CATID'] == 48 and $isNewNews){ ?>
+				<span style="position: relative;top: -4px;left: 6px;color: #FF0;">New!<span>
+<?php } ?>
+			</td>
+<?php } ?>
+
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="10" bgcolor="#cbcbcb"></td>
+  </tr>
+</table>

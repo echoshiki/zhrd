@@ -1,0 +1,148 @@
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" style="width:990px; margin:0 auto">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a>
+<?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php }  } ?>
+	</td>
+  </tr>
+</table>
+
+<div class="con2">
+  <div style="text-align:center; padding-top:25px;">
+		
+		<div class="products">
+		
+		
+		<div id="news1_con1">
+			<ul>
+			<?php if(isset($lists)){ foreach($lists as $k=> $v) { ?>
+				<li style="height:295px;">
+					<a href="<?php echo site_url($v['URL']); ?>">
+					<div><img src="<?php echo img( $v['THUMB']);?>" width="320" height="161" /></div>
+					<div class="products_1">
+						<div class="products_2"><?php echo $v['TITLE']; ?></div>
+						<div class="products_3"><?php echo str_cut($v['DESCRIPTION'],116); ?></div>
+					</div>
+					</a>
+				</li>
+				<?php }  }else{ echo '<p style="color:#CCC;font-size: 17px;font-weight: bold;">暂无数据</p>';} ?>
+				<!--<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>-->
+			</ul>
+			<?php echo $paginationLink; ?>
+		</div>
+		
+			
+		<!--<div id="news1_con2" style="display:none;">
+        	<ul>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+			</ul>
+	    </div>
+		<div id="news1_con3" style="display:none;">
+        	<ul>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+			</ul>
+	    </div>
+		<div id="news1_con4" style="display:none;">
+        	<ul>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<div><img src="images/02.jpg" /></div>
+					<div class="products_1">
+						<div class="products_2">通用产品 > 德信通</div>
+						<div class="products_3">针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征,建立差别化全流程细分授信产品。针对德资企业的行为模式及风险特征</div>
+					</div>
+					</a>
+				</li>
+			</ul>
+	    </div>-->
+	 
+		</div>
+		<div class="clear"></div>
+	    <div style=" padding:30px 0;"></div>
+	</div>
+</div>
+
+
+
+</body>
+
+</html>		

@@ -1,0 +1,89 @@
+<?php 
+
+/* css样式
+默认 绿色框 绿色箭头
+t2 灰色框 灰色箭头
+t3 绿色框 灰色箭头
++ nbg 无箭头
+
+
+tob 绿色箭头
+tob2 灰色箭头
+
+样式再 member/index.html admin/compamy.html
+*/
+//var_dump( $process);
+?>
+<div class="process">
+	<ul class="workflow">
+    	<li class="<?php 
+echo $process[0]['flag'] ? ( $process[1]['flag'] ? '' :  't3' ) :  't2'
+		?>"><a href="#">注册</a></li>
+        <li class="<?php
+echo $process[1]['flag'] ? ( $process[2]['flag'] ? '' :  't3' ) :  't2'
+		?>"><a href="#">申请</a></li>
+         <li class="<?php
+echo $process[2]['flag'] ? ( $process[3]['flag'] ?  '' : 't3' ) : 't2';
+		?>"><a href="#">预审核</a></li>
+        <li class="<?php
+echo $process[3]['flag'] ? '' : 't2';
+        ?>  "><a style="width:84px;"  href="#">通知客户经理</a></li>
+       <li class="<?php
+echo $process[9]['flag'] ? '' : 't2';
+        ?>  "><a href="#">报批</a></li>
+       <li class="<?php
+echo $process[10]['flag'] ? '' : 't2';
+        ?>  nbg"><a href="#">批复</a></li>
+
+<div style="clear:both"></div>
+    </ul>
+<div style="clear:both"></div>
+
+    <ul class="zyc"  style="margin-left:230px;_margin-left:115px; height: 133px;background-image: url(/statics/images/process/<?php
+echo $process[5]['flag'] ? '1_1' : ( $process[4]['flag'] ? '1_2': ( $process[6]['flag'] ? '1_3': '1_4' ) )
+	?>.gif); ">
+    	<li class=""><a href="#">已通过</a></li>
+    	<li class=""><a href="#">未通过</a></li>
+    	<li class=""><a href="#">需要担保</a></li>
+    </ul>
+    <ul class="zyc"  style=" margin-left:35px; height: 89px;background-image: url(/statics/images/process/<?php
+echo $process[7]['flag'] ? '2_1' : ( $process[8]['flag'] ? '2_2': '2_3' )
+	?>.gif);  ">
+    	<li class=" "><a href="#">已通知</a></li>
+    	<li class=" "><a href="#">未通知</a></li>
+    </ul>
+
+    <ul class="zyc"  style=" margin-left:35px; height: 89px;background-image: url(/statics/images/process/<?php
+echo $process[11]['flag'] ? '2_1' : ( $process[12]['flag'] ? '2_2': '2_3' )
+    ?>.gif);  ">
+        <li class=" "><a href="#">未报批</a></li>
+        <li class=" "><a href="#">已报批</a></li>
+    </ul>
+
+    <ul class="zyc"  style="margin-left:35px; height: 133px;background-image: url(/statics/images/process/<?php
+echo $process[13]['flag'] ? '1_1' : ( $process[14]['flag'] ? '1_2': ( $process[15]['flag'] ? '1_3': '1_4' ) )
+    ?>.gif); ">
+        <li class=""><a href="#">未批复</a></li>
+        <li class="" style="padding-left:10px;"><a  href="#">需优化方案</a></li>
+        <li class=""><a href="#">已批复</a></li>
+    </ul>
+    <!-- 金额 -->
+    <div style="clear:both"></div>
+    <ul class="" style="display:block; margin-left: 120px;  list-style: none; color:red;">
+        <li class="" style="display:block;float:left;width: 85px;"><?php  if(!empty($message['DEMAND']) ) {
+            echo "{$message['DEMAND']}万元";
+        }?></li>
+        <li class="" style="display:block;float:left;width: 85px;margin-left:30px;"><?php  if(!empty($message['SHENHEDEMAND']) ) {
+            echo "{$message['SHENHEDEMAND']}万元";
+        }?></li>
+        <li class="" style="display:block;float:left;width: 85px;margin-left:260px;_margin-left:240px;"><?php  if(!empty($message['PIFUDEMAND']) ) {
+            echo "{$message['PIFUDEMAND']}万元";
+        }?></li>
+    </ul>   
+    <!-- 时间-->
+    <div style="clear:both"></div>
+    <ul class="" style="display:block; margin-left: 469px;  list-style: none; color:red;">
+        <li class="" style="display:block;float:left;width: 85px;"><?php if($process[9]['time'] !== FALSE) echo '(' . date('Y.m.d',$process[9]['time'] ) . ')';?></li>
+        <li class="" style="display:block;float:left;width: 85px;margin-left:20px;"><?php if($process[9]['time'] !== FALSE) echo '(' . date('Y.m.d',$process[9]['time'] ) . ')';?></li>
+    </ul>   
+</div>

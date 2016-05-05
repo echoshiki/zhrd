@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+    		<form name="rolef" action="<?php echo site_url('admin/role/edit'); ?>" method="post">
+             <div class=" head" >
+                    温馨提示： 请慎重选择，提交后所有本组用户将拥有以下打钩的权限！
+                    <br><span style="color:green">粗体字为菜单栏目，如需要对当前组用户开放并显示请打钩。</span>
+             </div>
+             <hr>  
+             <ul id="roleList" style="width:100%; ">
+             <?php echo $treeList;  ?>
+             <!--
+             <?php  
+             	foreach($list as $k=>$v){
+             ?> 
+             	<li><input name="info[roleid][]" type="checkbox" value="<?php echo $v['ROLEID'];?>" <?php if(in_array($v['ROLEID'],$roleArr)){echo 'checked';}  ?> > <?php echo $v['ROLENAME'];?></li>
+             <?php
+             	}
+             ?>
+             -->
+        	 </ul>
+             <div style="clear:both"></div>
+             <hr> 
+             
+             <div class="foot" style="clear:both; padding-left:200px">
+               	  <input type="hidden" name="info[groupid]" value="<?php echo $groupid;?>">
+                  <input type="hidden" name="dopost" value="1">
+                  <input type="submit" name="submit" value="保存" class="button deepblue">
+             </div>
+             </form>
+          </div>
+   		
+   
+<style type="text/css">
+	#roleList li{  float:left; list-style:none!important; padding-right:15px; font-size:12px;}
+	#roleList span{ font-weight:bold; padding:none}
+	#roleList .li_h{list-style:none!important; float:none; clear:both}
+	#roleList input{ _border:none; }
+</style>   
+   
+  
+   
+   
+    </div>
+ </body>
+</html>   

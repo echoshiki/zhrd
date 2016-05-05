@@ -1,0 +1,140 @@
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a>
+<?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?>
+		 > <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php }  } ?>
+	</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  	
+	<td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="28" align="left" valign="top" class="txt08"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?>中国银行苏州分行融资申请 第二阶段 中型企业</td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>
+
+            <table width="50%" height="20" border="0" cellpadding="0" cellspacing="0">
+              <p>为便于您的融资意向能够更加效率准确的处理，请如实填写以下信息。</p>
+              <tr>
+                <td>
+
+<style type="text/css">
+
+	.form_mid { width: 900px;}
+	.form_mid th{ height:50px; font-size: 18px; text-align: center;}
+	.form_mid tr td{ height:28px; text-align: center;}
+
+	.th_1 { width:175px;}
+	.th_4 { width:428px;}
+
+	.input_b_th { text-align: left; padding-left:5px;  float:left; width:95px; line-height: 26px;_line-height: 20px;}
+	.input_b_2 { text-align: left;float:left; width:130px; margin-left: 2px;_margin-left:0px;}
+	.input_b_2 input{ text-align: left; width:123px; margin-right: 3px;}
+
+	.input_b_th_2 { text-align: left; padding-left:5px;  float:left; width:235px; line-height: 26px;_line-height: 20px;}
+	.input_b_3 { text-align: left;float:left; width:283px; margin-left: 2px;_margin-left:0px;}
+	.input_b_3 input{ text-align: left; width:283px; margin-right: 3px;}
+
+
+	.btn { padding:28px;}
+
+</style>
+
+<!-- 表单start  -->
+<form action="<?php echo site_url('apply/index/step3'); ?>" method="post">
+<table class="form_mid" border='1'>
+	<th colspan="4">贷款相关</th>
+  <tr>
+    <td>担保方式：</td>
+    <td>
+      <?php echo $this->linkage->getSelect('134',0,'warrant'); ?>
+      <span id="war_insert"></span>
+    </td>
+  </tr>
+ 
+	<tr>
+		<td>其他银行授信情况</td>
+		<td>
+			<input type="radio" value="1" name="form[DEMAND_O][]" id="demand1"/>建行、工行、农行有授信 &nbsp;&nbsp;<input type="radio" value="2" name="form[DEMAND_O][]" id="demand2"/>其他行有授信 &nbsp;&nbsp;<input type="radio" value="3" name="form[DEMAND_O][]" id="demand3"/>无授信
+			<span id="tall_insert"></span>
+		</td>
+	</tr>
+    <tr>
+      <td>企业主是否愿意连带责任担保：</td>
+      <td><select name="form[ISRELATE]"  id="isrelate">
+      		<option value="0">--请选择--</option>
+            <option value="1">是</option>
+            <option value="2">否</option>
+         </select></td>
+    </tr>
+    <tr>
+      <td>联系方式：</td>
+      <td><input type="number" name="form[TEL]" id="tel"></td>
+    </tr>
+        
+    <th style="font-size:15px;" colspan="4">欢迎您提供企业现场的照片或者视频，有助于我行后台人员了解您的企业，加快审核速度。</th>
+
+    <tr>
+      <td>企业现场照片：</td>
+      <td>附件上传</td>
+    </tr>
+    <tr>
+      <td>其他补充情况：</td>
+      <td><input type="text" name="form[THUMB2]" id="thumb2"></td>
+    </tr>
+    <tr>
+      <td>视频：</td>
+      <td>附件上传</td>
+    </tr>			
+
+    <tr>
+        <td colspan="4" class="btn"><input type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/></td>
+    </tr>
+</table>   
+  <input type="hidden" name="dopost" value="step3_mid" />
+</form>    
+<!-- 表单end -->
+
+                </td>
+              </tr>
+            </table>
+
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<?php if(isset($lists)){ foreach($lists as $k=> $v) { ?>
+              <tr>
+                <td width="85%" height="26" align="left"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['TITLE']; ?>" class="link_04"><?php echo str_cut($v['TITLE'],100); ?></a></td>
+                <td width="15%" align="left" class="txt09">[ <?php echo date('Y-m-d',$v['UPDATETIME']); ?>]</td>
+              </tr>
+<?php /*样式  虚线 前台 */ if(($k+1)%5 == 0){ ?>
+              <tr>
+                <td height="12" colspan="2"></td>
+              </tr>
+              <tr>
+                <td height="1" colspan="2" background="<?php echo base_url('statics/images/') ; ?>/40.jpg"></td>
+              </tr>
+              <tr>
+                <td height="12" colspan="2"></td>
+              </tr>
+<?php } ?>
+<?php } }?>
+			<tr>
+				<td height="12" colspan="2" style="text-align:right">
+					<?php if(isset($paginationLink)){   echo $paginationLink; }?>
+				</td>
+			</tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>

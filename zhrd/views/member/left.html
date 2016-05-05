@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="<?php echo site_url('statics/css/table.css'); ?>">  
+  <div class="con2">
+    <div class="x_news">
+      <div style="float:left; width:210px;">
+        <div style="background:#aa0033; color:#fff; font-size:16px; font-weight:bold; text-align:center; line-height:45px;">会员中心</div>
+      <div class="left_menu">
+        <ul>
+          <?php foreach($categoryList as $k => $v) { ?>
+          <li><a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_03"><?php if( $v['action'] == 'message' && $messageStatic['enable'] ){ ?>
+                <span style="color: #B20E0D;">New!</span>
+          <?php } ?><?php echo $v['CATNAME']; ?></a></li>   
+          <?php } ?>
+        </ul>
+        <a href="<?php echo site_url($changjianwenda); ?>" target="_blank" title="常见问答"><img style="border:none" src="<?php echo base_url('statics/image/') ; ?>/askme.png" width="210" height="180" /></a>
+      </div>
+    </div>
+      

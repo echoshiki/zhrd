@@ -1,0 +1,15 @@
+<form method="POST" action="<?php echo site_url('/admin/company/verify'); ?>" name="verify">
+            <select id="forVerify" name='val' id='type_com'>
+                <option value='0'>-请选择-</option>
+                <option value='58'>通过</option>
+                <option value='59'>不通过</option>
+                <option value='60'>需要担保</option>
+            </select>
+			<span id="changeForVerify"></span>
+            <div style="color:#A2A2A2"> 通过和需要担保选项填写的授信量不得大于原授信量<br>(原授信量 <?php echo $DEMAND; ?> 万元)</div>
+            <input type="hidden" name="dopost" value="verify"><br />
+            <input type="hidden" name="cid" value="<?php echo $cid; ?>">
+            <input type="hidden" name="memberid" value="<?php echo $memberid; ?>">
+            <input type="submit" class="button deepblue" value="确定">
+
+</form>

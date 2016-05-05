@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="boc">
+<script type="text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<!-- cutter -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script type="text/javascript" src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+<link href="<?php echo base_url('/statics/js/swfupload/default.css');?>" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/swfupload.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/swfupload.queue.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/fileprogress.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/handlers.js');?>"></script>
+
+<!-- artDialog -->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<style>
+#linkDiv .body{padding-bottom:0px;}
+#logoimg{text-align:center;}
+#logoimg img{width:120px}
+</style>
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+
+          <div class="datatable">
+       	    <div class="tip">
+             	<div class="left">
+                    <abbr> 友情链接管理</abbr>
+                </div>
+                <div class="right">
+                    <a href="javascript:addLink()" class="button deepblue">添加友情链接</a>
+                </div>
+            </div>
+             <div class=" head" >
+             
+             </div>
+             <div class="body">
+   	      			<table width="200" border="0" class="table bordered zebra">
+                      <tr>
+                        <td width="4%"> &nbsp;</td>
+                        <td width="11%">ID</td>
+                        <td width="17%">URL</td>
+                        <td width="27%">名称</td>
+                        <td width="26%">图标</td>
+                        <td width="15%">操作</td>
+                      </tr>
+<?php  foreach($result as $value) { ?>
+                      <tr>
+                        <td><input type="checkbox" name="delCheckBox" class="delCheckBox" value="<?php echo $value['LINKID']; ?>"></td>
+						<td><?php  echo $value['LINKID'] ?></td>
+						<td><a href="<?php  echo $value['URL']; ?>" target="_blank" title="<?php  echo $value['NAME']; ?>"><?php  echo $value['URL']; ?></a></td>
+                        <td><?php  echo $value['NAME']; ?></td>
+                        <td><img src="<?php  echo $value['LOGO']; ?>" alt="" title="" style="width:100px;"/></td>
+                        <td><a href="javascript:void(0)" class="button medium2 green" onclick='editLink( <?php echo json_encode($value); ?> )'>编辑</a><a href="javascript:void(0)" onclick="delLink('<?php echo $value['LINKID']; ?>');" class="button medium2  red">删除</a></td>
+                      </tr>
+<?php  } ?>
+                       <tr>
+                        <td><input type="checkbox" name="checkbox11" id="clickForDel" ></td>
+                        <td colspan="5"><button class="button medium2 red" id="delAll" onclick="delAll();">删除选中项</button></td>
+                        </tr>
+                    </table>
+             </div>
+             <div class="foot">
+             	<div class="left">每页显示<?php echo $per_page; ?>行 共<?php echo $total; ?>行</div>
+                <div class="right">
+
+                    <div class="pager">
+<?php  echo $link; ?>
+                    </div>
+
+                </div>
+             </div>
+          </div>
+
+   
+    </div>
+	
+<div id="linkDiv" class="popup">
+   	<div class="head">
+    	<span id="linkDivType"></span>友情链接
+        <del>×</del>
+    </div>
+	<input type="hidden"  name="linkid" ><input type="hidden" name="linklogo" >
+    <div class="body">
+    	<table>
+                <tbody>
+                    <tr><td class="width100">&nbsp;&nbsp;名&nbsp;称</td><td><input type="text" size="60" name="linkname"></td></tr>
+                    <tr><td class="width100">&nbsp;&nbsp;链&nbsp;接&nbsp;地&nbsp;址</td><td><input type="text" size="60" name="linkurl"></td></tr>
+                    <tr><td class="width100">&nbsp;&nbsp;图&nbsp;片&nbsp;上&nbsp;传</td>
+						<td>
+
+<div class="fieldset flash" id="fsUploadProgress">
+	<span class="legend">上传队列</span>
+</div>
+<div id="divStatus">0 文件已上传</div>
+<div>
+	<span id="spanButtonPlaceHolder"></span>
+	<input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled"  />
+</div>
+						
+						</td>
+					</tr>
+		<tr><td colspan="2" id="logoimg"></td></tr>
+                </tbody>
+            </table>
+    </div>
+    <div class="foot">
+    	<input type="button" onclick="actionpost()" value="确定" class="button blue">
+    	<input 	type="button" value="取消" class="button" onclick='$("#linkDiv").fadeOut();'>
+    </div>
+</div>	
+	
+<script type="text/javascript">
+var addUrl = "<?php  echo site_url('admin/link/add'); ?>";
+var editUrl = "<?php  echo site_url('admin/link/edit'); ?>";
+var delUrl = "<?php  echo site_url('admin/link/del'); ?>";
+
+function delAll(){
+    art.dialog({
+      title:'删除确认',
+      content:'确认删除所选项',
+      button: [
+		  { name: '确认',
+            focus: true,
+			callback: function () {
+				var delstring = '';
+				$('input:checked[name=delCheckBox]').each(function(){
+					delstring = delstring + $(this).val()+',';
+				});
+				if(delstring == ''){
+					art.dialog({title: '系统提示',content: '请选择删除项',okValue: '确定',ok: function(){}});
+				}else{
+					delstring = delstring.substr(0,delstring.length-1); 
+					deletepostajax(delUrl,delstring);
+				}
+             }
+			 
+          },
+		  {name :'关闭'}
+		  ]
+	});
+}
+
+function delLink(linkid){
+    art.dialog({
+      title:'删除确认',
+      content:'确认删除所选项',
+      button: [{
+			name: '确认',
+            focus: true,
+			callback: function () { deletepostajax(delUrl,linkid); }
+          },
+          {name: '关闭'}  ]
+	});
+}
+
+function deletepostajax(delUrl,delstring){
+	$.post(delUrl,{linkid:delstring},
+		function(data){
+			if(data.code){ location.reload(); }else{ alert("操作失败，请尝试从新操作"); }
+		},
+		'json');
+}
+
+function addLink(){
+	$("input[name='linkid']").val('');
+	$("input[name='linkname']").val('');
+	$("input[name='linkurl']").val('');
+	$("input[name='linklogo']").val('');
+	$("#logoimg").empty();
+	$('#file_upload-queue').empty();
+	$("#methodLink").attr('action',addUrl);
+	$("#linkDivType").html("添加");
+	$("#linkDiv").fadeIn();
+}
+//编辑link
+function editLink(linkData){
+	$("input[name='linkid']").val(linkData.LINKID);
+	$("input[name='linkname']").val(linkData.NAME);
+	$("input[name='linkurl']").val(linkData.URL);
+	$("input[name='linklogo']").val(linkData.LOGO);
+	$('#logoimg').html('<img src="'+linkData.LOGO+'">');
+	//$('#file_upload-queue').empty();
+	$("#methodLink").attr('action',editUrl);
+	$("#linkDivType").html("编辑");
+	$("#linkDiv").fadeIn();
+}
+
+function actionpost(){
+	var actionUrl = addUrl;
+	var linkid    = $("input[name='linkid']").val();
+	var linkname  = $("input[name='linkname']").val();
+	var linkurl   = $("input[name='linkurl']").val();
+	var linklogo  = $("input[name='linklogo']").val();
+	if( linkid != ''){ actionUrl = editUrl; }
+	if(linkname == '' || linkurl == '' || linklogo == ''){
+		alert('名称，链接，图片必填');
+		return false;
+	}
+	$.post(actionUrl,{'linkid':linkid,'linkname':linkname,'linkurl':linkurl,'linklogo':linklogo},
+		function(data){
+			if(data.code){ location.reload(); }else{ alert("操作失败，请尝试从新操作"); }
+		},
+		'json');
+}
+
+
+$(document).ready(function(){
+	$('#clickForDel').click(function(){
+		var ischecked = true;
+		if(  $(this).attr('checked') == undefined)
+			ischecked = false;
+		$('.delCheckBox').attr('checked', ischecked );
+	});
+
+});
+
+		var swfu;
+
+		window.onload = function() {
+			var settings = {
+				flash_url : "<?php echo base_url('/statics/js/swfupload/swfupload.swf');?>",
+				upload_url: "<?php echo site_url('admin/swfupload/imgup/'); ?>",
+				//post_params: {"PHPSESSID" : ""},
+				file_size_limit : "1 MB",
+				file_types : "*.jpg;*.gif;*.png;*.bmp",
+				file_types_description : "jpg gif png bmp 图片类型",
+				file_upload_limit : 10,
+				file_queue_limit : 1,
+				custom_settings : {
+					progressTarget : "fsUploadProgress",
+					cancelButtonId : "btnCancel"
+				},
+				debug: false,
+
+				// Button settings
+				button_image_url: "<?php echo base_url('/statics/js/swfupload/images/TestImageNoText_65x29.png');?>",
+				button_width: "65",
+				button_height: "29",
+				button_placeholder_id: "spanButtonPlaceHolder",
+				button_text: '<span class="theFont">&nbsp;</span>',
+				button_text_style: ".theFont { font-size: 13px; }",
+				button_text_left_padding: 5,
+				button_text_top_padding: 3,
+				
+				// The event handler functions are defined in handlers.js
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler : fileDialogComplete,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccess,
+				upload_complete_handler : uploadComplete,
+				queue_complete_handler : queueComplete	// Queue plugin event
+			};
+function uploadSuccess(file, serverData) {
+	try {
+		var progress = new FileProgress(file, this.customSettings.progressTarget);
+		progress.setComplete();
+		progress.setStatus("Complete.");
+		progress.toggleCancel(true);
+		$("input[name=linklogo]").val(serverData);
+		$("#logoimg").empty().html('<img src="'+serverData+'">');
+	} catch (ex) {
+		this.debug(ex);
+	}
+}
+			swfu = new SWFUpload(settings);
+	     };
+</script>
+	</body>
+</html>

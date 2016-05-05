@@ -1,0 +1,70 @@
+<style type="text/css">
+  .link_dqwz { color:#333;}
+  .form_mid {}
+  .form_mid th{ height:50px; font-size: 18px; text-align: center;}
+  .form_mid tr{ height:18px; text-align: center;}
+  .form_mid tr td{ height:28px; text-align: center;}
+  .th_1 { width:135px;}
+  .th_2 { width:295px;}
+  .th_4 { width:310px;}
+  .input_b_th { text-align: left; padding-left:5px;  float:left; width:85px; line-height: 26px;_line-height: 20px;}
+  .input_b_th textarea{ width:210px;} 
+  .input_b { text-align: left;width:210px; float: left;}
+  .input_b_2 { text-align: left;float:left; width:200px; margin-left: 2px;_margin-left:0px;}
+  .input_b_2 input{ text-align: left;width:43px; margin-right: 3px;}
+  .btn { padding:28px;}
+  .input_b_3 { width:210px;}
+  .zh_table textarea{ border:1px solid #CCC; padding:6px;}
+  .zh_table td{ vertical-align:middle; height:32px; line-height:32px !important;}
+</style>
+
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+          <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+      </div>
+      <div style="margin-top:25px;">
+        <!--  内容start -->
+        <form action="<?php echo site_url('apply/index/'); ?>" name="form" id="form_1" method="POST">
+          <table width="100%" id="table_1" class="zh_table  zebra">
+            <tr>
+              <td width='180px'>所在区域：</td>
+              <td> <?php echo $this->linkage->getSelect('24',0,'areaid','','',' data-rule="required" data-msg-required="请选择"'); ?>
+                <span style="color:#7E7E7E">贵公司可能实际经营区域 [<?php echo get_area( $this->session->userdata('member_AREAID') ); ?>]</span>
+                <span class="msg-box n-right" data-for="areaid[]" ></span>
+              </td>
+            </tr>
+            <tr>
+              <td>公司名称：</td>
+              <td style="height:20px;"><?php echo $this->session->userdata('member_company');?></td>
+            </tr>
+            <tr>
+              <td>营业执照编号：</td>
+              <td style="height:20px;"><?php echo $this->session->userdata('member_license');?></td>
+            </tr>
+            <tr id="trade_tr">
+              <td>行业：</td>
+              <td><?php echo $this->linkage->getSelect('81',0,'trade','','','  data-rule="required" data-msg-required="请选择"'); ?><br /><span id="trade_insert"></span></td>
+            </tr>
+            <tr>
+              <td>上年度销售收入：</td>
+              <td><input type="text" name="form[SALE_LAST]" id="sale_last" ><span class="msg-box n-left" data-for="form[SALE_LAST]" ></span>(万元)</td>
+            </tr>
+            <tr>
+              <td>授信需求：</td>
+              <td><input type="text" name="form[DEMAND]" id="demand" ><span class="msg-box n-left" data-for="form[DEMAND]" ></span>(万元)</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding:28px; padding-left:136px;"><input type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/><div style=" color: #B20E0D; margin-top: 5px;">(提交之后将无法修改申请表单，请核实表单无误后提交)</div></td>
+            </tr>
+          </table>
+          <input type="hidden" name="dopost" value="form" />     
+        </form>
+        <!--  内容end   -->
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div style="width:2px; height:60px; border:1px solid #333"></div>
+</div>

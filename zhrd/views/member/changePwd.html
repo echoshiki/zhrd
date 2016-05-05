@@ -1,0 +1,59 @@
+<style type="text/css">
+  .link_dqwz { color:#333;}
+  .s-title { color:#666; margin-left:5px;}
+  .submitButtom{
+    width: 61px;
+    height: 32px;
+    margin-right: 20px;
+    background-color: #AD0A33;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+          <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+      </div>
+      <div style="margin-top:25px; min-height:400px; ">
+        <!--  内容start -->
+        <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;修改密码
+        <form id="changePwd" name="" action="<?php echo site_url('/member/changepwd'); ?>" method="post" style="margin-top:15px">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="15%" height="26" align="left" class="txt11" >请输入原密码</td>
+                <td width="" align="left" class=""><input class="span" type="password" size="30" name="oldPwd" value=""  data-rule="required;password"></td>
+              </tr>
+              <tr><td height="12" colspan="2"></td></tr>
+              <tr>
+                <td width="15%" height="26" align="left"  class="txt11" >请输入新密码</td>
+                <td width="" align="left" class=""><input class="span" type="password" size="30" name="newPwd" value="" data-rule="required;password" ></td>
+              </tr>
+              <tr><td height="12" colspan="2"></td></tr>
+              <tr>
+                <td width="21%" height="26" align="left" class="txt11"  >请再输一遍新密码</td>
+                <td width="" align="left" class=""><input class="span" type="password" size="30" name="newPwd2" value=""  data-rule="required;password;match[newPwd]" data-msg-match="两次输入密码不一致"></td>
+              </tr>
+              <tr style=" height: 15px; "><td height="3" colspan="2"></td></tr>
+              <tr><td colspan="2"><span style="color:red">提示：密码由6-16位长度的数字、字母组成，为了提高您密码的安全性，请在设置时尽量使用英文字母、数字的组合，如qhy004。您新设置的密码将会在您下次登录智慧网贷平台时生效。</span></td></tr> 
+              <tr><td height="12" colspan="2"></td></tr>
+              <tr><td height="1" colspan="2" background="<?php echo base_url('statics/images/') ; ?>/40.jpg"></td></tr>
+              <tr><td height="12" colspan="2"></td></tr>
+              <tr>
+                <td width="15%" height="26" align="left" class="txt11"  >&nbsp;</td>
+                <td height="12" colspan="2" ><input type="submit" onclick="" value="保存" class="submitButtom"></td>
+              </tr>
+              <tr><td height="12" colspan="2" style="text-align:right"></td></tr>
+            </table>
+          </form>
+        <!--  内容end   -->
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div style="width:2px; height:80px; border:1px solid #333"></div>
+</div>
+

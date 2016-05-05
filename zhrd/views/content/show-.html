@@ -1,0 +1,43 @@
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" class="link_dqwz">首页</a>
+<?php  if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { 
+?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php } ?>
+<?php if($categoryOfThisId['TYPE'] != 0) { /* 如果是单页 不显示单页title */?>
+		> <a href="javascript:void(0)" title="<?php echo $content['TITLE']; ?>" class="link_dqwz"><?php echo $content['TITLE']; ?></a>
+<?php } } ?>
+	</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="35" align="center" valign="top" class="txt08"><?php echo $content['TITLE']; ?></td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>
+            <table width="50%" height="10" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="td160">
+				<?php echo $content['CONTENT'];?>
+				</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+	  <td width="13" valign="top"></td>	  
+<?php if(isset($showRight)){ echo $showRight; } ?>
+  </tr>
+</table>

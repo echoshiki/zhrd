@@ -1,0 +1,475 @@
+1381193191TS---><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>苏州中国银行智慧融贷系统</title>
+<meta name="keywords" content="关键词"/>
+<meta name="description" content="描述描述"/>
+<meta name="author" content="boc">
+
+<link rel="stylesheet" type="text/css"  href="http://.....71096.com/statics/images/CssHtml.css?v=13072713"/>
+<link  href="http://.....71096.com/statics/artDialog/skins/blue.css" rel="stylesheet" />
+
+<script type="text/javascript" src="http://.....71096.com/statics/js/jquery-1.7.2.min.js"></script> 
+
+<!--/*dialog__start*/-->
+
+<script src="http://.....71096.com/statics/artDialog/artDialog.source.js" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+
+<script type="text/javascript">
+    var site_url = "http://.....71096.com/"; 
+    var warrant_com = '<input type="checkbox" id="ckcd_204" name="warrant[com][]" value="204"   >苏州市农业担保有限公司<input type="checkbox" id="ckcd_205" name="warrant[com][]" value="205"   >苏州国发中小企业担保投资有限公司<input type="checkbox" id="ckcd_206" name="warrant[com][]" value="206"   >苏州市苏园担保有限公司<input type="checkbox" id="ckcd_207" name="warrant[com][]" value="207"   >富登投资信用担保有限公司';
+    var warrant2_com = '<input type="checkbox" id="ckcd_204" name="warrant2[com][]" value="204"   >苏州市农业担保有限公司<input type="checkbox" id="ckcd_205" name="warrant2[com][]" value="205"   >苏州国发中小企业担保投资有限公司<input type="checkbox" id="ckcd_206" name="warrant2[com][]" value="206"   >苏州市苏园担保有限公司<input type="checkbox" id="ckcd_207" name="warrant2[com][]" value="207"   >富登投资信用担保有限公司';
+    var warrant3_com = '<input type="checkbox" id="ckcd_204" name="warrant3[com][]" value="204"   >苏州市农业担保有限公司<input type="checkbox" id="ckcd_205" name="warrant3[com][]" value="205"   >苏州国发中小企业担保投资有限公司<input type="checkbox" id="ckcd_206" name="warrant3[com][]" value="206"   >苏州市苏园担保有限公司<input type="checkbox" id="ckcd_207" name="warrant3[com][]" value="207"   >富登投资信用担保有限公司';
+</script>
+<script type="text/javascript" src="http://.....71096.com/statics/js/apply.js"></script>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" background="http://.....71096.com/statics/images/01.jpg"><table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="210"><img src="http://.....71096.com/statics/images/02.jpg" width="210" height="78" /></td>
+        <td align="right"><table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="right"><span id="getUserName"></span>&nbsp;&nbsp;&nbsp;<font class="txt01">客服热线：</font><font class="txt02">95566</font>　<font class="txt01">信用卡专线：</font><font class="txt02">40066-955661</font></td>
+          </tr>
+          
+        </table>
+          <table width="10%" height="10" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+          <table border="0" cellspacing="0" cellpadding="0">
+<form id="searchForm" action="http://.....71096.com/search" method="post">
+            <tr>
+              <td width="140" align="center">
+				<input name="q" type="text" style="font-size:13px;width:138px;height:20px;border:none;background-image:url(http://.....71096.com/statics/images/search_bg.jpg)" class="AllSearch" value="">
+			  </td>
+              <td width="35" align="right">
+				<input type="image" name="submit" style=" width:30px;height:22px" value="" src="http://.....71096.com/statics/images/search.jpg" >
+			  </td>
+            </tr>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#searchForm").submit(function(){
+		var q = $("input[name=q]").val();
+		if( q != '') location.href="http://.....71096.com/search?q="+q;
+		return false;
+	});
+	
+	
+	$.post("http://.....71096.com/getu",function(data){if(data.enable == 1){var str = '尊敬的<a href="http://.....71096.com/member" title="用户中心">'+data.uname+'</a>(<a href="http://.....71096.com/member/logout" title="退出登录">退出</a>)';$("#getUserName").html(str);}},"json");
+});
+</script>
+          </table>
+		  </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" height="34" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" background="http://.....71096.com/statics/images/03.jpg"><table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="120" align="center" onmouseover="this.style.background='url(http://.....71096.com/statics/images/05.jpg)';" onmouseout="this.style.background='';"><a href="http://.....71096.com/" class="toplink">首　页</a></td>
+
+			<td width="2" align="center"><img src="http://.....71096.com/statics/images/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(http://.....71096.com/statics/images/05.jpg)';" onmouseout="this.style.background='';"><a href="http://.....71096.com/apply" class="toplink" target="_blank" >融资申请</a></td>   
+			<td width="2" align="center"><img src="http://.....71096.com/statics/images/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(http://.....71096.com/statics/images/05.jpg)';" onmouseout="this.style.background='';"><a href="http://.....71096.com/product/47" title="金融产品" class="toplink">金融产品</a></td>
+			<td width="2" align="center"><img src="http://.....71096.com/statics/images/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(http://.....71096.com/statics/images/05.jpg)';" onmouseout="this.style.background='';"><a href="http://.....71096.com/news/48" title="中银资讯" class="toplink">中银资讯</a></td>
+			<td width="2" align="center"><img src="http://.....71096.com/statics/images/04.jpg" width="2" height="34" /></td>
+			<td width="120" align="center" onmouseover="this.style.background='url(http://.....71096.com/statics/images/05.jpg)';" onmouseout="this.style.background='';"><a href="http://.....71096.com/news/81" title="常见问答" class="toplink">常见问答</a></td>
+		  
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="28" align="center" bgcolor="#efefef"><table width="880" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="left" class="txt01">热点推荐：　
+				<a href="http://.....71096.com/product/show/195" title="科贷通" class="link_01">科贷通</a>　　
+				<a href="http://.....71096.com/product/show/225" title="快易贷" class="link_01">快易贷</a>　　
+				<a href="http://.....71096.com/product/show/197" title="苏绣贷" class="link_01">苏绣贷</a>　　
+				<a href="http://.....71096.com/product/show/231" title="蟹贷通" class="link_01">蟹贷通</a>　　
+				<a href="http://.....71096.com/product/show/196" title="村村通" class="link_01">村村通</a>　　
+		</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="1" bgcolor="#cbcbcb"></td>
+  </tr>
+</table><table width="960" height="15" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="197" valign="top">
+	<table width="100%" height="160" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+      <tr>
+        <td height="34" align="left" background="http://.....71096.com/statics/images/06.jpg" class="txt03" style="padding-left:15px;">融资申请快速通道</td>
+      </tr>
+      <tr>
+        <td align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="20" align="left" class="txt01" style="padding-left:3px;"><img src="http://.....71096.com/statics/images/07.jpg" width="14" height="12" align="absmiddle" /> <a href="http://.....71096.com/page/62"  target="_blank"  class="link_01">智慧融贷客户告知书</a></td>
+          </tr>
+          <tr>
+            <td height="26" align="left" valign="top" class="txt01"><input id="agreeCheckbox" type="checkbox" name="checkbox" value="checkbox" /> <a id="forAgree" class="" style="cursor: pointer;">我已阅读并同意以上内容</a></td>
+          </tr>
+          <tr>
+            <td align="left">
+				<input id="rz" type="image" src="http://.....71096.com/statics/images/08.jpg	"  style="width:171px;height:51px;"/>
+			</td>
+          </tr>
+        </table>
+		</td>
+      </tr>
+    </table>
+      <table width="50%" border="0" cellspacing="0" cellpadding="0" height="11">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" height="193" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+        <tr>
+		          <td ><img src="http://.....71096.com/statics/images/19.jpg" width="197" height="36" /></td>
+		  
+        </tr>
+        <tr>
+          <td align="center" bgcolor="#FFFFFF">
+
+	
+<table width="100%" height="180" border="0" cellpadding="0" cellspacing="1" >
+  <tr>
+	<td align="center" valign="top" bgcolor="#FFFFFF"><img src="http://.....71096.com/statics/images/20.jpg" width="145" height="145" vspace="6" /><br />
+	  <font class="txt01">微信扫描 添加官方微信平台</font></td>
+  </tr>
+</table>
+
+		  </td>
+        </tr>
+      </table></td>
+    <td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" height="300" border="0" cellpadding="0" cellspacing="1" bgcolor="#c7c7c7">
+      <tr>
+        <td align="center" bgcolor="#FFFFFF">
+<script type="text/javascript">                     
+var widths=744;    /*显示高度*/
+var heights=294;   /*显示宽度*/
+var counts=3; //总条数
+	img1=new Image();img1.src='http://.....71096.com/uploads/thumb/2013/07/25/197406460143a8afa8a6a897481ec1be.jpg';
+	url1=new Image();url1.src='#';
+	img2=new Image();img2.src='http://.....71096.com/uploads/thumb/2013/07/25/0c79c4e5744bf3c9ee4de79c244c2176.jpg';
+	url2=new Image();url2.src='#';
+	img3=new Image();img3.src='http://.....71096.com/uploads/thumb/2013/09/29/bb9de0ef690f5540c1e5d59677b57782.jpg';
+	url3=new Image();url3.src='#';
+
+/* 建议将这块放置于JS中 下面的部分几乎是不需要任何改动*/
+var nn=1;
+var key=0;
+function change_img(){
+if(key==0){
+key=1;
+}else if(document.all){
+document.getElementById('pic').filters[0].Apply();
+document.getElementById('pic').filters[0].Play(duration=2);
+}
+eval('document.getElementById("pic").src=img'+nn+'.src');
+eval('document.getElementById("url").href=url'+nn+'.src');
+for (var i=1;i<=counts;i++){
+document.getElementById('xxjdjj'+i).className='axx';
+}
+document.getElementById('xxjdjj'+nn).className='bxx';
+nn++;
+if(nn>counts){
+nn=1;
+}
+tt=setTimeout('change_img()',5000);
+}
+function changeimg(n){
+nn=n;
+window.clearInterval(tt);
+change_img();
+}
+document.write('<style>');
+document.write('.axx{float:left; padding:0px 4px 1px;*padding:0px 4px 1px;border:#fff 1px solid; margin-right:5px; margin-bottom:5px;}');
+document.write('a.axx:link,a.axx:visited{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#aaa;}');
+document.write('a.axx:active,a.axx:hover{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#ccc;}');
+document.write('.bxx{float:left; padding:0px 4px 1px;*padding:0px 4px 1px;border:#fff 1px solid;margin-right:5px; margin-bottom:5px;}');
+document.write('a.bxx:link,a.bxx:visited{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#b10003;}');
+document.write('a.bxx:active,a.bxx:hover{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#b10003;}');
+document.write('</style>');
+document.write('<div style="width:'+widths+'px;height:'+heights+'px;overflow:hidden;text-overflow:clip;position:relative;">');
+document.write('<div><b id="url" target="_blank"><a href="http://.....71096.com/apply" title="asd"><img id="pic" alt="苏州中国银行智慧融贷" title="苏州中国银行智慧融贷" style="border:0px;filter:progid:dximagetransform.microsoft.wipe(gradientsize=1.0,wipestyle=4, motion=forward)" width='+widths+' height='+heights+' /></a></div>');
+document.write('<div style="position:absolute; right:0px; bottom:0px; *bottom:5px; z-index:100;">');
+for(var i=1;i<counts+1;i++){
+document.write('<a href="javascript:changeimg('+i+');" id="xxjdjj'+i+'" class="axx" target="_self">'+i+'</a>');
+}
+document.write('</div></div>');
+change_img();
+</script>
+		</td>
+      </tr>
+    </table>
+      <table width="50%" height="17" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" height="74" border="0" cellpadding="5" cellspacing="1" style="border:1px solid #ccc">
+        <tr>
+          <td align="center" bgcolor="#FFFFFF"><img src="http://.....71096.com/statics/images/14.jpg" width="143" height="55" align="absmiddle" /> <img src="http://.....71096.com/statics/images/15.jpg" width="142" height="55" align="absmiddle" /> <img src="http://.....71096.com/statics/images/16.jpg" width="142" height="55" align="absmiddle" /> <img src="http://.....71096.com/statics/images/17.jpg" width="142" height="55" align="absmiddle" /> <img src="http://.....71096.com/statics/images/18.jpg" width="142" height="55" align="absmiddle" /></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" height="13" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="197" valign="top">
+	<table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+		<td height="34" align="left" background="http://.....71096.com/statics/images/09.jpg" class="txt03" style="padding-left:15px;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;">用户登录</td>
+      </tr>
+	  
+      <tr>
+        <td>
+		
+  <table width="100%" border="0" cellspacing="0" cellpadding="5" style="border: 1px solid #ccc;">
+<tr height="11"><td></td></tr>
+	<tr width="100%">
+	  <td width="100%" ><a href="http://.....71096.com/member/login" title="企业用户登录"><img src="http://.....71096.com/statics/images/13.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+	<tr>
+	  <td width="100%" ><a href="http://.....71096.com/admin/login" title="中国银行用户"><img src="http://.....71096.com/statics/images/10.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+	<tr>
+	  <td width="100%" ><a href="http://.....71096.com/admin/login" title="担保公司用户"><img src="http://.....71096.com/statics/images/11.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+	<tr>
+	  <td width="100%"><a href="http://.....71096.com/admin/login" title="第三方合作伙伴"><img src="http://.....71096.com/statics/images/12.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+<tr height="11"><td></td></tr>
+  </table>
+		
+          <table width="50%" height="13" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+                <table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+        <tr>
+          <td align="center" valign="top" bgcolor="#FFFFFF">
+			<a href="http://.....71096.com/news/81" title="常见问答"><img style="border:none" src="http://.....71096.com/statics/images/21.jpg" width="195" height="115" /></a>
+			<a href="http://.....71096.com/news/81" title="常见问答"><font class="txt05">为您的问题提供专业的解决方案</font></a>
+		</td> 
+        </tr>
+      </table></td>
+      </tr>
+    </table></td>
+    <td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="368"><table width="100%" height="73" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+          <tr>
+            <td bgcolor="#fbfbfb"><table width="100%" height="71" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="76"><img src="http://.....71096.com/statics/images/22.jpg" width="76" height="71" /></td>
+                <td width="251" style="line-height:200%">
+					<img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="http://.....71096.com/product/show/250" class="link_01">中银信贷工厂</a><br />
+				</td>
+                <td width="39" style="line-height:200%"><a href="http://.....71096.com/news/83" class="link_01">更多&gt;</a><br /><br /></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+        <td width="14"></td>
+        <td><table width="100%" height="73" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+          <tr>
+            <td bgcolor="#fbfbfb"><table width="100%" height="71" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="76"><img src="http://.....71096.com/statics/images/23.jpg" width="76" height="71" /></td>
+                  <td width="251" style="line-height:200%">
+					<img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="http://.....71096.com/news/show/249" class="link_01">小企业大市场，供应链融资作保障</a><br /> 
+					<img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="http://.....71096.com/product/show/248" class="link_01">助推农村经济，圆“美丽中国”梦</a><br /> 
+					 </td>
+                  <td width="39" style="line-height:200%"><a href="http://.....71096.com/news/84" class="link_01">更多&gt;</a><br />
+                      <br /></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+      <table width="50%" height="9" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="368"><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+            <tr>
+              <td height="34" align="left" background="http://.....71096.com/statics/images/09.jpg" style="padding-left:15px;"><font class="txt03">通用产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="http://.....71096.com/product/85" class="link_01">更多&gt;</a></td>
+            </tr>
+            <tr>
+              <td align="center" bgcolor="#FFFFFF">
+			  <table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="height:79px;">
+			    <td width="38%" align="left">
+				  <a href="http://.....71096.com/product/show/229" title="贷利盈" ><img style="border:none" src="http://.....71096.com/uploads/thumb/2013/09/12/5a483ec7fd714437ddee7ed68e851116.JPG" alt="贷利盈" width="115" height="79" /></a>
+			    </td>
+                  <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" /></td>
+				<td align="left" valign="top"><a href="http://.....71096.com/product/show/229" title="贷利盈" >
+					<font class="txt04">贷利盈</font><br /><font class="txt05">是指银行为企业客户提供授信支持，同时与企业签订结构性协议，约定在未来的一段时间内，企业向银行赋予...</font></a>
+				</td>
+                </tr>
+              </table>
+			  
+			  </td>
+            </tr>
+          </table></td>
+          <td width="14"></td>
+          <td><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+            <tr>
+              <td height="34" align="left" background="http://.....71096.com/statics/images/09.jpg" style="padding-left:15px;"><font class="txt03">科技产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="http://.....71096.com/product/86" class="link_01">更多&gt;</a></td>
+            </tr>
+            <tr>
+              <td align="center" bgcolor="#FFFFFF"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="height:79px;">
+                    <td width="38%" align="left"> <a href="http://.....71096.com/product/show/230" title="创投贷" ><img style="border:none" src="http://.....71096.com/uploads/thumb/2013/09/12/7ef9debd23f47284282b0cd269f5fd48.JPG" alt="创投贷" width="115" height="79" /></a></td>
+                    <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" /></td>
+                    <td align="left" valign="top"><a href="http://.....71096.com/product/show/230" title="创投贷" ><font class="txt04">创投贷</font><br />
+                        <font class="txt05">中国银行针对符合条件的、有意愿引入创投公司股权投资的高新技术中小企业所提供的，在企业自有资金为第...</font></a></td>
+                  </tr>
+              </table></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      <table width="50%" height="8" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="368"><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+              <tr>
+                <td height="34" align="left" background="http://.....71096.com/statics/images/09.jpg" style="padding-left:15px;"><font class="txt03">涉农产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="http://.....71096.com/product/87" class="link_01">更多&gt;</a></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#FFFFFF"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="height:79px;">
+                    <td width="38%" align="left"> <a href="http://.....71096.com/product/show/231" title="蟹贷通" ><img style="border:none" src="http://.....71096.com/uploads/thumb/2013/09/12/b5747a8d7a4db1b5c28ff82a679a93c3.jpg" alt="蟹贷通" width="115" height="79" /></a></td>
+                    <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" /></td>
+                    <td align="left" valign="top"><a href="http://.....71096.com/product/show/231" title="蟹贷通" ><font class="txt04">蟹贷通</font><br />
+                        <font class="txt05">是指中国银行针对螃蟹经营户因自有资产不足所遇到融资难的问题，开发推出的以商标权和经营权质押的信贷...</font></a></td>
+                  </tr>
+                </table></td>
+              </tr>
+          </table></td>
+          <td width="14"></td>
+          <td><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+              <tr>
+                <td height="34" align="left" background="http://.....71096.com/statics/images/09.jpg" style="padding-left:15px;"><font class="txt03">文化产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="http://.....71096.com/product/88" class="link_01">更多&gt;</a></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#FFFFFF"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+				<tr style="height:79px;">
+                    <td width="38%" align="left"> <a href="http://.....71096.com/product/show/232" title="文贷通" ><img style="border:none" src="http://.....71096.com/uploads/thumb/2013/09/12/996a7dd2c6d455b4d45a4c7b20346124.JPG" alt="文贷通" width="115" height="79" /></a></td>
+                    <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="http://.....71096.com/statics/images/ico01.gif" width="3" height="5" /></td>
+                    <td align="left" valign="top"><a href="http://.....71096.com/product/show/232" title="文贷通" ><font class="txt04">文贷通</font><br />
+                        <font class="txt05">是指由市文广新局（市文产办）负责推荐，经市文广新局（市文产办）、市财政局审核批准，由中国银行提供...</font></a></td>
+                  </tr>
+                </table></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" height="13" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table><table width="960" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#cccccc">
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="99"><img src="http://.....71096.com/statics/images/35.jpg" width="99" height="38" /></td>
+        <td width="1" bgcolor="#cccccc"></td>
+        <td width="20"></td>
+        <td>
+				<a href="http://www.boc.cn" title="中国银行" target="_blank">
+					<img src="http://.....71096.com/uploads/thumb/2013/08/15/9a809191fde786f9040672b6aa02aa4e.jpg"  width="134" height="38" align="absmiddle" style="border:none;padding-right:20px;" />
+				</a>
+		</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#forAgree").click(function(){
+		$("#agreeCheckbox").attr('checked',function(){ if($(this).attr('checked') == 'checked')return false;return 'checked';});
+	});
+	
+	$("#rz").click(function(){
+
+		//alert(1);
+		if( !$("#agreeCheckbox").attr('checked') ){
+			alert('请先阅读上面的文档');
+			return;
+		}
+		location.href="http://.....71096.com/apply";
+		
+	});
+});
+</script><!-- footer -->
+<table width="960" height="13" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="700" bgcolor="#990110" style="padding-left:15px;"><font class="txt06">客服热线：</font><font class="txt07">95566</font>　<font class="txt06">信用卡专线：</font><font class="txt07">40066-955661</font></td>
+    <td width="38"><img src="http://.....71096.com/statics/images/37.jpg" width="38" height="30" /></td>
+    <td width="222" bgcolor="#818181">&nbsp;</td>
+  </tr>
+</table>
+<table width="960" height="70" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="bq">
+	<a href="http://.....71096.com/page/74" title="版权声明" class="link_02">版权声明</a> | 
+	<a href="http://.....71096.com/page/75" 		title="使用条款" class="link_02">使用条款</a> | 
+	<a href="http://.....71096.com/page/49" 		title="联系我们" class="link_02">联系我们</a> | 
+	京ICP证xxxxxxxx号 京公网安备x号<br />
+    Copyright &copy; BANK OF CHINA(BOC) All Rights Reserved.</td>
+    <td align="right"><img src="http://.....71096.com/statics/images/38.jpg" width="109" height="32" /></td>
+  </tr>
+</table>
+</body><!--{memory_usage}-->
+</html>

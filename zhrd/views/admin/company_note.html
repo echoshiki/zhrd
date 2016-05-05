@@ -1,0 +1,14 @@
+<form method="POST" action="<?php echo site_url('/admin/company/note'); ?>" id="push_form" name="push_form"> 
+<input type="hidden" name="dopost" value="note">
+<input type="hidden" name="formid" value="<?php echo $formid; ?>">
+<div  id="zhrd_note_text"  style="width:227px;height:70px;padding:7px;margin:1px;border: 1px solid #ccc;cursor: pointer;">
+	<?php echo $note_text; ?>
+</div>
+	<textarea id="note_text" name="note_text" cols="30" rows="5" style="paddin:7px;display:none;" ><?php echo $note_text; ?></textarea>
+<br/>
+<span style="color:#ccc">(点击修改，最多48个字符)</span>
+<input id="note_submit" type="submit" class="button deepblue" value="提交" disabled="disabled" style="float: right;display:none;">
+
+</form>
+
+<!-- deepblue -->

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content="左侧导航"/>
+<meta name="description" content=""/>
+<meta name="author" content="BOC">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css'); ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js'); ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js'); ?>?v=13073117"></script> 
+ 
+</head>
+
+<body>
+	
+	<ul class="sidebar" style="padding:8px;">
+	<?php
+		foreach($list as $k=>$v){
+			if(!in_array($v['ROLEID'],$roleArr)){ continue; } ?>    
+			<li>
+		    	<strong><img src="<?php echo base_url() ?>statics/imgs/sitemap.png"/><a href="javascript:void(0)"><?php echo $v['ROLENAME'];?></a></strong>
+		        <div class="droper" <?php if($this->session->userdata('GROUPID') > 2){?> style="display:block;" <?php } ?> >
+				<?php
+					foreach($v['son'] as $kk=>$vv){
+						if(!in_array($vv['ROLEID'],$roleArr)){continue;}
+						$href_str=site_url($vv['M'].'/'.$vv['C'].'/'.$vv['A']);		
+						if(str_replace('/','',$href_str)==str_replace('/','',site_url())){
+							$href_str=' javascript:viod(0); ';
+						}
+				?>
+		                <a href="<?php echo $href_str; ?>" onclick="setMenuSession('<?php echo $vv[ROLEID] ?>');" target="right"><?php echo $vv['ROLENAME'];  ?></a>
+			  <?php } ?>               
+		        </div>
+		    </li>                 
+    <?php } ?>              
+    </ul>
+
+<script type="application/javascript">
+	function setMenuSession(menuid){
+		t=(new Date()).getTime();
+		$.get("<?php echo site_url('/admin/index/dismenu').'/?menuid='; ?>"+menuid+'&t='+'1');	
+	}
+</script>            
+</body>
+</html>            
+    
+    

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.3.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<script type="text/javascript">
+
+  function select_all(q){
+    var cks = document.getElementsByName('checkbox');
+    var cks2 = document.getElementsByName('checkbox2');
+    for (var i = cks.length - 1; i >= 0; i--) {
+          for (var i = cks2.length - 1; i >= 0; i--) {
+            cks2[i].checked = cks[q].checked;
+          }
+    }
+  }   
+
+  function checkform(i){
+
+      var n = document.getElementById('groupname');
+
+      if (n.value == '' || n.value.length > 20 ) {
+        art.dialog({
+            title: '系统提示',
+            content: '用户组名称不能为空或长度不合要求，请重新填写！',
+            okValue: '确定',
+            ok: function () {
+            }
+        });
+        return false;
+      }
+
+     document.getElementById(i+'_form').submit();
+  }   
+
+
+  function del(i){
+      art.dialog({
+          title:'删除确认',
+          content:'该操作将会删除所选的用户组且不能恢复，确认要删除所选的用户组么？',
+          button: [
+              {  
+                  name: '确认',
+                  callback: function () {
+                       window.location.href="<?php echo site_url('/admin/group/del?gid='); ?>"+i;
+                  },
+                  focus: true
+              },
+              {
+                 name: '关闭'
+              }
+          ]
+      });
+  }
+
+  function del2(){
+    art.dialog({
+      title:'删除确认',
+      content:'该操作将会删除所选的用户组且不能恢复，确认要删除所选的用户组么？',
+      button: [
+          {  
+              name: '确认',
+              callback: function () {
+                  var ck = document.getElementsByName("checkbox2");
+                  var ck_s = "";
+                  for (var i = ck.length - 1; i >= 0; i--) {
+                    if (ck[i].checked) {
+                        ck_s += ck[i].value +",";
+                    }
+                  }
+                  ck_s = ck_s.substr(0,ck_s.length-1);
+                  if (ck_s == "") { 
+                        art.dialog({
+                            title: '系统提示',
+                            content: '请选择要删除的用户组！',
+                            okValue: '确定',
+                            ok: function(){}
+                            
+                        });
+                  } else{
+                    window.location.href="<?php echo site_url('/admin/group/del?gid='); ?>"+ck_s;
+                  }
+                  
+             },
+             focus: true
+          },
+          {
+             name: '关闭'
+          }
+     ]
+  });
+
+  }
+
+
+
+
+</script>
+
+
+
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+    	
+          
+          <div class="datatable">
+          	 <div class="tip">
+             	<div class="left">
+                    <abbr> 角色权限管理</abbr>
+                </div>
+                <div class="right">
+                	<span class="button deepblue"   onClick="art.dialog({title:'添加用户组',content:getC('<?php echo site_url('/admin/group/add'); ?>')});">添加用户组</span>
+                </div>
+             </div>
+             <div class=" head" >
+                    温馨提示： 
+             </div>
+                  
+             <div class="body">
+             	<table  border="0" class="table bordered zebra">
+                      
+                      <tr>
+                        <td width="4%"><input type="checkbox"  name="checkbox" id="checkbox" onclick="select_all(0);"></td>
+                        <td width="4%">ID</td>
+                        <td width="8%">排序</td>
+                        <td>角色</td>
+                        <td>&nbsp;</td>
+                        <td width="10%">&nbsp;</td>
+                        <td width="200">操作</td>
+                      </tr>
+                      
+                      <?php 
+                      if(is_array($list)){
+                      	foreach($list as $k=>$v){
+                      ?>  
+                      <tr>
+                        <td>
+                          <?php if ($v['GROUPID'] !== '1') { ?>
+                          <input type="checkbox" name="checkbox2" id="checkbox2" value="<?php echo $v['GROUPID'];  ?>">
+                          <?php } else { echo "&nbsp;"; } ?>
+                        </td>
+                        <td><?php echo $v['GROUPID'];  ?></td>
+                        <td><?php echo $v['LISTORDER'];  ?></td>
+                        <td><?php echo $v['GROUPNAME'];  ?></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
+                        	<a href="<?php echo site_url('/admin/admin/index').'/_'.$v['GROUPID'].'/'; ?>" class="button  medium2" >查看用户</a>
+
+
+
+                            <a href="javascript:void(0);" onClick="art.dialog({title:'权限设置',content:getC('<?php echo site_url('/admin/role/edit').'/'.$v['GROUPID'].'/'; ?>')});" class="button  medium2" >组权限设置</a> 
+                            <a href="#" class="button red medium2" onclick="del(<?php echo $v['GROUPID']; ?>);" >删除</a> 
+
+
+                         </td>
+                        </tr>
+                      <?php
+                      	}
+                      }
+                      ?>
+                        
+                      <tr>
+                        <td><input type="checkbox" name="checkbox" id="checkbox" onclick="select_all(1);"></td>
+                        <td colspan="6">
+                        	<button class="button medium" onclick="del2();">删除选中项</button>
+                        	<!-- <button class="button green medium">排序</button> -->
+                        </td>
+                        </tr>
+                    </table>
+          </div>
+             <div class="foot">
+<!--              	<div class="left">显示1到10行 共57行</div>
+                <div class="right">
+                    
+                    <div class="pager">
+                    <a href="#">首页</a>
+                    <a href="#">上一页</a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">...</a>
+                    <a href="#">99</a>
+                    <a href="#">下一页</a>
+                    <a href="#">尾页</a>
+                    </div>
+            
+                </div> -->
+             </div>
+          </div>
+   
+   
+  
+   
+  
+   
+   
+    </div>
+</body>
+</html>    

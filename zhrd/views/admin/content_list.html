@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content="内容页 内容管理"/>
+<meta name="description" content=""/>
+<meta name="author" content="BOC">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.3.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+<style type="text/css">
+#categoryList a{  text-decoration: none}
+</style>
+
+
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<script src="<?php echo base_url('statics/artDialog/plugins/iframeTools.source.js');?>"></script>
+<!--/*dialog__end*/-->
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+    	
+          
+          <div class="datatable">
+          	 <div class="tip">
+             	<div class="left">
+                    <abbr> 信息列表</abbr>
+                </div>
+                <div class="right">
+                  <?php if ($this->uri->segment(4) == '202') { ?>
+                    <a class="button deepblue" href="javascript:void(0)"  onclick="art.dialog({title: '新闻采集',content:getC('<?php echo site_url("admin/content/pick/"); ?>')});">采集新闻</a>
+                  <?php } ?>
+                	<a class="button deepblue" href="<?php echo site_url('/admin/content/add/'.$cid); ?>">添加信息</a>
+
+                    
+                </div>
+             </div>
+             <div class=" head" >
+                    温馨提示： 
+             </div>
+                  
+             <div class="body">
+             
+             	<table width="200" border="0" class="table bordered zebra">
+                      
+                      <tr>
+                        <td width="4%">&nbsp;</td>
+                        <td width="4%">ID</td>
+                        <td width="8%">排序</td>
+                        <td>标题</td>
+                        <td width="120">所属栏目</td>
+                        <td width="90px">发布时间</td>
+                        <td width="200">操作</td>
+                      </tr>
+                      <?php
+                          if(is_array($list)){
+                          foreach($list as $k=>$v){
+                      ?>
+                            <tr>
+							<td><input type="checkbox" name="delCheckBox" class="delCheckBox" value="<?php echo $v['ID']; ?>"></td>
+                        <td class="id"><?php echo $v['ID']; ?></td>
+                        <td><input name="listorder" type="text" value="<?php if($v['LISTORDER'] != '0'){ echo $v['LISTORDER']; } ?>" style="width:28px;height:auto; padding:0; text-align:center"></td>
+                            <td><a href="<?php echo site_url($v['URL']); ?>"  target="_blank" title="<?php echo $v['TITLE']; ?>"><?php echo $v['TITLE'];  ?></a></td>
+                            <td><?php echo $v['catname'];  ?></td>
+                            <td><?php echo date('m-d H:i',$v['INPUTTIME']);  ?></td>
+                            <td>
+							<?php if($v['TYPEID']==3){ ?>
+							<a href="javascript:;" onClick="art.dialog.open('/admin/huodong/index/0_<?php echo $v['ID'];  ?>',{title:'查看报名信息',width:'80%',height:'68%'});" class="button  red medium2" >查看报名信息</a><?php }?>
+                                <a href="<?php echo site_url('/admin/content/edit/'.$v['ID']); ?>" class="button  medium2" >编辑</a> 
+                                <a href="<?php echo site_url('/admin/content/del/'.$v['ID']); ?>" class="button red medium2"  >删除</a> 
+                             </td>
+                            </tr>
+
+                      <?php
+                          } 
+                          } 
+                      ?>
+                      
+                      
+                      <tr>
+                        <td><input type="checkbox" name="checkbox11" id="clickForDel" ></td>
+                        <td colspan="6">
+                        	<button onClick="delAll()" class="button medium">删除选中项</button>
+                        	<button onClick="listorder()" class="button green medium">排序</button>
+                        </td>
+                        </tr>
+                    </table>
+          </div>
+		  <!--
+             <div class="foot">
+             	<div class="left">显示1到10行 共57行</div>
+                <div class="right">
+                    
+                    <div class="pager">
+                    <a href="#">首页</a>
+                    <a href="#">上一页</a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">...</a>
+                    <a href="#">99</a>
+                    <a href="#">下一页</a>
+                    <a href="#">尾页</a>
+                    </div>
+            
+                </div>
+             </div>
+			 -->
+			 
+          </div>
+   
+   
+  
+   
+  
+   
+   
+    </div>
+	
+<script type="text/javascript">
+
+//排序 ajax 
+//<td class="id"> 不可删除
+function listorder(){
+	var changelistor = '';
+	$("input[name=listorder][class=changed]").each(function(){
+		changelistor = changelistor + '{"id":"' + $(this).parent().siblings(".id").html() + '","listorder":"' +$(this).val() + '"},';
+	});
+	if( changelistor == ''){
+		art.dialog({title: '系统提示',content: '请修改排序',okValue: '确定',ok: function(){}});
+		return ;
+	}
+	changelistor = '[' + changelistor.substr(0,changelistor.length-1) + ']';
+	$.post("<?php  echo site_url('admin/content/listorder'); ?>",{'changelistor':changelistor},
+		function(data){
+			switch(data.code){
+				case  "1": location.reload();break;
+				case  "0": art.dialog({title: '系统提示',content: '排序失败，请重试',okValue: '确定',ok: function(){location.reload();}});break;
+			}
+	},
+	'json');
+}
+
+
+function delAll(){
+    art.dialog({
+      title:'删除确认',
+      content:'确认删除所选项',
+      button: [
+		  { name: '确认',
+            focus: true,
+			callback: function () {
+				var delstring = '';
+				$('input:checked[name=delCheckBox]').each(function(){
+					delstring = delstring + $(this).val()+',';
+				});
+				if(delstring == ''){
+					art.dialog({title: '系统提示',content: '请选择删除项',okValue: '确定',ok: function(){}});
+				}else{
+					delstring = delstring.substr(0,delstring.length-1); 
+					
+					$.post("<?php  echo site_url('admin/content/delall'); ?>",{id:delstring},
+						function(data){
+							switch(data.code){
+								case  "1": location.reload();break;
+								case  "0": art.dialog({title: '系统提示',content: '删除失败',okValue: '确定',ok: function(){}});break;
+							}
+						},
+						'json');
+				}
+			}
+          },
+		  {name :'关闭'}
+		  ]
+	});
+}
+
+
+$(document).ready(function(){
+
+//排序input text change 添加 class change
+	$("input[name=listorder]").change(function(){
+		$(this).addClass('changed');
+	});
+
+	$('#clickForDel').click(function(){
+		$('.delCheckBox').attr('checked', $(this).attr('checked') );
+	});
+	
+  $('#getSite').live("change",function(){
+    if (this.value == "1") {$('#areaContent').html('<br/>采集页数：<input type="text" name="page" size="3"/>（一次建议不超过2页）<br/><br/>频道地址：<input type="text" name="url" size="30"/><br/><br/>（例：一财网财经频道 http://www.yicai.com/money/fund/）<br/><br/><input type="submit" name="do" class="button red" value="开始采集">');};
+    if (this.value == "2") {$('#areaContent').html('<br/>采集条数：<input type="text" name="num" size="3"/>（一次建议不超过20条）<br/><br/>频道地址：<input type="text" name="url" size="30"/><br/><br/>（例：经参网中国频道 http://www.jjckb.cn/list_gn.htm）<br/><br/><input type="submit" name="do" class="button red" value="开始采集">');};
+  });
+});
+
+</script>
+	</body>
+</html>

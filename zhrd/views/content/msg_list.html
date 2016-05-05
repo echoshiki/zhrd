@@ -1,0 +1,147 @@
+<script type="text/javascript">
+     function showlist(n){
+        var name  = 'po_relist' + n;
+        var huifu = 'po_repost' + n;
+        var yincang = 'yincang' + n;
+        $('#'+name).show(300);
+        $('#'+huifu).hide();
+        $('#'+yincang).show();
+     }  
+     function hidelist(n){
+        var name  = 'po_relist' + n;
+        var huifu = 'po_repost' + n;
+        var yincang = 'yincang' + n;
+        $('#'+name).hide(300);
+        $('#'+huifu).show();
+        $('#'+yincang).hide();
+     }
+     function reply(n,m){
+        var cont = '回复' + n +':  ';
+        var tid  = 're_con' + m;
+        $('#'+tid).val(cont);
+     }
+</script>
+<style type="text/css">
+  .msg_list { width:100%;}
+  .msg_sub  { width:100%;}
+  .post_box { color:#494949; background-color:#ECEDEE; font-family:Arial,"宋体"; }
+  .post_left{ width:13%; float:left; padding:10px; }
+  .post_author{ margin:auto; text-align:center; line-height:24px;}
+  .post_author_name { font-size:12px; text-align: left;}
+  .post_author img{ width:80px; height:80px; border:2px solid #CCC; margin-bottom:5px;}
+  .post_right{  width:82%; float:right; background-color:#FFF; text-align: left; padding:5px 0 0 5px; 
+    border: 1px solid #C9C4C4;}
+  
+  .post_content{ min-height:60px;_height:80px;  line-height:23px; padding:10px; font-size:14px; }
+  .post_other{ font-size:12px;  float:right; color:#999; padding:6px 10px;}
+  .post_other span{ margin:0 3px;}
+  .post_repost a { color:#333; text-decoration:none; font-size:12px;}
+  .post_line{ border-bottom:1px dashed #CCC; }
+  .post_re_list{ margin:16px 22px; border:1px solid #CCC; padding:14px;}
+  .post_re_list li{ list-style:none; border-bottom:1px dashed #CCC; padding-bottom:8px; padding-top:4px; line-height:20px;}
+  .post_uname   { color:#333; font-size:13px; }
+  .post_re_content  { font-size:12px; padding:10px; color:#4e4e4e}
+  .post_re_time { font-size:12px; color:#666; clear:both; text-align:right}
+  .foot_page    { width:100%; margin:10px 0 5px 0;}
+  .left_page    { float:left; font-size:14px; font-weight: bold; margin-left:5px;}
+  .right_page   { float:right; font-size:14px;}
+  .pager a      { font-size:14px; }
+
+  .con_n {padding:0; padding-top:50px;}
+</style>
+<img src="<?php echo base_url('statics/image/loginr.gif') ; ?>"  width="100%"/>
+<div class="con_n">
+  <div class="con_n_1">
+    <p><img src="<?php echo base_url('statics/image/') ; ?>/06.jpg" /></p><br>
+  <!-- FORM START -->
+    <div class="msg_list">
+      <div class="post_box">
+      <?php foreach ($msg as $key => $value) { ?>
+        <div class="post_box">
+          <div class="post_left">
+            <div class="post_author">
+                  <a href="#"><img src="<?php echo base_url('statics/imgs/user.jpg') ?>"/></a>
+                  <table class="post_author_name">
+                      <tr>
+                        <td><span style="color:#666">用户：</span></td>
+                        <td><?php echo $value['USERNAME']; ?></td>
+                      </tr>
+                      <tr>
+                        <td><span style="color:#666">身份：</span></td><td><?php if(!empty($value['GROUPID'])){ echo '<span>'.getVal('ADMIN_GROUP','GROUPNAME','GROUPID',$value['GROUPID']).'</span>'; } else { echo '<span>注册用户</span>'; }?></td>
+                      </tr>
+                  </table>              
+            </div>            
+          </div>
+          <div class="post_right">
+            <div class="post_content">
+              <b><?php if ($value['TYPE'] == '2') { echo '<span style="color:#333">'.$value['TITLE'].'</span>'; }else{ echo $value['TITLE']; }?></b><br/>
+              <?php if ($value['TYPE'] == '2') { echo '<span style="font-size:13px;color:#666">'.$value['CONTENT'].'</span>'; }else{ echo $value['CONTENT']; } ?>
+            </div>
+            <div class="post_other" style="clear:both">
+              作者：<span class="post_uname"><?php echo $value['USERNAME']; ?></span>&nbsp; 
+              时间：<span><?php echo date('Y-m-d',$value['CREATETIME']); ?></span>
+              <span class="post_repost">
+              <a href="javascript:void(0)" id="po_repost<?php echo $value['ID']; ?>" onclick="showlist(<?php echo $value['ID']; ?>);">查看回复(<?php echo count($value['child']); ?>)</a>
+              <a href="javascript:void(0)" style="display:none;" id="yincang<?php echo $value['ID']; ?>" onclick="hidelist(<?php echo $value['ID']; ?>);">隐藏</a></span>
+              <div style="clear:both"></div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="post_line"></div>
+            <div class="post_re_list" id="po_relist<?php echo $value['ID']; ?>" style="display:none;">
+              <ul style="padding:0; margin:0;">
+                <?php foreach($value['child'] as $k => $v){?>
+                <li>
+                  <span class="post_uname"><?php if($v['TYPE']=='1'){echo $uname=getVal('MEMBER','USERNAME','USERID',$v['USERID']);}else{echo $uname=getVal('ADMIN','USERNAME','USERID',$v['USERID']);} ?></span>
+                  <span class="post_re_time">(<?php echo date('Y-m-d H:i:s',$v['CREATETIME']); ?>)：</span>
+                  <span class="post_re_content">
+                  <?php if($v['TYPE']=='2'){ echo '<span style="color:#666">'.$v['CONTENT'].'</span>'; }else{ echo $v['CONTENT']; }?> </span>
+                  <span class="post_repost"><a href="javascript:void(0)" id="child_re<?php echo $v['ID']; ?>" onclick="reply(<?php echo "'".$uname."',".$value['ID']; ?>);">回复</a></span>
+                </li>
+                <?php } ?> 
+              </ul>
+
+              <div class="reply_main" style="margin-top:5px;">
+                <form id="reply_form" method="POST" action="<?php echo site_url('content/msg/index'); ?>">
+                  <input type="text" name="form[CONTENT]" id="re_con<?php echo $value['ID'];?>" style="width:500px;" data-rule="required"/>
+                  <input type="submit" value="回复" id="reply_btn"/>
+                  <input type="hidden" name="dopost" value="1" />
+                  <input type="hidden" name="form[PID]" value="<?php echo $value['ID']; ?>" />
+                </form>
+              </div>
+            </div>
+            <br />
+          </div>
+          <div style="clear:both"></div>   
+        </div>
+     <?php } ?>
+    </div>
+    <div class="foot_page">
+      <div class="left_page">一页<?php echo $per_page; ?>条主题 共<?php echo $total; ?>条</div>
+      <div class="right_page"><div class="pager"><?php echo $link; ?></div></div>
+      <div style="clear:both"></div>
+    </div>
+  <!-- FORM END -->
+    <p>尊敬的用户，欢迎使用客户留言，我们期待倾听您的宝贵意见，请在此详细填写您所遇到的问题。</p><br>
+    <form action="<?php echo site_url('content/msg/index'); ?>" method="POST">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="600" bgcolor="#EFEFEF" style="padding:20px;"><table width="100%" border="0" cellspacing="0">
+                    <tr>
+                      <td align="right">留言标题：</td>
+                      <td align="left"><input type="text" name="form[TITLE]" class="input1" /></td>
+                    </tr>
+                    <tr>
+                      <td align="right" valign="top">留言内容：</td>
+                      <td align="left"><textarea name="form[CONTENT]" class="input2" style="height:200px;"></textarea></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><input type="submit" value="提交" class="button blue"></td>
+                    </tr>
+                  </table></td>
+          <td width="400" background="<?php echo base_url('statics/image/') ; ?>/07.jpg">&nbsp;</td>
+        </tr>
+      </table>
+      <input type="hidden" value="1" name="dopost" /> 
+    </form>
+  </div>
+</div>

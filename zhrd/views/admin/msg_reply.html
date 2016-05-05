@@ -1,0 +1,8 @@
+<form action="<?php echo site_url('/admin/msg/reply'); ?>" method="post">
+<textarea name="reply[CONTENT]" rows="8" style="width:300px;"><?php echo $mcon; ?></textarea>
+<br/>
+<input type="submit" value="提交" class="button blue" />
+<input type="hidden" name="doreply" value="1" />
+<input type="hidden" name="reply[PID]" value="<?php echo $pid; ?>" />
+<input type="hidden" name="reply[CID]" value="<?php echo $cid; ?>" />
+</form>

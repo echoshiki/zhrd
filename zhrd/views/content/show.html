@@ -1,0 +1,28 @@
+<?php 
+	if ($content['ISPAGE'] == '1') { $content['ISPAGE'] = "一财网"; } 
+	if ($content['ISPAGE'] == '2') { $content['ISPAGE'] = "经济参考网"; } 
+	if ($content['ISPAGE'] == '')  { $content['ISPAGE'] = "智慧网贷"; } 
+?>
+
+<?php if($breadcrumbs[0]['THUMB']){?>
+<img src="<?php echo base_url($breadcrumbs[0]['THUMB']) ; ?>"  width="100%"/>
+<?php } ?>
+
+<?php if($this->uri->segment(2)=="163"){ ?>
+<div class="con_n">
+	<div class="con_n_1" style="text-align:left;">
+		<p style="text-align:center;"><img src="<?php echo base_url('statics/image/') ; ?>/04.jpg" /></p><br>
+		<?php echo $content['CONTENT'];?>
+	</div>
+</div>
+<?php }else{ ?>
+<div class="con_n" style="background-color:#eee;">
+	<div class="con_n_2">
+		<p class="con_txt_1"><?php echo $content['TITLE']; ?></p><br>
+		<p class="con_txt_2">[ 发布时间：<?php echo date('m-d H:i',$content['INPUTTIME']);  ?> ]　　[ 来源：<?php echo $content['ISPAGE'];?> ]</p><br>
+		<p class="con_txt_3"><?php echo $content['CONTENT'];?></p>
+	</div>
+</div>
+<?php } ?>
+</body>
+

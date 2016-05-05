@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="boc">
+<script type="text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<!-- cutter -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script type="text/javascript" src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+
+<!-- artDialog -->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('statics/js/validator/jquery.validator.css') ?>" />
+<script type="text/javascript" src="<?php echo base_url('statics/js/validator/jquery.validator.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('statics/js/validator/local/zh_CN.js') ?>"></script>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+
+          <div class="datatable">
+       	    <div class="tip">
+             	<div class="left">
+                    <abbr> 短信模板设置</abbr>
+                </div>
+                <div class="right">
+                  <span  onclick="settingFormSubmit()" class="button deepblue">保存</span>
+                  <a href="javascript:history.go(-1)" class="button deepblue">返回</a>
+                </div>
+            </div>
+             <div class=" head" >
+可使用  短信验证码[captcha] , 客户公司名称[compamy], 客户经理姓名 [manage],请勿超过60个中文字符,请勿使用’,“,~,@,#,$等特殊字符。 
+             </div>
+<form id="settingForm" name="" action="<?php echo site_url('/admin/setting/'); ?>" method="post">
+             <div class="body">
+   	      			<table width="200" border="0" class="table bordered zebra">
+
+                      <tr>
+                        <td > 客户注册短信验证码</td>
+						<td ><textarea class="zform" name="info[smsCaptcha]" cols="53" rows="3" data-rule="required"><?php echo $list['smsCaptcha']; ?></textarea>
+						<input type="hidden" name="changed[smsCaptcha]" value="0" ></td>
+                      </tr>
+
+                      <tr>
+                        <td > 审核通过</td>
+						<td ><textarea class="zform" name="info[smsMemberPass]" cols="53" rows="3" data-rule="required"><?php echo $list['smsMemberPass']; ?></textarea>
+						<input type="hidden" name="changed[smsMemberPass]" value="0" ></td>
+                      </tr>
+
+                      <tr>
+                        <td > 审核不通过</td>
+						<td ><textarea class="zform" name="info[smsMemberNotPass]" cols="53" rows="3" data-rule="required"><?php echo $list['smsMemberNotPass']; ?></textarea>
+						<input type="hidden" name="changed[smsMemberNotPass]" value="0" ></td>
+                      </tr>
+
+                      <tr>
+                        <td > 审核需要客户担保</td>
+						<td ><textarea class="zform" name="info[smsMemberNeedVouch]" cols="53" rows="3" data-rule="required"><?php echo $list['smsMemberNeedVouch']; ?></textarea>
+						<input type="hidden" name="changed[smsMemberNeedVouch]" value="0" ></td>
+                      </tr>
+
+                      <tr>
+                        <td > 通知客户经理处理</td>
+						<td ><textarea class="zform" name="info[smsManage]" cols="53" rows="3" data-rule="required"><?php echo $list['smsManage']; ?></textarea>
+						<input type="hidden" name="changed[smsManage]" value="0" ></td>
+                      </tr>
+
+                    </table>
+				<div class="foot">
+					<input type="submit" onclick="" value="保存" class="button deepblue">
+				</div>
+</form>
+             </div>
+          </div>
+    </div>
+
+<script type="text/javascript">
+function settingFormSubmit(){
+	$('#settingForm').submit();
+}
+$(document).ready(function(){
+	$(".zform").change(function(){
+		$(this).siblings('[type=hidden]').val(1);
+	});
+});
+</script>
+	</body>
+</html>

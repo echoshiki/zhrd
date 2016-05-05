@@ -1,0 +1,170 @@
+<style type="text/css">
+  	.link_dqwz { color:#333;}
+  	.s-title { color:#666; margin-left:5px;}
+	.hidden { display:none;}
+</style>
+
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+          <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+      </div>
+      <div style="margin-top:25px; min-height:400px; ">
+        <!--  内容start -->
+        <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;站内消息
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	<tbody>
+			<?php if(!empty($messageNotRead)){ foreach($messageNotRead as $k=> $v) { ?>
+				<tr>
+                	<td width="80%" height="26" align="left">
+						<input type="checkbox" name="delCheckBox" class="delCheckBox" value="<?php echo $v['ID']?>">&nbsp;<a href="javascript:void(0)" title="<?php echo $v['TITLE']; ?>" class="link_04 read"><?php echo str_cut($v['TITLE'],100); ?></a>
+						<span class="hidden"><?php echo $v['TYPE']; ?></span>
+						<span class="message_new" style="color: #B20E0D;margin-left: 10px;">New!</span>
+					</td>
+                	<td width="20%" align="left" class="txt09">[ <?php echo date('Y-m-d H:i',$v['CREATETIME']); ?>]</td>
+              	</tr>
+			<?php } } ?>
+			  
+<?php  if( !empty($messageIsRead)){ foreach($messageIsRead as $k=> $v) { ?>
+			  	<tr>
+                	<td width="80%" height="26" align="left">
+						<input type="checkbox" name="delCheckBox" class="delCheckBox" value="<?php echo $v['ID']?>">&nbsp;
+						<a href="javascript:void(0)" title="<?php echo $v['TITLE']; ?>" class="link_04 read"><?php echo str_cut($v['TITLE'],100);  ?></a>
+						<span class="hidden"><?php echo $v['TYPE']; ?></span>
+					</td>
+                	<td width="20%" align="left" class="txt09">[ <?php echo date('Y-m-d H:i',$v['CREATETIME']); ?>]</td>
+              	</tr>
+<?php } } ?>
+
+<?php if( !empty($messageIsRead) || !empty($messageNotRead) ){ ?>
+				<tr>
+					<td height="12" colspan="2" >
+						<input type="checkbox" name="checkbox11" id="clickForDel" >
+						<button class="member_buttom" id="delAll" onclick="delAll();" style="background-color: rgb(106, 155, 42); height:30px; width:100px; font-weight:bold; color:#FFF">删除选中项</button>
+						<button class="member_buttom" id="readAll" onclick="readAll();" style="background-color: rgb(106, 155, 42); height:30px; width:100px; font-weight:bold; color:#FFF">标记为已读</button>
+					</td>
+				</tr>
+
+<script type="text/javascript">
+
+var readUrl = "<?php  echo site_url('member/message/read'); ?>";
+var delUrl = "<?php  echo site_url('member/message/delete'); ?>";
+var showUrl = "<?php  echo site_url('member/message/show'); ?>";
+
+function delAll(){
+    art.dialog({
+      title:'删除确认',
+      content:'确认删除所选项',
+      button: [
+		  { name: '确认',
+            focus: true,
+			callback: function () {
+				var delstring = '';
+				$('input:checked[name=delCheckBox]').each(function(){
+					delstring = delstring + $(this).val()+',';
+				});
+				if(delstring == ''){
+					art.dialog({title: '系统提示',content: '请选择删除项',okValue: '确定',ok: function(){}});
+				}else{
+					delstring = delstring.substr(0,delstring.length-1); 
+					$.post(delUrl,{messageId:delstring},
+						function(data){
+							if(data.code){ location.reload(); }else{ alert("操作失败，请尝试从新操作"); }
+						},
+						'json');
+				}
+             }
+          },
+		  {name :'关闭'}
+		  ]
+	});
+}
+
+
+function readAll(){
+    art.dialog({
+      title:'修改确认',
+      content:'确认修改所选项',
+      button: [
+		  { name: '确认',
+            focus: true,
+			callback: function () {
+				var delstring = '';
+				$('input:checked[name=delCheckBox]').each(function(){
+					delstring = delstring + $(this).val()+',';
+				});
+				if(delstring == ''){
+					art.dialog({title: '系统提示',content: '请选择修改项',okValue: '确定',ok: function(){}});
+				}else{
+					delstring = delstring.substr(0,delstring.length-1); 
+					$.post(readUrl,{messageId:delstring},
+						function(data){
+							if(data.code){ location.reload(); }else{ alert("操作失败，请尝试从新操作"); }
+						},
+						'json');
+				}
+             }
+          },
+		  {name :'关闭'}
+		  ]
+	});
+}
+
+
+$(document).ready(function(){
+	$('#clickForDel').click(function(){
+		var ischecked = true;
+		if(  $(this).attr('checked') == undefined)
+			ischecked = false;
+		$('.delCheckBox').attr('checked', ischecked );
+	});
+	
+	
+	$(".read").click(function(){
+		var showfire = $(this).siblings('.hidden').html();
+		$.post(showUrl,{messageId : $(this).siblings(".delCheckBox").val() },
+				function(data){
+					if(data.code){
+						if( showfire == 3) var fires = setInterval(fire,600);
+						art.dialog({
+							title: data.TITLE,
+							content: data.CONTENT,
+							okValue: '确定',
+							ok: function () {
+								
+							},
+							close: function(){
+								if( showfire == 3) clearInterval(fires);
+							}
+
+						});
+					}else{ alert("操作失败，请尝试从新操作"); }
+				},
+						'json');
+		$(this).siblings(".message_new").remove() ;
+	});
+});
+</script>
+			
+<?php } else{ ?>
+			<tr>
+				<td height="12" colspan="2" style="color:#ccc;text-align:center;">
+					<h1>暂无消息</h1>
+				</td>
+			</tr>
+<?php } ?>
+            </tbody>
+			</table>
+
+
+
+
+        <!--  内容end   -->
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div style="width:2px; height:80px; border:1px solid #333"></div>
+</div>
+

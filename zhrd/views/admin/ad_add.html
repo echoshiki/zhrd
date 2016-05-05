@@ -1,0 +1,23 @@
+
+   <!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+
+</head>
+<body>
+        <form method="POST" action="<?php echo site_url('/admin/ad/add'); ?>" id="add_form" name="add_form">
+
+          广告位名称：<input type="text" name="ADNAME" id="adname_add" /><br />
+          <div style="display:none;">广告位类型：<select name="ADTYPE">
+                        <option value="1">- 图片 -</option>
+                    </select></div>
+                    <input type="hidden" name="dopost" value="add"><br />
+                    <input type="button" class="button deepblue" id="picAdd" value="添加" onclick="checkform_ad('add');">
+
+        </form>
+</body>
+</html>
+
+

@@ -1,0 +1,288 @@
+<style type="text/css">
+	.form_mid { width: 900px;border:1px solid #000;}
+	.form_mid th{ height:50px; font-size: 18px; text-align: center;border:1px solid $000;}
+	.form_mid tr{ height:28px; text-align: center;border:1px solid #000;}
+	.form_mid tr td{ height:28px; text-align: center;border:1px solid #000;}
+	.th_1 { width:135px;}
+	.th_4 { width:428px;}
+	.input_b_th { text-align: left; padding-left:5px;  float:left; width:95px; line-height: 26px;_line-height: 20px;}
+	.input_b_th textarea{ width:300px;} 
+	.input_b { text-align: left;width:320px; float: left;}
+	.input_b_2 { text-align: left;float:left; width:300px; margin-left: 2px;_margin-left:0px;}
+	.input_b_2 input{ text-align: left;width:50px; margin-right: 3px;}
+	.btn { padding:28px;}
+	.input_b_3 { width:300px;}
+</style>
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a>
+<?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $v) { ?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php }  } ?>
+	</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  	
+	<td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="28" align="left" valign="top" class="txt08"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?>中国银行苏州分行融资申请 第二阶段 中型企业</td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>
+              <p>为便于您的融资意向能够更加效率准确的处理，请如实填写以下信息。</p>
+            <table width="50%" height="20" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+
+
+
+<!-- 表单start  -->
+<form action="<?php echo site_url('apply/index/step1'); ?>" method="post">
+
+<table class="form_mid" border="1" cellspacing="1" cellpadding="1" style="border-collapse:collapse; ">
+	<th colspan="4">财务信息</th>
+	<tr>
+		<td class="th_1">单位/万元</td>
+		<td class="th_2">当前月报数</td>
+		<td class="th_3">上年年报数</td>
+		<td class="th_4">补充说明</td>
+	</tr>
+	<tr>
+		<td>是否审计报表</td>
+		<td>&nbsp;</td>
+		<td><input type="radio" name="form[ISAUDIT]" value="1"/>是
+			<input type="radio" name="form[ISAUDIT]" value="2"/>否</td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>	
+	<tr>
+		<td>资产总额</td>
+		<td><input  type="input" name="form[ASSET][]" data-rule="required"/><span class="msg-box n-left" data-for="form[ASSET][]" ></span></td>
+		<td><input  type="input" name="form[ASSET][]" data-rule="required/><span class="msg-box n-left" data-for="form[ASSET][]" ></span></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>负债合计</td>
+		<td><input  type="input" name="form[DEBT][]" /></td>
+		<td><input  type="input" name="form[DEBT][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>所有者权益</td>
+		<td><input  type="input" name="form[OWNER_RIGHTS][]" /></td>
+		<td><input  type="input" name="form[OWNER_RIGHTS][]" /></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>应收账款</td>
+		<td><input  type="input" name="form[ACCOUNT_C][0]" /></td>
+		<td><input  type="input" name="form[ACCOUNT_C][1]" /></td>
+		<td>
+			<div class="account_c_b">
+				<div class="input_b_th">前年年报数：</div>
+				<div class="input_b">
+					<input  type="input" name="form[ACCOUNT_C][2]" /></div>
+				<div class="input_b_th">前三位欠款人：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_C][3][0]" />
+					<input type="text" name="form[ACCOUNT_C][4][0]" />
+					<input type="text" name="form[ACCOUNT_C][5][0]" /></div>
+				<div class="input_b_th">欠款额：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_C][3][1]"  />
+					<input type="text" name="form[ACCOUNT_C][4][1]"  />
+					<input type="text" name="form[ACCOUNT_C][5][1]"  /></div>
+				<div class="input_b_th">欠款账龄：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_C][3][2]"  />
+					<input type="text" name="form[ACCOUNT_C][4][2]"  />
+					<input type="text" name="form[ACCOUNT_C][5][2]"  /></div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>应付账款</td>
+		<td><input  type="input" name="form[ACCOUNT_P][]" /></td>
+		<td><input  type="input" name="form[ACCOUNT_P][]" /></td>
+		<td><div class="input_b_th">前年年报数：</div>
+			<div class="input_b"><input  type="input" name="form[ACCOUNT_P][]" /></div>
+		</td>
+	</tr>
+	<tr>
+		<td>存货余额</td>
+		<td><input  type="input" name="form[STOCK][]" /></td>
+		<td><input  type="input" name="form[STOCK][]" /></td>
+		<td><div class="input_b_th">前年年报数：</div>
+			<div class="input_b"><input  type="input" name="form[STOCK][]" /></div>
+			<div class="input_b_th"><textarea rows="5" name="form[STOCK][]">原材料在产品、产成品里的金额以及所占的比例…</textarea></div>
+		</td>
+	</tr>
+	<tr>
+		<td>主营业务销售收入</td>
+		<td><input  type="input" name="form[MAIN_SALE][]" /></td>
+		<td><input  type="input" name="form[MAIN_SALE][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>销售成本</td>
+		<td><input  type="input" name="form[COST][]" /></td>
+		<td><input  type="input" name="form[COST][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>净利润</td>
+		<td><input  type="input" name="form[PROFIT][]" /></td>
+		<td><input  type="input" name="form[PROFIT][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>经营性净现金流</td>
+		<td><input  type="input" name="form[CASHFLOW][]" /></td>
+		<td><input  type="input" name="form[CASHFLOW][]" /></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>其他应收款</td>
+		<td><input  type="input" name="form[ACCOUNT_OC][0]" /></td>
+		<td><input  type="input" name="form[ACCOUNT_OC][1]" /></td>
+		<td>
+			<div class="account_c_b">
+				<div class="input_b_th">前三位欠款人：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_OC][2][0]" />
+					<input type="text" name="form[ACCOUNT_OC][3][0]" />
+					<input type="text" name="form[ACCOUNT_OC][4][0]" /></div>
+				<div class="input_b_th">欠款额：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_OC][2][1]"  />
+					<input type="text" name="form[ACCOUNT_OC][3][1]"  />
+					<input type="text" name="form[ACCOUNT_OC][4][1]"  /></div>
+				<div class="input_b_th">欠款账龄：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_OC][2][2]"  />
+					<input type="text" name="form[ACCOUNT_OC][3][2]"  />
+					<input type="text" name="form[ACCOUNT_OC][4][2]"  /></div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>短期和长期投资</td>
+		<td><input  type="input" name="form[INVESTMENT][0]" /></td>
+		<td><input  type="input" name="form[INVESTMENT][1]" /></td>
+		<td>
+			<div class="account_c_b">
+				<div class="input_b_th">投资企业：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[INVESTMENT][2][0]" />
+					<input type="text" name="form[INVESTMENT][3][0]" />
+					<input type="text" name="form[INVESTMENT][4][0]" /></div>
+				<div class="input_b_th">投资金额：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[INVESTMENT][2][1]"  />
+					<input type="text" name="form[INVESTMENT][3][1]"  />
+					<input type="text" name="form[INVESTMENT][4][1]"  /></div>
+				<div class="input_b_th">股权占比：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[INVESTMENT][2][2]"  />
+					<input type="text" name="form[INVESTMENT][3][2]"  />
+					<input type="text" name="form[INVESTMENT][4][2]"  /></div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>银行短期借款</td>
+		<td><input  type="input" name="form[SHORT][]" /></td>
+		<td><input  type="input" name="form[SHORT][]" /></td>
+		<td><div class="input_b_th"><textarea rows="5" name="form[SHORT][]">若大幅改动请说明…</textarea></div></td>
+	</tr>
+	<tr>
+		<td>银行长期借款</td>
+		<td><input  type="input" name="form[LONG][]" /></td>
+		<td><input  type="input" name="form[LONG][]" /></td>
+		<td><div class="input_b_th"><textarea rows="5" name="form[LONG][]">若大幅改动请说明…</textarea></div></td>
+	</tr>
+	<tr>
+		<td>应付票据</td>
+		<td><input  type="input" name="form[PAYABLE][]" /></td>
+		<td><input  type="input" name="form[PAYABLE][]" /></td>
+		<td><div class="input_b_th"><textarea rows="5" name="form[PAYABLE][]">若大幅改动请说明…</textarea></div></td>
+	</tr>
+	<tr>
+		<td>其他应付款</td>
+		<td><input  type="input" name="form[ACCOUNT_OP][0]" /></td>
+		<td><input  type="input" name="form[ACCOUNT_OP][1]" /></td>
+		<td>
+			<div class="account_c_b">
+				<div class="input_b_th">债权人姓名：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_OP][2][0]" />
+					<input type="text" name="form[ACCOUNT_OP][3][0]" />
+					<input type="text" name="form[ACCOUNT_OP][4][0]" /></div>
+				<div class="input_b_th">往来金额：</div>
+				<div class="input_b_2">
+					<input type="text" name="form[ACCOUNT_OP][2][1]"  />
+					<input type="text" name="form[ACCOUNT_OP][3][1]"  />
+					<input type="text" name="form[ACCOUNT_OP][4][1]"  /></div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>固定资产</td>
+		<td><input  type="input" name="form[ASSET_FIXED][]" /></td>
+		<td><input  type="input" name="form[ASSET_FIXED][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>存货余额中原材料</td>
+		<td><input  type="input" name="form[MATERIAL][]" /></td>
+		<td><input  type="input" name="form[MATERIAL][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>无形资产中土地使用权</td>
+		<td><input  type="input" name="form[FIELD_RIGHTS][]" /></td>
+		<td><input  type="input" name="form[FIELD_RIGHTS][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>其他应付款中股东借款</td>
+		<td><input  type="input" name="form[ACCOUNT_OP_S][]" /></td>
+		<td><input  type="input" name="form[ACCOUNT_OP_S][]" /></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>目前在外融资金额</td>
+		<td colspan="2"><input  type="input" name="form[FINANCE_THIS]" class="input_b_3"/></td>
+		<td class="midtableborder">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>预计本年度销售收入</td>
+		<td colspan="2"><input  type="input" name="form[SALE_THIS]" class="input_b_3"/></td>
+		<td>&nbsp;</td>
+	</tr>
+
+
+    <tr>
+        <td colspan="4" class="btn"><input type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/></td>
+    </tr>
+
+</table>   
+ 	<input type="hidden" name="dopost" value="step1_mid" />
+</form>   
+<!-- 表单end -->
+
+                </td>
+              </tr>
+            </table>
+
+</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>

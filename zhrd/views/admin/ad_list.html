@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>">
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script>
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script>
+
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<script type = "text/javascript" language = "javascript">
+
+  function del(i){
+      art.dialog({
+          title:'删除确认',
+          content:'该操作将会连同其下的广告内容一同删除，确认要删除所选的广告位么？',
+          button: [
+              {  
+                  name: '确认',
+                  callback: function () {
+                      window.location.href="<?php echo site_url('/admin/ad/del?id=') ?>"+i;
+                  },
+                  focus: true
+              },
+              {
+                 name: '关闭'
+              }
+          ]
+      });
+  }
+
+  function del2(){
+    art.dialog({
+      title:'删除确认',
+      content:'该操作将会连同其下的广告内容一同删除，确认要删除所选的广告位么？',
+      button: [
+          {  
+              name: '确认',
+              callback: function () {
+                  var ck = document.getElementsByName("checkbox2");
+                  var ck_s = "";
+                  for (var i = ck.length - 1; i >= 0; i--) {
+                    if (ck[i].checked) {
+                        ck_s += ck[i].value +",";
+                    }
+                  }
+                  ck_s = ck_s.substr(0,ck_s.length-1);
+                  if (ck_s == "") { 
+                        art.dialog({
+                            title: '系统提示',
+                            content: '请选择要删除的广告位！',
+                            okValue: '确定',
+                            ok: function(){}
+                            
+                        });
+                  } else{
+                    window.location.href="<?php echo site_url('/admin/ad/del?id=') ?>"+ck_s;
+                  }
+                  
+             },
+             focus: true
+          },
+          {
+             name: '关闭'
+          }
+     ]
+  });
+
+  }
+
+  function ad_update(NAME,ORDER,TYPE,ID){
+    document.getElementById('ad_edit').style.display = 'block';
+    document.getElementById('adname_edit').value = NAME;
+    document.getElementById('listorder_e').value = ORDER;
+    document.getElementById('adid_e').value = ID;
+  }
+
+  // function ad_set(ID,NAME){
+  //   document.getElementById('ad_set').style.display = 'block';
+  //   document.getElementById('adname_s').value = NAME;
+
+  // }
+
+  function select_all(q){
+    var cks = document.getElementsByName('checkbox');
+    var cks2 = document.getElementsByName('checkbox2');
+    for (var i = cks.length - 1; i >= 0; i--) {
+          for (var i = cks2.length - 1; i >= 0; i--) {
+            cks2[i].checked = cks[q].checked;
+          }
+    }
+  }
+
+  function checkform_ad(i){
+
+      var n = document.getElementById('adname_'+i);
+      if (n.value == '' || n.value.length < 2 || n.value.length >10) {
+        art.dialog({
+            title: '系统提示',
+            content: '广告位用户名不能为空或广告位名称长度不合要求，请重新填写！',
+            okValue: '确定',
+            ok: function () {
+            }
+        });
+        return false;
+      } else {
+        document.getElementById(i+'_form').submit();
+      }
+
+  }
+
+ </script>
+
+ <script type="text/javascript">
+(function (d) {
+    d['okValue'] = '确定';
+    d['cancelValue'] = '取消';
+    d['title'] = '广告位管理';
+    // [more..]
+})(art.dialog.defaults);
+</script>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED" scroll="no">
+    <div class="righter">
+
+          <div class="datatable">
+          	 <div class="tip" >
+             	<div class="left">
+                    <abbr> 广告管理</abbr>
+                </div>
+                <div class="right">
+                    <span class="button deepblue" id="show_add" onClick="art.dialog({content:getC('<?php echo site_url('/admin/ad/add'); ?>')});">添加广告</span>
+                </div>
+             </div>
+             <div class=" head" >
+    
+             </div>
+             <div class="body">
+
+             	<table width="200" border="0" class="table bordered zebra">
+                      <tr>
+                        <td width="4%"><input onClick="select_all(0);" type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="9%">ID</td>
+                        <td width="9%">排序</td>
+                        <td width="33%">栏目名</td>
+                        <td width="13%">类型</td>
+                        <td width="20%">操作</td>
+                      </tr>
+
+                <?php foreach($result as $item): ?>
+                      <tr>
+                        <td><input type="checkbox" name="checkbox2" id="checkbox2" value="<?php echo $item['ADID']; ?>"></td>
+                        <td><?php  echo $item['ADID']; ?></td>
+                        <td><?php  echo $item['LISTORDER']; ?></td>
+                        <td><?php  echo $item['ADNAME']; ?></td>
+                        <td><?php  if($item['ADTYPE'] == 1) echo "图片"; ?></td>
+                        <td>
+                            <a id="show_edit" href="#" class="button medium2 blue" onClick="art.dialog({content:getC('<?php echo site_url('/admin/ad/edit?adid='.$item['ADID'].'&adnames='.urlencode($item['ADNAME']).'&order='.$item['LISTORDER']); ?>')});">修改</a>
+                            <a href="<?php echo site_url('/admin/ad/set?adid=').$item['ADID']; ?>" class="button medium2 green">设定</a>
+                            <a href="#" class="button medium2 red" onClick="return del(<?php echo $item['ADID']; ?>);">删除</a></td>
+                        </tr>
+                      
+                <?php endforeach; ?>
+                      <tr>
+
+                        <td><input type="checkbox" onClick="select_all(1);" name="checkbox" id="checkbox"></td>
+                        <td colspan="5"><button class="button medium" onClick="return del2();">删除选中项</button></td>
+                        </tr>
+                    </table>
+             </div>
+
+             <div class="foot">
+             	<div class="left">一页<?php echo $per_page; ?>行 共<?php echo $total; ?>行</div>
+                <div class="right">
+                    <div class="pager">
+<?php  echo $link; ?>
+                    </div>
+
+                </div>
+                <div style="clear:both"></div>
+             </div>
+          </div>    
+
+
+
+
+    </div>
+
+  </body>
+  </html>

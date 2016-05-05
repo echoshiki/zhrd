@@ -1,0 +1,140 @@
+<style type="text/css">
+	.news1_con_con ul .listnews_top { margin-bottom:30px;}
+	.news1_con_con ul .listnews { margin-top:2px; padding:0; height:30px; }
+	.txt01 { font-size:50px; }
+	.listnews a:link { color:#333;}
+	.listnews a:visited { color:#333;} 
+</style>
+
+<div class="yz_banner">
+	<div align="center">
+	<?php if($breadcrumbs[0]['THUMB']){?>
+<img src="<?php echo base_url($breadcrumbs[0]['THUMB']) ; ?>"  width="100%"/>
+<?php }?>
+		<!--<div class="focus" id="focus">
+		<div id="focus_m" class="focus_m">
+			<ul style="opacity: 1;">
+			<?php $count = 0; foreach($shouyepics as $k => $v ) { ?>
+				<li style="display: block;background:url('<?php echo base_url($v['URL']) ; ?>') top center no-repeat;">
+					<div class="sub_i">
+						<img src="<?php echo base_url('statics/image/') ; ?>/01.png" /><br><br><a href="<?php echo site_url($kuaiSuTongdao['rongzhiUrl']);?>"><img src="<?php echo base_url('statics/image/') ; ?>/02.png" border="0" style="margin-right:150px;" /></a><br>
+						<a href="javascript:;" onclick="art.dialog.open('/fast', {title: '融资快速通道',width:700});"><img src="<?php echo base_url('statics/image/') ; ?>/03.png" border="0" style="margin-right:150px; margin-top:10px;" /></a>
+					</div>
+					
+				</li>
+				<?php $count++; } ?>
+			</ul>
+		</div>
+		<script type="text/javascript" src="<?php echo base_url('statics/js/banner.js') ; ?>"></script>
+		<a href="javascript:;" class="focus_l" id="focus_l" hidefocus="true" title="上一张"><b></b><span></span></a>
+		<a href="javascript:;" class="focus_r" id="focus_r" hidefocus="true" title="下一张"><b></b><span></span></a>		
+        </div>-->
+	</div>
+</div>
+
+<?php $pid = $this->uri->segment(2); ?>
+<div class="con2">
+<?php if($pid!=81){   //非问答频道 ?>
+	<div style="text-align:center; padding-top:50px; padding-bottom:20px;">
+		<span class="txt01">
+			<?php if ($sid=='203') {
+				echo "科技金融专栏 TECH. & FINANCE";
+			}else{
+				echo "智慧资讯 NEWS";
+			} ?>
+		</span><br>
+	</div>
+	<div class="news1_dh" style="width:750px;">
+<?php if( !empty($categoryList)) { 
+		foreach($categoryList as $k => $v) { ?>
+		<?php $v['URL'] = '/news/'.$v['CATID']; ?>
+			<dt id="news_<?php echo $k+1;?>" class="<?php if($pid==$v['CATID']){?>news1_on<?php }else{?>news1_off<?php }?>" id="news1_tit1" style="cursor:pointer"><?php echo str_cut($v['CATNAME'],'50',''); ?></dt>
+			<dt class="<?php if($i==1){?>news1_on<?php }else{?>news1_off<?php }?>" id="news1_tit<?php echo $i;?>"  style="cursor:pointer"><?php echo $value['CATNAME'];?></dt>
+<?php } } ?>
+	</div>
+	<div class="clear"></div>
+<?php } ?>
+
+	<div class="news1_con">
+<!-------- 智慧问答 -------->
+<?php if (empty($categoryList)): ?>
+
+<style type="text/css">
+	.news1_con {margin-top:0; padding-top:35px; padding-bottom:35px;}
+</style>
+
+	<div id="news1_con1">
+		<div class="news1_con_con">
+        	<ul>
+			<?php  if( !empty($lists)){ foreach($lists as $k=> $v) { ?>
+				<li>
+					<div style="width:152px; float:left;"><a href="<?php echo site_url($v['URL']); ?>"><img src="<?php if(img( $v['THUMB'])){?><?php echo img( $v['THUMB']);?><?php }else{?><?php echo base_url('statics/image/') ; ?>/03.jpg<?php }?>" width="152" height="115" /></a></div>
+					<div style="width:300px; margin-left:15px; float:left;">
+						<p><a href="<?php echo site_url($v['URL']); ?>" class="link_02"><?php echo str_cut($v['TITLE'],55); ?></a></p>
+						<p class="txt03">　　<?php echo str_cut(put_des($v['ID'],$v['DESCRIPTION']),216); ?></p>
+					</div>
+				</li>
+				<?php } }else{echo '<tr><td><p style="color:#CCC;font-size: 17px;font-weight: bold;">暂无数据</p></td></tr>';}?>
+				
+			</ul>
+			<?php  echo $paginationLink; ?>
+        </div>
+		<div class="clear"></div>
+	 </div>
+<?php endif ?>
+<!-------- 智慧问答 -------->
+
+<!-------- 智慧资讯 -------->
+<?php foreach ($categoryList as $key => $value): ?>
+<?php 	$arrNews = $this->content_model->getList($value['CATID']); ?>		
+	 <div id="news_<?php echo $key+1 ?>_c">
+	  	<div class="news1_con_con">
+        	<ul>
+			<?php  if( !empty($arrNews)){ foreach($arrNews as $k=> $v) { ?>
+				<?php  	 if ($k<2) { ?>
+							<li class="listnews_top">
+								<div style="width:152px; float:left;"><a href="<?php echo site_url('/news/show/').'/'.$v['ID']; ?>"><img src="<?php if(img( $v['THUMB'])){?><?php echo img( $v['THUMB']);?><?php }else{?><?php echo base_url('statics/image/') ; ?>/03.jpg<?php }?>" width="152" height="115" /></a></div>
+								<div style="width:300px; margin-left:15px; float:left;">
+									<p><a href="<?php echo site_url('/news/show/').'/'.$v['ID']; ?>" class="link_02"><?php echo str_cut($v['TITLE'],55); ?></a></p>
+									<p class="txt03">　　<?php echo str_cut(put_des($v['ID'],$v['DESCRIPTION']),216); ?></p>
+								</div>
+							</li>
+				<?php }elseif($k<16){  ?>
+							<li class="listnews"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" style="margin-right:10px;"><a href="<?php echo site_url('/news/show/').'/'.$v['ID']; ?>"><?php echo str_cut($v['TITLE'],75); ?></a></li>
+				<?php } ?>	
+				<?php } }else{echo '<tr><td><p style="color:#CCC;font-size: 17px;font-weight: bold;">暂无数据</p></td></tr>';}?>
+			</ul>
+        </div>
+		<div class="clear"></div>
+	 </div>
+<?php endforeach ?>
+<!-------- 智慧资讯 -------->
+
+	<div style=" padding:30px 0;"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		    for (var i = 1; i <= 8; i++) {
+		        if ($('#news_'+i).attr('class') != 'news1_on') { 
+		        	$('#news_'+i+'_c').hide(); 
+		        	$('#news_1').attr('class','news1_on');
+		        	$('#news_1_c').show(); 
+		        };
+	            $('#news_'+i).click(function(){
+	               	for (var j = 1; j <= 8; j++) {
+	                   $('#news_'+j+'_c').hide();
+	                   $('#news_'+j).attr('class','news1_off');
+	            	};
+	            	$(this).attr('class','news1_on');
+	                var cid = $(this).attr('id') + '_c';
+	                $('#'+cid).show();
+		        });
+		    };		
+	});
+</script>
+
+</body>
+
+</html>		

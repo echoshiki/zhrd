@@ -1,0 +1,10 @@
+<form method="POST" action="<?php echo site_url('/admin/ad/edit'); ?>" id="edit_form" name="edit_form">
+  广告名称：<input type="text" name="ADNAME" id="adname_edit" value="<?php echo $this->input->get('adnames') ?>"/><br />
+  广告排序：<input type="text" name="LISTORDER" id="listorder_e" value="<?php echo $this->input->get('order') ?>" size="5"/><br />
+  <div style="display:none;">广告类型：<select name="ADTYPE">
+                <option value="1">- 图片 -</option>
+            </select></div>
+            <input type="hidden" name="ADID" id="adid_e" value="<?php echo $this->input->get('adid') ?>"/>
+            <input type="hidden" name="dopost" value="edit"><br />
+            <input type="button" class="button deepblue" id="picAdd" value="修改" onclick="checkform_ad('edit');">
+</form>

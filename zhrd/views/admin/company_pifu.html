@@ -1,0 +1,47 @@
+<form method="POST" action="<?php echo site_url('/admin/company/pifu'); ?>" id="push_form" name="push_form"> 
+<input type="hidden" name="dopost" value="pifu">
+<input type="hidden" name="formid" value="<?php echo $formid; ?>">
+<?php if( isset($status['PIFU'])) { ?>
+	<p><?php echo date('Y年m月d日h:m',$status['PIFUTIME']);?> 设置 <?php switch ($status['PIFU']) {
+		case '1':
+			echo "已批复";
+			break;
+		case '2':
+			echo "需要优化方案";
+			break;
+		case '0':
+			echo "未批复";
+			break;
+		
+	}?></p>
+<?php } ?>
+	<span>批复结果：</span>
+
+	<input type="radio" class="pifuradio" name="pifuStatus" value="1" <?php
+	 if($status['PIFU'] === '0')
+	 	{ echo 'disabled="disabled"';} 
+	 if($status['PIFU'] === '1')
+	 	{echo 'checked="checked"'; } 
+	 ?>  >
+	<span>已批复</span>
+
+	<input type="radio" class="pifuradio" name="pifuStatus" value="2" <?php 
+	if($status['PIFU'] === '0' || $status['PIFU'] === '1')
+		{ echo 'disabled="disabled"';} 
+	if($status['PIFU'] === '2')
+		{echo 'checked="checked"'; } 
+	?>  >
+	<span>需要优化方案</span>
+
+	<input type="radio" class="pifuradio" name="pifuStatus" value="0" <?php 
+	if($status['PIFU'] === '1' ||$status['PIFU'] === '2')
+		{ echo 'disabled="disabled"';} 
+	if($status['PIFU'] === '0')
+		{echo 'checked="checked"'; } 
+	?>  >
+	<span>未批复</span>
+<br/>
+<div style="display:none;" class="pifuinput"><span>批复金额：</span><input name="pifudemand" type="text" style="padding:2px;" value="">(万元)<span style="color:red">*</span></div>
+	<input type="submit" class="button deepblue" value="提交" style="float: right;">
+
+</form>

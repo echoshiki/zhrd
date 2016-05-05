@@ -1,0 +1,105 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:17 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:21 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:21 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:21 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:21 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:21 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 02:51:21 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 03:43:46 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 05:02:57 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 08:35:54 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 09:47:41 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:00:37 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-11-21 10:07:25 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:07:25 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:07:25 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:07:25 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:07:25 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:07:25 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 10:17:30 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-11-21 11:27:59 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-11-21 11:33:26 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 11:46:35 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 12:38:21 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 14:53:57 --> 404 Page Not Found --> favicon.ico
+ERROR - 2014-11-21 15:18:32 --> 404 Page Not Found --> product
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:09:55 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 18:59:14 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined offset: 0 /data/www/htdocs/zhrd/zhrd/controllers/content/page.php 30
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined offset: 0 /data/www/htdocs/zhrd/zhrd/views/content/show.html 1
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:56 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 19:13:59 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:59 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:59 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:59 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:59 --> Severity: Notice  --> Undefined variable: i /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 19:13:59 --> Severity: Notice  --> Undefined variable: value /data/www/htdocs/zhrd/zhrd/views/content/list_news.html 52
+ERROR - 2014-11-21 22:11:21 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16
+ERROR - 2014-11-21 23:40:49 --> Severity: Notice  --> Undefined offset: 0 /data/www/htdocs/zhrd/zhrd/controllers/content/page.php 30
+ERROR - 2014-11-21 23:40:49 --> Severity: Notice  --> Undefined offset: 0 /data/www/htdocs/zhrd/zhrd/views/content/show.html 1
+ERROR - 2014-11-21 23:40:49 --> Severity: Notice  --> Undefined index: INPUTTIME /data/www/htdocs/zhrd/zhrd/views/content/show.html 16

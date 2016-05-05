@@ -1,0 +1,195 @@
+<style type="text/css">
+#zhrd_captcha{ cursor: pointer;}
+input[type=text],input[type=password],
+textarea, .text{ background:#fff; border: 1px solid #ccc; box-shadow: 0 1px 1px #ccc inset; font-size: 14px;  line-height: 100%; display:inline-block; margin: 0; outline: medium none; padding:0.5em; margin:1px; border-radius: 3px;}
+.text.radius{ border-radius: 15px;}
+#r_form tr td{ text-align: left; padding-left:35px; }
+.txt05 { color:grey; font-size:12px;}
+#password { width:271px;}
+#r_title { padding:30px 0 0 80px; font-size:32px; font-family: "Microsoft YaHei", "Arial", "Helvetica";}
+
+  .title-login { text-align: center; font-size:28px; padding:60px 0 35px 0; color:#333;}
+
+  .login-main { width:1000px; margin:0 auto;}
+  .left-login { width:700px;  border:1px solid #CCC; float:left;}
+  .right-login { width:290px;  float:left;}
+  .txt11 { font-size:15px;}
+
+</style>
+
+
+
+<img src="<?php echo base_url('statics/image/loginr.gif') ; ?>"  width="100%"/>
+<div class="login-main">
+  <div class="left-login">
+    <div class="content-login">
+        <!--  表单start -->
+        <form id="login" name="" action="<?php echo site_url('/member/register'); ?>" method="post">
+        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+          <tr><td colspan="2" align="center" class="title-login"><span >注册智慧网贷&nbsp;&nbsp;Register</span></td></tr>
+          <tr>
+            <td width="24%" align="right" class="txt11">
+              <font color="#FF0000">*</font> 用户名：</td>
+            <td width="76%" align="left">
+              <input autocomplete="off" disableautocomplete name="username" type="text" size="40" class="ipt"  data-rule="required;username" ="请输入3-12位数字、字母"/></td>
+          </tr>
+        <tr>
+            <td align="right" class="txt11">&nbsp;</td>
+            <td height="" align="left" valign="top" class="txt05">
+              不区分大小写,请输入3-12位数字、字母<span class="msg-box" data-for="username"></span></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 密　码：</td>
+          <td align="left">
+            <div class="password">
+              <div class="holding" data-fieldname="password">
+                <div class="sidetip">
+                  <p class="tip"><!--6个或更多字符! 要复杂些。--></p>
+                  <p class="perfect isaok">高 </p>
+                  <p class="ok isaok">中</p>
+                  <p class="weak isaok">中</p>
+                  <p class="weak error" role="alert">弱</p>
+                  <p class="obvious error" role="alert">弱</p>
+                  <p class="invalid error" role="alert">密码为6-16位</p>
+                  <p class="blank error" role="alert">密码不能为空!</p>
+                </div>
+                <input id="password" name="password" type="password" size="40"  value="" class="ipt"  data-rule="required;password"/>
+                <span class="holder"></span> 
+              </div>
+              <div class="score"><span><b></b></span></div>
+            </div>
+      <!--<input id="" name="password" type="password" size="40" class="ipt"  data-rule="required;password" />   data-rule="required;password"  data-rule="required;password"-->
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05">
+            密码由6-16位数字、字母组成<span class="msg-box" data-for="password" style="display:none;"></span></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 再次输入密码：</td>
+          <td align="left">
+            <input name="password2" type="password" size="40" class="ipt"  data-rule="required;password;match[password]" data-msg-match="两次输入密码不一致"/></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05"><span class="msg-box" data-for="password2"></span></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 公司名称：</td>
+          <td align="left"><input autocomplete="off" disableautocomplete  name="companyName" type="text" size="40" class="ipt"  data-rule="required;length[1~100]" /></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05"><span class="msg-box" data-for="companyName"></span></td>
+        </tr> 
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 企业所在区域：</td>
+          <td width="70%" align="left"><?php echo $this->linkage->getSelect('35','0','areaid','','','  data-rule="required" data-msg-required="请选择"'); ?></td>
+        </tr>
+        <tr>
+         <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05"> <!--请输入3-12位数字、字母<span class="msg-box" data-for="username">--></td>
+        </tr> 
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 组织机构代码证号：</td>
+          <td align="left"><input autocomplete="off" disableautocomplete  name="licence" type="text" size="40" class="ipt"  data-rule="required;licence;length[9~15]"   data-msg-length="请输入9-15位组织机构代码证号" /></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05"><span class="msg-box" data-for="licence"></span></td>
+        </tr>   
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 手机号码：</td>
+          <td align="left"><input autocomplete="off" disableautocomplete  name="mobile" type="text" size="40" class="ipt"  data-rule="required;mobile;" /></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05">请填写真实有效的手机号码，我们会通过短信激活您的账号<span class="msg-box" data-for="mobile"></span></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000" style="display:none">*</font> &nbsp;&nbsp;电子邮箱：</td>
+          <td align="left"><input autocomplete="off" disableautocomplete  name="email" type="text" size="40" class="ipt"  data-rule="email" /></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11">&nbsp;</td>
+          <td height="" align="left" valign="top" class="txt05"><span class="msg-box" data-for="email"></span></td>
+        </tr>
+        <tr>
+          <td align="right" class="txt11"><font color="#FF0000">*</font> 验证码：</td>
+          <td align="left" class="txt01"><input autocomplete="off" disableautocomplete  type="text" name="captcha"  data-rule="required;length[4~4]" data-msg-length="验证码不正确" class="ipt" style="width:80px;float:left"><span id='zhrd_captcha_span' title="点击更换" style="float:left;height:30px;margin-left:20px;"> <?php echo $checkCode;?></span> </td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td align="left"><span class="msg-box" data-for="captcha"></span>&nbsp;</td>
+        </tr>
+    
+        <tr>
+          <td colspan="2" align="center" class="txt01"><input type="checkbox" name="checkbox" value="checkbox" data-rule="checked" data-msg-checked="请阅读相关文档并勾选" /> <font class="txt05">同意</font> <a href="<?php echo site_url('page/75'); ?>" target="_blank" class="link_01">"服务条款"</a> <font class="txt05">和</font> <a href="<?php echo site_url('page/125');?>" target="_blank" class="link_01">"隐私权相关政策"</a> </td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td align="left">
+            <input type="image" name="submit" style=" width:201px;height:32px" src="<?php echo base_url('statics/images/45.jpg') ; ?>" /> 
+          </td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+        </tr>
+      </table>
+    </form>
+
+
+        <!--  表单end -->
+    </div>
+  </div>
+  <div class="right-login">
+    <img src="<?php echo base_url('statics/images/') ; ?>/44.jpg" height="420px"/>
+  </div>
+  <div style="clear:both"></div>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+
+        $('#zhrd_captcha').live('click',function(){
+          $.post('<?php echo site_url('capt'); ?>',{'captcha':'1'},function(data){
+            $('#zhrd_captcha_span').html(data);
+          });
+        });
+
+
+        $(".holding input").live("paste cut keydown keyup focus",
+                function() {
+                    $.trim($(this).val()) != "" && $(this).parent().addClass("hasome")
+                }),
+                $(".holding input").live("blur",function() {
+                    $.trim($(this).val()) == "" && $(this).parent().removeClass("hasome")
+                })
+        
+        //keydown keyup 
+        $('#password').live("paste cut focus blur", function(){
+            $.trim($(this).val()) != "" ? $('.score').show() && $(this).password() : $('.sidetip .tip').addClass('active').siblings().removeClass('active') && $('.score').hide();
+        })
+    
+    $('#password').keyup(function(){
+      var maxNum = 16;
+      var inputPwd = $(this).val();
+      if( inputPwd.length > maxNum){
+        $('.invalid ').addClass('active').siblings().removeClass('active');
+        $(this).val( inputPwd.substr(0,maxNum) );
+      }
+      return false;
+    });
+    })
+</script>

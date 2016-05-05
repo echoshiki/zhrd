@@ -1,0 +1,13 @@
+<form method="POST" action="<?php echo site_url('/admin/company/baopi'); ?>" id="push_form" name="push_form"> 
+	<input type="hidden" name="dopost" value="baopi">
+	<input type="hidden" name="formid" value="<?php echo $formid; ?>">
+
+	<div>
+		<span>报批状态：</span>
+		<input type="radio" id="" name="baopiStatus" value="1" ><span>已报批</span>
+		<input type="radio" id="" name="baopiStatus" value="0" ><span>未报批</span>
+
+		<input type="submit" class="button deepblue" value="提交" style="float: right;">
+	</div>
+  
+</form>

@@ -1,0 +1,218 @@
+<link rel="stylesheet" href="../statics/css/table.css">
+<style type="text/css">
+	.form_mid {}
+	.form_mid th{ height:50px; font-size: 18px; text-align: center;}
+	.form_mid tr td{ height:28px;}
+
+	.th_1 { width:15%;}
+	.th_4 { }
+
+	.input_b_th { clear:both; text-align: left; padding-left:5px;  float:left; width:95px; line-height: 26px;_line-height: 20px;}
+	.input_b_2 { text-align: left;float:left; width:130px; margin-left: 2px;_margin-left:0px; }
+	.input_b_2 input{ text-align: left; width:160px; margin-right: 3px; }
+
+	.input_b_th_2 { text-align: left; padding-left:5px;  float:left; width:235px; line-height: 32px;_line-height: 27px;}
+	.input_b_3 { text-align: left;float:left; width:283px; margin-left: 2px;_margin-left:0px;}
+	.input_b_3 input{ text-align: left; width:283px; margin-right: 3px;}
+    .zh_table textarea{ border:1px solid #CCC; padding:6px;}
+	.zh_table td{ vertical-align:middle}
+    .zh_table.bordered{border-collapse:collapse;}
+	.btn { padding:28px;}
+	.link_dqwz { color:#333;}
+  	.s-title { color:#666; margin-left:5px;}
+</style>
+
+<div style="border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a> > 中型企业融资申请 步骤二
+      </div>
+      <div style="margin-top:25px;">
+        <!--  内容start -->
+        <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?>我的融资申请 第二阶段 中型企业<span style="color:red">(2/3)</span>
+        <p class="s-title">为便于您的融资意向获得高效准确地处理，请如实填写以下信息。</p>
+		<!-- 表单start  -->
+		<form action="<?php echo site_url('apply/index/step2'); ?>" method="post">
+			<table class="form_mid zh_table bordered zebra" border='1'>
+				<th colspan="4" style="vertical-align:middle;">经营情况</th>
+				<tr>
+					<td class="th_1">企业主籍贯</td>
+					<td class="th_2" style="text-align:left;"><input type="text" name="form[OWNER_HOME]"    data-rule="required"/></td>
+				</tr>
+				<tr>
+					<td class="th_1">家庭主生活区域</td>
+					<td class="th_2" style="text-align:left;"><input type="text" name="form[FAMILY]"    data-rule="required"/></td>
+				</tr>
+				<tr>
+					<td>是否本地置业</td>
+					<td><div style="float:left;"><input  type="radio" value="1" name="form[ISBUY]" data-rule="checked"/>是 &nbsp;&nbsp;<input type="radio" value="2" name="form[ISBUY]" />否</div></td>
+				</tr>
+				<tr>
+					<td>企业主从业年限</td>
+					<td><div style="float:left;"><?php echo $this->linkage->getSelect('185','','form','','',' data-rule="required" data-msg-required="请选择"','OWNER_TIME'); ?></div></td>
+				</tr>
+				<tr>
+					<td>企业主从业经历</td>
+					<td>
+						<table style="border-right:1px solid #CCC;">
+							<tr>
+								<td>时段</td>
+								<td>任职公司</td>
+								<td>主营业务</td>
+								<td>职位</td>
+							</tr>
+							<tr>
+								<td><input type="text" name="form[EXPERIENCE][0][0]"   data-rule="required"/><span class="msg-box n-left" data-for="form[EXPERIENCE][0][0]" ></span></td>
+								<td><input type="text" name="form[EXPERIENCE][0][1]"   data-rule="required"/><span class="msg-box n-left" data-for="form[EXPERIENCE][0][1]" ></span></td>
+								<td><input type="text" name="form[EXPERIENCE][0][2]"   data-rule="required"/><span class="msg-box n-left" data-for="form[EXPERIENCE][0][2]" ></span></td>
+								<td><input type="text" name="form[EXPERIENCE][0][3]"   data-rule="required"/><span class="msg-box n-left" data-for="form[EXPERIENCE][0][3]" ></span></td>
+							</tr>
+							<tr>
+								<td><input type="text" name="form[EXPERIENCE][1][0]" /></td>
+								<td><input type="text" name="form[EXPERIENCE][1][1]" /></td>
+								<td><input type="text" name="form[EXPERIENCE][1][2]" /></td>
+								<td><input type="text" name="form[EXPERIENCE][1][3]" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" name="form[EXPERIENCE][2][0]" /></td>
+								<td><input type="text" name="form[EXPERIENCE][2][1]" /></td>
+								<td><input type="text" name="form[EXPERIENCE][2][2]" /></td>
+								<td><input type="text" name="form[EXPERIENCE][2][3]" /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>资质证书<br/>（如果没有请填无）</td>
+					<td>
+						<table>
+						<tr>
+							<td style="width:340px">
+								<div class="account_c_b">
+									<div class="input_b_th">名称：</div>
+									<div class="input_b_2">
+										<span class="msg-box n-left" data-for="form[CERTIFICATE][0][0]" ></span><input id="ll_1" type="text" name="form[CERTIFICATE][0][0]"  data-rule="required"/></div>
+									<div class="input_b_th">发证机构：</div>
+									<div class="input_b_2">
+										<span class="msg-box n-left" data-for="form[CERTIFICATE][0][1]" ></span><input id="ll_2" type="text" name="form[CERTIFICATE][0][1]"  data-rule="required"/></div>
+									<div class="input_b_th">权属人：</div>
+									<div class="input_b_2">
+										<span class="msg-box n-left" data-for="form[CERTIFICATE][0][2]" ></span><input id="ll_3" type="text" name="form[CERTIFICATE][0][2]"   data-rule="required"/></div>
+									<div class="input_b_th">有效期：</div>
+									<div class="input_b_2">
+										<span class="msg-box n-left" data-for="form[CERTIFICATE][0][3]" ></span><input id="ll_4" type="text" name="form[CERTIFICATE][0][3]"  data-rule="required"/></div>
+									<div class="input_b_th">年审要求：</div>
+									<div class="input_b_2">
+										<span class="msg-box n-left" data-for="form[CERTIFICATE][0][4]" ></span><input id="ll_5" type="text" name="form[CERTIFICATE][0][4]"  data-rule="required"/></div>
+									<div class="input_b_th">最新年审时间：</div>
+									<div class="input_b_2">
+										<span class="msg-box n-left" data-for="form[CERTIFICATE][0][5]" ></span><input id="ll_6" type="text" name="form[CERTIFICATE][0][5]"   data-rule="required"/></div>
+
+								</div>
+							</td>
+							<td style="width:340px">
+								<div class="account_c_b">
+									<div class="input_b_th">名称：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][1][]" id="ll_7"/></div>
+									<div class="input_b_th">发证机构：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][1][]" id="ll_8"/></div>
+									<div class="input_b_th">权属人：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][1][]"  id="ll_9"/></div>
+									<div class="input_b_th">有效期：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][1][]"  id="ll_10"/></div>
+									<div class="input_b_th">年审要求：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][1][]"  id="ll_11"/></div>
+									<div class="input_b_th">最新年审时间：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][1][]"  id="ll_12"/></div>
+								</div>
+							</td>
+							<td style="width:340px">
+								<div class="account_c_b">
+									<div class="input_b_th">名称：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][2][]" id="ll_13"/></div>
+									<div class="input_b_th">发证机构：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][2][]" id="ll_14"/></div>
+									<div class="input_b_th">权属人：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][2][]" id="ll_15" /></div>
+									<div class="input_b_th">有效期：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][2][]" id="ll_16" /></div>
+									<div class="input_b_th">年审要求：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][2][]" id="ll_17" /></div>
+									<div class="input_b_th">最新年审时间：</div>
+									<div class="input_b_2">
+										<input type="text" name="form[CERTIFICATE][2][]" id="ll_18" /></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<div class="input_b_th_2">污排污许可证，请提供无需办理的依据：</div>
+								<div class="input_b_3">
+									<input type="text" name="form[CERTIFICATE][3]" id="ll_19"/></div>
+								</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>企业经营年限</td>
+					<td ><div style="float:left;"><?php echo $this->linkage->getSelect('190','','form','','',' data-rule="required" data-msg-required="请选择"','COM_TIME'); ?></div></td>
+				</tr>
+				<tr>
+					<td>员工数</td>
+					<td><div style="float:left;"><?php echo $this->linkage->getSelect('195','','form','','',' data-rule="required" data-msg-required="请选择"','STAFF'); ?></div></td>
+				</tr>
+				<tr>
+					<td>经营场所权属</td>
+					<td><div style="float:left;"><input type="radio" value="1" id="belong_1" name="form[BELONG]" data-rule="checked"/>自有 &nbsp;&nbsp;<input type="radio" value="2" id="belong_2" name="form[BELONG]" />租赁 &nbsp;&nbsp;
+						<span id="belong_insert"></span>
+					</div></td>
+				</tr>
+				<th colspan="4" style="vertical-align:middle;">行业情况</th>
+				<tr>
+					<td>主营业务</td>
+					<td><input style="float:left;" type="text" name="form[MAIN]" data-rule="required"/></td>
+				</tr>
+				<tr>
+					<td>是否为行业龙头</td>
+					<td><div style="float:left;"><input  type="radio" value="1" name="form[PLACE]" data-rule="checked"/>否 &nbsp;&nbsp;<input type="radio" value="2" name="form[PLACE]" />是（行业内排名前三或市场份额超过30%）</div></td>
+				</tr>
+				<tr>
+					<td>主要竞争对手</td>
+					<td><input style="float:left;" type="text" name="form[RIVAL]" data-rule="required"/></td>
+				</tr>
+				<tr>
+					<td>上市ipo预期</td>
+					<td><div style="float:left;"><?php echo $this->linkage->getSelect('199','','form','','',' data-rule="required" data-msg-required="请选择"','ISLIST'); ?></div></td>
+				</tr>
+				<tr>
+					<td>资金用途（融资用途）</td>
+					<td><?php echo $this->linkage->getSelect('350',0,'form','','','  data-rule="required" data-msg-required="请选择"','USE'); ?>
+						
+					</td>
+				</tr>
+			    <tr>
+			        <td colspan="4" class="btn"><input type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/>		<div style=" margin-top: 5px;color: #B20E0D; ">(提交之后将无法修改申请表单，请核实表单无误后提交)</div></td>
+			    </tr>
+			</table>   
+		 	<input type="hidden" name="dopost" value="step2_mid" />
+		</form>     
+		<!-- 表单end -->
+
+        <!--  内容end   -->
+      </div>
+</div>
+<div class="clear"></div>
+ 
+</div>
+<div style="width:2px; height:60px; border:1px solid #333"></div>
+</div>

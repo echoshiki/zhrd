@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+ 
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<script type = "text/javascript" language = "javascript">
+
+  function del(i){
+      art.dialog({
+          title:'删除确认',
+          content:'该操作将会连同主题下的评论一起删除，确认要删除留言么？',
+          button: [
+              {  
+                  name: '确认',
+                  callback: function () {
+                      window.location.href="<?php echo site_url('/admin/msg/del?id=') ?>"+i;
+                  },
+                  focus: true
+              },
+              {
+                 name: '关闭'
+              }
+          ]
+      });
+  }
+
+  function del2(){
+    art.dialog({
+      title:'删除确认',
+      content:'该操作将会连同主题下的评论一起删除，确认要删除留言么？',
+      button: [
+          {  
+              name: '确认',
+              callback: function () {
+                  var ck = document.getElementsByName("checkbox2");
+                  var ck_s = "";
+                  for (var i = ck.length - 1; i >= 0; i--) {
+                    if (ck[i].checked) {
+                        ck_s += ck[i].value +",";
+                    }
+                  }
+                  ck_s = ck_s.substr(0,ck_s.length-1);
+                  if (ck_s == "") { 
+                        art.dialog({
+                            title: '系统提示',
+                            content: '请选择要删除的留言！',
+                            okValue: '确定',
+                            ok: function(){}
+                            
+                        });
+                  } else{
+                    window.location.href="<?php echo site_url('/admin/msg/del?id=') ?>"+ck_s;
+                  }
+                  
+             },
+             focus: true
+          },
+          {
+             name: '关闭'
+          }
+     ]
+  });
+
+  }
+
+  function select_all(q){
+    var cks = document.getElementsByName('checkbox');
+    var cks2 = document.getElementsByName('checkbox2');
+    for (var i = cks.length - 1; i >= 0; i--) {
+          for (var i = cks2.length - 1; i >= 0; i--) {
+            cks2[i].checked = cks[q].checked;
+          }
+    }
+  }
+
+       function showlist(n){
+          var name    = 'relist' + n;
+          var huifu   = 'show_reply' + n;
+          var yincang = 'hide_reply' + n;
+          $('#'+name).show(500);
+          $('#'+huifu).hide();
+          $('#'+yincang).show();
+       }  
+
+       function hidelist(n){
+          var name    = 'relist' + n;
+          var huifu   = 'show_reply' + n;
+          var yincang = 'hide_reply' + n;
+          $('#'+name).hide(500);
+          $('#'+huifu).show();
+          $('#'+yincang).hide();
+       }
+
+       function ver(id){
+        t=(new Date()).getTime();
+        $.get('<?php echo site_url("admin/msg/verify?t='+t+'&id="); ?>'+id,function(data){
+          if(data==0){
+            $('#vfont'+id).html('<span class="button medium2 grey">未审核</span>');
+          }else{
+            $('#vfont'+id).html('<span class="button medium2 red">已审核</span>');
+          }
+        });  
+       }
+ </script>
+
+<style type="text/css">
+  a:hover{ text-decoration: none; }
+</style>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED" scroll="no">
+    <div class="righter">
+
+          <div class="datatable">
+          	 <div class="tip" >
+             	<div class="left">
+                    <abbr>留言管理</abbr>
+                </div>
+                <div class="right">
+<!--                     <span class="button deepblue" id="show_add" onClick="art.dialog({content:getC('<?php echo site_url('/admin/ad/add'); ?>')});">添加广告</span> -->
+                </div>
+             </div>
+             <div class=" head" >
+    
+             </div>
+             <div class="body">
+
+             	<table width="200" border="0" class="table bordered zebra">
+                      <tr>
+                        <td width="4%"><input onClick="select_all(0);" type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="3%">ID</td>
+                        <td width="8%">留言用户</td>
+                        <td width="18%">留言标题</td>
+                        <td width="41%">留言内容</td>
+                        <td width="27%">操作</td>
+                      </tr>
+                <?php foreach($msg as $key => $value): ?>
+                      <tr>
+                        <td><input type="checkbox" name="checkbox2" id="checkbox2" value="<?php echo $value['ID']; ?>"></td>
+                        <td><?php  echo $value['ID']; ?></td>
+                        <td><?php echo $value['USERNAME']; ?></td>
+                        <td><?php  echo shortFor($value['TITLE'],10); ?></td>
+                        <td><a href="#"  onClick="art.dialog({title: '查看详细',content:getC('<?php echo site_url('admin/msg/show?id='.$value['ID']); ?>')});"><?php  echo shortFor($value['CONTENT'],23); ?></a></td>
+                        <td>
+                              <a href="#" onclick="ver(<?php echo $value['ID'];?>);"><span id="vfont<?php echo $value['ID']; ?>"><?php if($value['STATUS'] == '0'){ ?><span class="button medium2 grey">未审核</span><?php }else{ ?><span class="button medium2 red">已审核</span><?php } ?> </span></a>
+
+                            <?php 
+                              $is = 0;
+                              foreach ($value['child'] as $ks => $vs) {
+                                  if ($vs['STATUS'] == '0') {
+                                      $is++;
+                                  }
+                              }
+                              $to = count($value['child']);
+                             ?>
+
+                            <a href="javascript:void(0)" title="<?php echo $is; ?>条未审核" id="show_reply<?php echo $value['ID']; ?>" class="button medium2 green" onClick="showlist(<?php echo $value['ID']; ?>);">查看回复(<?php echo "<span style='color:red; font-weight:bold;'>".$is."</span>/".$to; ?>)</a>
+                            <a href="javascript:void(0)" id="hide_reply<?php echo $value['ID']; ?>" class="button medium2 green" onClick="hidelist(<?php echo $value['ID']; ?>);" style="display:none">收起回复</a>
+                            <a href="javascript:void(0)" class="button medium2 orange" onClick="art.dialog({title: '回复留言',content:getC('<?php echo site_url('admin/msg/reply?id='.$value['ID']); ?>')});">回复</a>
+                            <a href="javascript:void(0)" class="button medium2 blue" onClick="return del(<?php echo $value['ID']; ?>);">删除</a>
+                        </td>
+                      </tr>
+                      <tbody id="relist<?php echo $value['ID']; ?>" style="display:none">
+                      <?php foreach ($value['child'] as $k => $v) { ?>
+                            <tr>
+                                <td><input type="checkbox" name="checkbox2" id="checkbox2" value="<?php echo $v['ID']; ?>"></td>
+                                <td>&nbsp;→</td>
+                                <td><?php if($v['TYPE']=='1'){echo $uname=getVal('MEMBER','USERNAME','USERID',$v['USERID']);}else{echo $uname=getVal('ADMIN','USERNAME','USERID',$v['USERID']);} ?></td>
+                                <td>回复</td>
+                                <td><?php  echo $v['CONTENT']; ?></td>
+                                <td>
+
+                                  <a href="#" onclick="ver(<?php echo $v['ID'];?>);"><span id="vfont<?php echo $v['ID']; ?>"><?php if($v['STATUS'] == '0'){ ?><span class="button medium2 grey">未审核</span><?php }else{ ?><span class="button medium2 red">已审核</span><?php } ?> </span></a>
+                                  <a href="javascript:void(0)" class="button medium2 orange" onClick="art.dialog({title: '回复留言',content:getC('<?php echo site_url('admin/msg/reply?id='.$v['ID']); ?>')});">回复</a>
+                                  <a href="javascript:void(0)" class="button medium2 blue" onClick="return del(<?php echo $v['ID']; ?>);">删除</a>
+                                </td>                                     
+                            </tr>
+                      <?php } ?>  
+                      </tbody>    
+                <?php endforeach; ?>
+
+                      <tr>
+                        <td><input type="checkbox" onClick="select_all(1);" name="checkbox" id="checkbox"></td>
+                        <td colspan="5"><button class="button medium" onClick="return del2();">删除选中项</button></td>
+                      </tr>
+                    </table>
+             </div>
+
+             <div class="foot">
+             	<div class="left">每页显示<?php echo $per_page; ?>条主题 共<?php echo $total; ?>条主题</div>
+                <div class="right">
+                    <div class="pager">
+<?php  echo $link; ?>
+                    </div>
+
+                </div>
+                <div style="clear:both"></div>
+             </div>
+          </div>    
+
+
+
+
+    </div>
+
+  </body>
+  </html>

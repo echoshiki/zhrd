@@ -1,0 +1,79 @@
+<style type="text/css">
+.news2_dh { margin-top:30px; padding-bottom:40px; }
+.txt01 { font-size:50px; }
+</style>
+
+<div class="yz_banner">
+	<div align="center">
+	<img src="<?php echo base_url($breadcrumbs[0]['THUMB']) ; ?>"  width="100%"/>
+		<!--<div class="focus" id="focus">
+		<div id="focus_m" class="focus_m">
+			<ul style="opacity: 1;">
+			<?php $count = 0; foreach($shouyepics as $k => $v ) { ?>
+				<li style="display: block;background:url('<?php echo base_url($v['URL']) ; ?>') top center no-repeat;">
+					<div class="sub_i"><img src="<?php echo base_url('statics/image/') ; ?>/01.png" /><br><br><a href="<?php echo site_url($kuaiSuTongdao['rongzhiUrl']);?>"><img src="<?php echo base_url('statics/image/') ; ?>/02.png" border="0" style="margin-right:150px;" /></a><br><a href="javascript:;" onclick="art.dialog.open('/fast', {title: '融资快速通道',width:700});"><img src="<?php echo base_url('statics/image/') ; ?>/03.png" border="0" style="margin-right:150px; margin-top:10px;" /></a></div>
+				</li>
+				<?php $count++; } ?>
+			</ul>
+		</div>
+		<script type="text/javascript" src="<?php echo base_url('statics/js/banner.js') ; ?>"></script>
+		<a href="javascript:;" class="focus_l" id="focus_l" hidefocus="true" title="上一张"><b></b><span></span></a>
+		<a href="javascript:;" class="focus_r" id="focus_r" hidefocus="true" title="下一张"><b></b><span></span></a>		
+        </div>-->
+	</div>
+</div>
+
+<div class="con2">
+<? //print_r ($breadcrumbs[0]['THUMB']);?>
+  <div style="text-align:center; padding-top:50px;">
+		<span class="txt01"><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?><?php echo $v['CATNAME']; ?> PRODUCTS<?php }  } ?></span>
+		<div class="products">
+		
+		<div class="news2_dh">
+<?php if(!empty( $categoryList)) { 
+				$i=1;
+		foreach( $categoryList as $value) { ?>
+			<dt class="<?php if($i==1){?>news1_on<?php }else{?>news1_off<?php }?>" id="news1_tit<?php echo $i;?>" onclick="news1(<?php echo $i;?>,1,8)" style="cursor:pointer"><?php echo $value['CATNAME'];?></dt>
+			<?php 
+			$i++;
+			} 
+			}else{ echo '暂无数据'; 
+			}  ?>
+		</div>
+		<div class="clear"></div>
+		<?php if(!empty( $categoryList)) { 
+		$i=1;
+		foreach( $categoryList as $value) { ?>
+		
+		<div id="news1_con<?php echo $i;?>"<?php if($i==1){?><?php }else{?> style="display:none;"<?php }?>>
+			<ul>
+			<?php if( !empty($value['contentList'])){ foreach($value['contentList'] as $k=> $v) { ?>
+				<li style="height:295px;">
+					<a href="<?php echo site_url($v['URL']); ?>">
+					<div><img src="<?php echo img($v['THUMB']);?>" width="320" height="161" /></div>
+					<div class="products_1">
+						<div class="products_2"><?php echo $value['CATNAME'];?> > <?php echo $v['TITLE']; ?></div>
+						<div class="products_3"><?php echo str_cut($v['DESCRIPTION'],116); ?></div>
+					</div>
+					</a>
+				</li>
+				<?php }  }else{ echo '暂无数据'; } ?>
+			</ul>
+		</div>
+		<?php 
+			$i++;
+			} 
+			}else{ echo '暂无数据'; 
+			}  ?>
+	 
+		</div>
+		<div class="clear"></div>
+	    <div style=" padding:30px 0;"></div>
+	</div>
+</div>
+
+
+
+</body>
+
+</html>		

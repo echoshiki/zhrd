@@ -1,0 +1,39 @@
+<style type="text/css">
+  .link_dqwz { color:#333;}
+  .s-title { color:#666; margin-left:5px;}
+  .messageStatus { margin:5px 0 0 5px; font-size:13px;}
+</style>
+
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+          <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+      </div>
+      <div style="margin-top:25px; min-height:400px; ">
+        <!--  内容start -->
+        <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;申请记录
+        <?php if(!$existForm){ ?>
+        <div style="padding-top:13px; padding-left:5px"> 
+          <h3>尊敬的用户，您尚未申请过智慧网贷，立即申请请点击此处 &nbsp;<a href="<?php echo site_url('/apply'); ?>" title="融资申请" style="color:#B20E0D; font-size:16px;">融资申请</a></h3></div>
+        <?php }else{ ?>
+          <table width="100%" class="messageStatus">
+          <?php foreach($all_form_detail as $k=>$v){ ?>
+            <tr>
+              <td height="12" >填写时间</td>
+              <td height="12" ><?php  echo date('Y-m-d',$v['CREATETIME']);  ?></td>
+              <td height="12">表单信息</td>
+              <td height="12" ><a href="javascript:void(0)" onclick="window.open('/member/showformdetail/<?php echo $v['ID']; ?>','newwindow','height=600,width=600,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,status=no');" title="查看表单详细" style="color:#B20E0D">表单详细</a></td>
+            </tr>
+          <?php } } ?>
+          </table>
+        <!--  内容end   -->
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div style="width:2px; height:80px; border:1px solid #333"></div>
+</div>
+
+
+

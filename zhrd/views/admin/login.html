@@ -1,0 +1,93 @@
+
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/jquery-1.3.2.min.js') ?>"></script> 
+ 
+</head>
+
+
+<style type="text/css">
+
+
+.wbg{ background-color:#FFF; color:#333}
+.topbar{ background-color:#3B5998;}
+.sidebar{ color:#333}
+input[type='checkbox']{ margin:3px 6px; }
+.login_box{ width:500px; height:300px; margin:auto; margin-top:100px;}
+.logintb td{ border:none}
+.logintb th{ border:none; text-align:right; line-height:33px;}
+.xinput{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #CCCCCC inset;
+    display: inline-block;
+    font-size: 14px;
+    margin: 1px;
+    outline: medium none;
+    padding: 0.5em;
+    _width:160px;
+    _height:29px;
+
+}
+</style>
+
+
+
+
+<body>
+     <div style="width:100%; height:100%; z-index:-1;">
+         <img src="/statics/imgs/8fc_bg_2.jpg" height="100%" width="100%" style="height:100%;"/>   
+    </div>    
+    <div class="popup" style="display:block;">
+    <form action="<?php echo site_url('admin/login')  ?>" name="login" method="post">
+   	<div class="head" style="color:#3E7DE8; font-weight:bold; ">
+    	智慧网贷系统    
+    </div>
+    <div class="body">
+		<table class="logintb">
+        	<tr>
+            	<th width="122">账&nbsp;&nbsp;&nbsp;号：</th>
+            <td width="188"><input type="text" name="info[USERNAME]"  class="xinput" value=""></td>
+                <td></td>
+            </tr>
+            <tr>
+            	<th align="right">密&nbsp;&nbsp;&nbsp;码：</th>
+                <td><input type="password" name="info[PASSWD]" class="xinput" value=""></td>
+                <td></td>
+            </tr>
+            <tr>
+            	<th align="right">验&nbsp;证&nbsp;码：</th>
+                <td><input type="input" name="info[checkCode]"  class="xinput"></td>
+                <td style="text-align:left!important"><span id='zhrd_captcha_span' title="点击更换" style="cursor: pointer;" ><?php echo $checkCode;?></span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="foot">
+    	<input type="hidden" name="dopost" value="1">
+    	<input name="submit" type="submit" value="登录" class="button blue">
+    	<input name="reset" type="reset" value="重置" class="button">
+    </div>
+    </form>
+   </div>
+<script type="text/javascript">
+$(function(){
+        $('#zhrd_captcha').live('click',function(){
+            
+          $.post('<?php echo site_url('capt'); ?>',{'captcha':'1'},function(data){
+            $('#zhrd_captcha_span').html(data);
+          });
+
+        });
+
+});
+</script>
+</body></html>

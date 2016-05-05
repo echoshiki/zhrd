@@ -1,0 +1,469 @@
+<style>
+#kefu{ width:120px; height:auto; position:fixed; top:50%; left:5px;z-index:8888; background:#fff; border:1px solid #d1d1d1;border-top:2px solid #ca2d25; display:; margin-top:-240px;}
+#kefu .top{ width:100%; height:35px; line-height:35px;font-family:"Microsoft YaHei"; font-size:14px; color:#333; font-weight:bold; text-align:center;}
+#kefu .middle{ font-size:12px; width:100%; text-align:center;}
+#kefu .middle p{ color:#991C0A;}
+#kefu .close{float:right; margin-right:10px; margin-top:10px; cursor:pointer;}
+.right_bar{ width:28px; height:95px; position:fixed; top:50%; left:0; margin-top:-242px; z-index:9999;display:none}
+.right_bar img{cursor:pointer;}
+</style>
+
+<?php
+$que1 = $this->db->select('ITEMID,URL,URLTO,ADID,ISCHECK')->where('ADID',183)->get('AD_ITEM') ->result_array();
+//print_r ($que1);
+foreach($que1 as $v1) {
+if($v1['ISCHECK']){
+$iss=1;
+}
+}
+if($iss){
+?>
+<div id="kefu">
+	<div class="top">
+		浮动广告<img src="<?php echo base_url('statics/images/') ; ?>/close.gif" class="close" />
+	</div>
+<div class="middle">
+	<? $que = $this->db->select('ITEMID,URL,URLTO,ADID,ISCHECK')->where('ADID',183)->get('AD_ITEM') ->result_array();
+foreach($que as $v) { 
+if($v['ISCHECK']){
+?>
+<a href="<?=$v['URLTO']?>" target="_blank"><img src="<?=$v['URL']?>" border="0" width="105"></a><br/><br/>
+<? 
+}
+}?>
+</div>
+</div>
+<div class="right_bar">
+	<img src="<?php echo base_url('statics/images/') ; ?>/right_bar.jpg" />
+</div>
+<script>
+$(function(){
+	$('.right_bar').click(function(){
+		$(this).hide();
+		$('#kefu').show();
+	});
+	$('#kefu .close').click(function(){
+		$('.right_bar').show();
+		$('#kefu').hide();
+	});
+});
+</script>
+<?php 
+}
+?>
+<table width="960" height="15" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="197" valign="top">
+	<table width="100%" height="160" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+      <tr>
+        <td height="34" align="left" background="<?php echo base_url('statics/images/') ; ?>/06.jpg" class="txt03" style="padding-left:15px;">融资申请快速通道</td>
+      </tr>
+      <tr>
+        <td align="center" bgcolor="#FFFFFF"><table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="20" align="left" class="txt01" style="padding-left:3px;"><img src="<?php echo base_url('statics/images/') ; ?>/07.jpg" width="14" height="12" align="absmiddle" /> <a href="<?php echo site_url($kuaiSuTongdao['kehugaozhishu']); ?>"  target="_blank"  class="link_01">智慧网贷客户告知书</a></td>
+          </tr>
+          <tr>
+            <td height="26" align="left" valign="top" class="txt01"><input id="agreeCheckbox" type="checkbox" name="checkbox" value="checkbox" /> <a id="forAgree" class="" style="cursor: pointer;">我已阅读并同意以上内容</a></td>
+          </tr>
+          <tr>
+            <td align="left">
+				<input id="rz" type="image" src="<?php echo base_url('statics/images/') ; ?>/08.jpg	"  style="width:171px;height:51px;"/>
+			</td>
+          </tr>
+        </table>
+		</td>
+      </tr>
+    </table>
+      <table width="50%" border="0" cellspacing="0" cellpadding="0" height="11">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" height="193" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+        <tr>
+		          <td ><img src="<?php echo base_url('statics/images/') ; ?>/19.jpg" width="197" height="36" /></td>
+		  
+        </tr>
+        <tr>
+          <td align="center" bgcolor="#FFFFFF">
+
+	
+<table width="100%" height="180" border="0" cellpadding="0" cellspacing="1" >
+  <tr>
+	<td align="center" valign="top" bgcolor="#FFFFFF"><img src="<?php echo base_url('statics/images/') ; ?>/20.jpg" width="145" height="145" vspace="6" /><br />
+	  <font class="txt01">微信扫描 添加官方微信平台</font></td>
+  </tr>
+</table>
+
+		  </td>
+        </tr>
+      </table></td>
+    <td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" height="300" border="0" cellpadding="0" cellspacing="1" bgcolor="#c7c7c7">
+      <tr>
+        <td align="center" bgcolor="#FFFFFF">
+<script type="text/javascript">                     
+var widths=744;    /*显示高度*/
+var heights=294;   /*显示宽度*/
+var counts=1; //总条数
+<?php $count = 0; foreach($shouyepics as $k => $v ) { ?>
+	img<?php echo $k+1; ?>=new Image();img<?php echo $k+1; ?>.src='<?php echo base_url($v['URL']) ; ?>';
+	url<?php echo $k+1; ?>=new Image();url<?php echo $k+1; ?>.src='<?php echo $v['URLTO'] ; ?>';
+<?php $count++; } ?>
+counts = <?php echo $count;?>;
+
+/* 建议将这块放置于JS中 下面的部分几乎是不需要任何改动*/
+var nn=1;
+var key=0;
+function change_img(){
+if(key==0){
+key=1;
+}else if(document.all){
+document.getElementById('pic').filters[0].Apply();
+document.getElementById('pic').filters[0].Play(duration=2);
+}
+eval('document.getElementById("pic").src=img'+nn+'.src');
+eval('document.getElementById("url").href=url'+nn+'.src');
+for (var i=1;i<=counts;i++){
+document.getElementById('xxjdjj'+i).className='axx';
+}
+document.getElementById('xxjdjj'+nn).className='bxx';
+nn++;
+if(nn>counts){
+nn=1;
+}
+tt=setTimeout('change_img()',5000);
+}
+function changeimg(n){
+nn=n;
+window.clearInterval(tt);
+change_img();
+}
+document.write('<style>');
+document.write('.axx{float:left; padding:0px 4px 1px;*padding:0px 4px 1px;border:#fff 1px solid; margin-right:5px; margin-bottom:5px;}');
+document.write('a.axx:link,a.axx:visited{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#aaa;}');
+document.write('a.axx:active,a.axx:hover{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#ccc;}');
+document.write('.bxx{float:left; padding:0px 4px 1px;*padding:0px 4px 1px;border:#fff 1px solid;margin-right:5px; margin-bottom:5px;}');
+document.write('a.bxx:link,a.bxx:visited{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#b10003;}');
+document.write('a.bxx:active,a.bxx:hover{text-decoration:none;color:#fff;line-height:12px;font:9px verdana;background-color:#b10003;}');
+document.write('</style>');
+document.write('<div style="width:'+widths+'px;height:'+heights+'px;overflow:hidden;text-overflow:clip;position:relative;">');
+document.write('<div><a id="url" target="_blank"><img id="pic" alt="苏州中国银行智慧网贷" title="苏州中国银行智慧网贷" style="border:0px;filter:progid:dximagetransform.microsoft.wipe(gradientsize=1.0,wipestyle=4, motion=forward)" width='+widths+' height='+heights+' /></a></div>');
+document.write('<div style="position:absolute; right:0px; bottom:0px; *bottom:5px; z-index:100;">');
+for(var i=1;i<counts+1;i++){
+document.write('<a href="javascript:changeimg('+i+');" id="xxjdjj'+i+'" class="axx" target="_self">'+i+'</a>');
+}
+document.write('</div></div>');
+change_img();
+</script>
+		</td>
+      </tr>
+    </table>
+      <table width="50%" height="17" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" height="74" border="0" cellpadding="5" cellspacing="1" style="border:1px solid #ccc">
+        <tr>
+          <td align="center" bgcolor="#FFFFFF"><img src="<?php echo base_url('statics/images/') ; ?>/20131115125039.jpg" />
+		  </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" height="13" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="197" valign="top">
+	<table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+		<td height="34" align="left" background="<?php echo base_url('statics/images/') ; ?>/09.jpg" class="txt03" style="padding-left:15px;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;">用户登录</td>
+      </tr>
+	  
+      <tr>
+        <td>
+		
+  <table width="100%" border="0" cellspacing="0" cellpadding="5" style="border: 1px solid #ccc;">
+<tr height="11"><td></td></tr>
+	<tr width="100%">
+	  <td width="100%" ><a href="<?php echo site_url($login['company']); ?>" title="企业用户登录"><img src="<?php echo base_url('statics/images/') ; ?>/13.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+	<tr>
+	  <td width="100%" ><a href="<?php echo site_url($login['boc']); ?>" title="中国银行用户"><img src="<?php echo base_url('statics/images/') ; ?>/10.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+	<tr>
+	  <td width="100%" ><a href="<?php echo site_url($login['danbao']); ?>" title="担保公司用户"><img src="<?php echo base_url('statics/images/') ; ?>/11.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+	<tr>
+	  <td width="100%"><a href="<?php echo site_url($login['thirdParty']); ?>" title="第三方合作伙伴"><img src="<?php echo base_url('statics/images/') ; ?>/12.jpg"  style="border:none;width:176px;height:30px"/></a></td>
+	</tr>
+<tr height="11"><td></td></tr>
+  </table>
+		
+          <table width="50%" height="13" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+                <table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+        <tr>
+          <td align="center" valign="top" bgcolor="#FFFFFF">
+			<a href="<?php echo site_url($changjianwenda); ?>" title="常见问答"><img style="border:none" src="<?php echo base_url('statics/images/') ; ?>/21.jpg" width="195" height="115" /></a>
+			<a href="<?php echo site_url($changjianwenda); ?>" title="常见问答"><font class="txt05">为您的问题提供专业的解决方案</font></a>
+		</td> 
+        </tr>
+      </table></td>
+      </tr>
+    </table></td>
+    <td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="368"><table width="100%" height="73" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+          <tr>
+            <td bgcolor="#fbfbfb"><table width="100%" height="71" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="76"><img src="<?php echo base_url('statics/images/') ; ?>/22.jpg" width="76" height="71" /></td>
+                <td width="251" style="line-height:200%">
+<?php if( !empty($bocGonggao)) { $flag = 1; foreach($bocGonggao as $k => $v) { ?>
+					<img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="<?php echo site_url( $v['URL'] );?>" class="link_01"><?php echo str_cut($v['TITLE'] ,'100'); ?></a><br />
+<?php if($flag++ > 1){break;} } } else{echo '暂无内容';}?>				</td>
+                <td width="39" style="line-height:200%"><a href="<?php echo site_url($bocGonggaoMore); ?>" class="link_01">更多&gt;</a><br /><br /></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+        <td width="14"></td>
+        <td><table width="100%" height="73" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+          <tr>
+            <td bgcolor="#fbfbfb"><table width="100%" height="71" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="76"><img src="<?php echo base_url('statics/images/') ; ?>/23.jpg" width="76" height="71" /></td>
+                  <td width="251" style="line-height:200%">
+<?php if( !empty($bocNews)) { $flag = 1; foreach($bocNews as $v) { ?>
+					<img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<a href="<?php echo site_url( $v['URL'] );?>" class="link_01"><?php echo str_cut($v['TITLE'] ,'60'); ?></a><br /> 
+<?php if($flag++ > 1){break;} } } else{echo '暂无内容';}?>
+					 </td>
+                  <td width="39" style="line-height:200%"><a href="<?php echo site_url($bocNewsMore); ?>" class="link_01">更多&gt;</a><br />
+                      <br /></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+      <table width="50%" height="9" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="368"><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+            <tr>
+              <td height="34" align="left" background="<?php echo base_url('statics/images/') ; ?>/09.jpg" style="padding-left:15px;"><font class="txt03">通用产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="<?php echo site_url($tongyongMore); ?>" class="link_01">更多&gt;</a></td>
+            </tr>
+            <tr>
+              <td align="center" bgcolor="#FFFFFF">
+			  <table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="height:79px;">
+<?php if( !empty($tongyong)) { foreach($tongyong as $v) { ?>
+			    <td width="38%" align="left">
+				  <a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><img style="border:none" src="<?php echo img($v['THUMB']); ?>" alt="<?php echo $v['TITLE']; ?>" width="115" height="79" /></a>
+			    </td>
+                  <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" /></td>
+				<td align="left" valign="top"><a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" >
+					<font class="txt04"><?php echo str_cut($v['TITLE'], 30,''); ?></font><br /><font class="txt05"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></font></a>
+				</td>
+<?php break; } } else{echo '<td>暂无数据</td>';} ?>
+                </tr>
+              </table>
+			  
+			  </td>
+            </tr>
+          </table></td>
+          <td width="14"></td>
+          <td><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+            <tr>
+              <td height="34" align="left" background="<?php echo base_url('statics/images/') ; ?>/09.jpg" style="padding-left:15px;"><font class="txt03">科技产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="<?php echo site_url($kejiMore); ?>" class="link_01">更多&gt;</a></td>
+            </tr>
+            <tr>
+              <td align="center" bgcolor="#FFFFFF"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="height:79px;">
+<?php if( !empty($keji)) { foreach($keji as $v) { ?>
+                    <td width="38%" align="left"> <a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><img style="border:none" src="<?php echo base_url($v['THUMB']); ?>" alt="<?php echo $v['TITLE']; ?>" width="115" height="79" /></a></td>
+                    <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" /></td>
+                    <td align="left" valign="top"><a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><font class="txt04"><?php echo str_cut($v['TITLE'], 30,''); ?></font><br />
+                        <font class="txt05"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></font></a></td>
+<?php break; } } else{echo '<td>暂无数据</td>';} ?>
+                  </tr>
+              </table></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      <table width="50%" height="8" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="368"><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+              <tr>
+                <td height="34" align="left" background="<?php echo base_url('statics/images/') ; ?>/09.jpg" style="padding-left:15px;"><font class="txt03">涉农产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="<?php echo site_url($shenongMore); ?>" class="link_01">更多&gt;</a></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#FFFFFF"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="height:79px;">
+<?php if( !empty($shenong)) { foreach($shenong as $v) { ?>
+                    <td width="38%" align="left"> <a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><img style="border:none" src="<?php echo img($v['THUMB']); ?>" alt="<?php echo $v['TITLE']; ?>" width="115" height="79" /></a></td>
+                    <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" /></td>
+                    <td align="left" valign="top"><a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><font class="txt04"><?php echo str_cut($v['TITLE'], 30,''); ?></font><br />
+                        <font class="txt05"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></font></a></td>
+<?php break; } } else{echo '<td>暂无数据</td>';} ?>
+                  </tr>
+                </table></td>
+              </tr>
+          </table></td>
+          <td width="14"></td>
+          <td><table width="100%" height="142" border="0" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
+              <tr>
+                <td height="34" align="left" background="<?php echo base_url('statics/images/') ; ?>/09.jpg" style="padding-left:15px;"><font class="txt03">文化产品</font>　　　　　　　　　　　　　　　　　　　　　<a href="<?php echo site_url($wenhuaMore); ?>" class="link_01">更多&gt;</a></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#FFFFFF"><table width="94%" border="0" cellspacing="0" cellpadding="0">
+				<tr style="height:79px;">
+<?php if( !empty($wenhua)) { foreach($wenhua as $v) { ?>
+                    <td width="38%" align="left"> <a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><img style="border:none" src="<?php echo base_url($v['THUMB']); ?>" alt="<?php echo $v['TITLE']; ?>" width="115" height="79" /></a></td>
+                    <td width="3%" align="left" valign="top" style="padding-top:5px;"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" /></td>
+                    <td align="left" valign="top"><a href="<?php echo site_url($v['URL']);?>" title="<?php echo $v['TITLE']?>" ><font class="txt04"><?php echo str_cut($v['TITLE'], 30,''); ?></font><br />
+                        <font class="txt05"><?php echo str_cut($v['DESCRIPTION'],'150'); ?></font></a></td>
+<?php break; } } else{echo '<td>暂无数据</td>';} ?>
+                  </tr>
+                </table></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" height="13" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table><table width="960" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#cccccc">
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="99"><img src="<?php echo base_url('statics/images/') ; ?>/35.jpg" width="99" height="38" /></td>
+        <td width="1" bgcolor="#cccccc"></td>
+        <td width="20"></td>
+        <td>
+<?php foreach($link as $k => $v ) { ?>
+				<a href="<?php echo prep_url($v['URL']); ?>" title="<?php echo $v['NAME']; ?>" target="_blank">
+					<img src="<?php echo img($v['LOGO']) ; ?>"  width="134" height="38" align="absmiddle" style="border:none;padding-right:20px;" />
+				</a>
+<?php } ?>
+		</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<div id="img" style="z-index:10000; background-image: url(<?php echo base_url('statics/images/') ; ?>/bg_fly.jpg); width:280px; height:170px; position: absolute; left: 311px; top: 815px; visibility :hidden;" onmouseover="clearInterval(interval)" onmouseout="interval = setInterval('changePos()', delay)" align="right">
+  <div style="margin:6px; width:30px; height:18px; text-align:center; display:block;" onclick="clearInterval(interval);img.style.visibility = 'hidden'"><img border="0" style="CURSOR:hand; margin-top:6px;" src="<?php echo base_url('statics/images/') ; ?>/x_fly.jpg" /><!-- <span style="CURSOR:hand;color:white;font-weight:bold; font-size:20px;">x</span> --></div>
+  <div style="position: absolute; left: 128px; top: 135px;" >
+    <a href="<?php echo site_url($kuaiSuTongdao['rongzhiUrl']);?>"><img border="0" src="<?php echo base_url('statics/images/') ; ?>/ok_fly.jpg" /></a>
+    <a href="#" onclick="clearInterval(interval);img.style.visibility = 'hidden'"><img border="0" src="<?php echo base_url('statics/images/') ; ?>/later_fly.jpg" /></a>
+    </div>
+</div>
+
+
+<script language=javascript>
+var xPos = 20;
+var yPos = document.documentElement.clientHeight;
+var step = 1;
+var delay = 30;                    
+var height = 0;                    
+var Hoffset = 0;                   
+var Woffset = 0;                    
+var yon = 0;                   
+var xon = 0;                    
+var pause = true;                   
+var interval;                   
+img.style.top = yPos+"px";                   
+function changePos() {                  
+width = document.documentElement.clientWidth;                   
+height = document.documentElement.clientHeight;                   
+Hoffset = img.offsetHeight;                   
+Woffset = img.offsetWidth;                  
+img.style.left = xPos + document.documentElement.scrollLeft+"px";                   
+img.style.top = yPos + document.documentElement.scrollTop+"px";                   
+if (yon) {                 
+yPos = yPos + step;                   
+}              
+else {            
+yPos = yPos - step;                    
+}           
+if (yPos < 0) {                 
+yon = 1;                   
+yPos = 0;                   
+}                 
+if (yPos >= (height - Hoffset)) {                   
+yon = 0;                   
+yPos = (height - Hoffset);                    
+}                 
+if (xon) {                   
+xPos = xPos + step;                   
+}                
+else {                
+xPos = xPos - step;                  
+}                 
+if (xPos < 0) {                   
+xon = 1;                  
+xPos = 0;                  
+}        
+if (xPos >= (width - Woffset)) {                   
+xon = 0;          
+xPos = (width - Woffset);                   
+}                   
+}
+function start() {                   
+img.style.visibility = "visible";                 
+interval = setInterval('changePos()', delay);                   
+}             
+start();
+</script>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#forAgree").click(function(){
+		$("#agreeCheckbox").attr('checked',function(){ if($(this).attr('checked') == 'checked')return false;return 'checked';});
+	});
+	
+	$("#rz").click(function(){
+
+		//alert(1);
+		if( !$("#agreeCheckbox").attr('checked') ){
+			alert('请先阅读上面的文档');
+			return;
+		}
+		location.href="<?php echo site_url($kuaiSuTongdao['rongzhiUrl']);?>";
+		
+	});
+});
+</script>

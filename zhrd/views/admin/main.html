@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script>
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script>
+
+</head>
+<style type="text/css">
+.wbg{ background-color:#FFF; color:#333}
+.topbar{ background-color:#3B5998;}
+.sidebar{ color:#333}
+input[type='checkbox']{ margin:3px 6px; }
+#M_left{ width:180px; float:left;}
+#M_right{ float:left; width:auto; overflow:hidden}
+#right{overflow: scroll-y}
+#M_center{ height:100%; overflow:scroll-y;}
+</style>
+<body style="width:100%">
+
+        <div id="M_top">
+            <div class="topbar">
+              <div class="logo"><a href="javascript:location.reload();">智慧网贷系统</a></div>
+              <div class="topInfo">
+              	  <span >欢迎回来 <?php echo $uname;  ?>，</span>
+                  <span >所属区域【<?php echo get_area($areaid) ;
+				  if($areaid == ''){echo '苏州';} ?>】 ,用户组【<?php echo $groupname;?>】
+				  </span> | 
+                  <a href="<?php echo site_url();  ?>" target="_blank">站点首页</a> | 
+                  <a href="<?php echo site_url('admin/login/logout'); ?>">退出</a>  
+                    
+                    
+              </div>
+            </div>
+        </div>
+		<div style="clear:both"></div>
+        <div id="M_center">
+            <div id="M_left" class="lefter wbg">
+            	<iframe name="left_frame" id="left_frame" src="<?php echo site_url('/admin/index/left');?>" frameborder="false" scrolling="auto" style="border:none" width="100%" height="auto" allowtransparency="true"></iframe>
+            </div>
+            <div id="M_right">
+            	<iframe name="right" id="right" src="<?php echo site_url($right_f);?>" frameborder="false" scrolling="none" style="border:none; margin-bottom:10px; " width="100%" height="auto" allowtransparency="true" scrolling="no"></iframe>
+            </div>
+        </div>
+
+</body>
+<script type="text/javascript">
+	$(function(){
+		documentWidth=$(document).width();
+		documentHeight=$(document).height();
+		dWidth=documentWidth+'px';
+		cHeight=(documentHeight-76)+'px';
+		rWidth=(documentWidth-180)+'px';
+
+		$("#M_center").css('width',dWidth);
+		$("#M_right").css('width',rWidth);
+		$("#left_frame").css('height',cHeight);
+		$("#M_right").css('height',cHeight);
+		$("#right").css('height',cHeight);
+		
+		var isIE=!!window.ActiveXObject;
+		var isIE6=isIE&&!window.XmlHttpRequest;
+		if(isIE6){
+			$("#left_frame").css('height',documentHeight-80);
+			$("#M_right").css('width',documentWidth-200);
+			$("#M_right").css('height',documentHeight-74);
+			$("#right").css('height',documentHeight-74);
+			$("#right").css('width',documentWidth-200);
+		}
+		
+	});
+</script>
+
+
+
+</html>
+

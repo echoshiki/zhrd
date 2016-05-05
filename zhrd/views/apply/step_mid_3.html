@@ -1,0 +1,234 @@
+<link rel="stylesheet" href="../statics/css/table.css">
+<style type="text/css">
+	.attachListVideo,.attachList{list-style:none;margin-left:15px; list-style-image: url(/statics/imgs/lsit_style.gif); text-align:left;}
+	.attachDel { margin-left:15px;}
+	.form_mid {}
+	.form_mid th{ height:50px; font-size: 18px; text-align: center;}
+	.form_mid tr td{ height:28px;}
+
+	.th_1 { width:175px;}
+	.th_4 { width:428px;}
+
+	.input_b_th { text-align: left; padding-left:5px;  float:left; width:95px; line-height: 26px;_line-height: 20px;}
+	.input_b_2 { text-align: left;float:left; width:130px; margin-left: 2px;_margin-left:0px;}
+	.input_b_2 input{ text-align: left; width:123px; margin-right: 3px;}
+
+	.input_b_th_2 { text-align: left; padding-left:5px;  float:left; width:235px; line-height: 26px;_line-height: 20px;}
+	.input_b_3 { text-align: left;float:left; width:283px; margin-left: 2px;_margin-left:0px;}
+	.input_b_3 input{ text-align: left; width:283px; margin-right: 3px;}
+    .zh_table textarea{ border:1px solid #CCC; padding:6px;}
+	.zh_table td{ vertical-align:middle}
+    .zh_table.bordered{border-collapse:collapse;}
+	.btn { padding:28px;}
+	.link_dqwz { color:#333;}
+  	.s-title { color:#666; margin-left:5px;}
+</style>
+<script type="text/javascript">
+    var types = 'mid';
+</script>
+
+<div style="border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a> > 中型企业融资申请 步骤三
+      </div>
+      <div style="margin-top:25px;">
+        <!--  内容start -->
+        <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?>我的融资申请 第二阶段 中型企业<span style="color:red">(3/3)</span>
+        <p class="s-title">为便于您的融资意向获得高效准确地处理，请如实填写以下信息。</p>
+		<form action="<?php echo site_url('apply/index/step3'); ?>" method="post">
+			<table class="form_mid zh_table bordered zebra" border='1'>
+				<th colspan="4"  style="vertical-align:middle;">贷款相关</th>
+  				<tr>
+  					<td>担保方式</td>
+  					<td>
+						<div style="float:left;"><?php echo $this->linkage->getSelect('134',0,'warrant','','','  data-rule="required" data-msg-required="请选择"'); ?></div>
+						<div style="clear:both"></div>
+				        <span id="war_insert" style="float:left; line-height:0px;"></span><span class="msg-box n-right" data-for="warrant[]" ></span>
+    				</td>
+  				</tr>
+			  	<tr>
+				    <td>担保方式2（选填）</td>
+				    <td>
+						<div style="float:left;"><?php echo $this->linkage->getSelect('134',0,'warrant2'); ?></div>
+						<div style="clear:both"></div>
+				        <span id="war2_insert" style="float:left; line-height:0px;"></span>
+				    </td>
+			  	</tr>
+			  	<tr>
+				    <td>担保方式3（选填）</td>
+				    <td>
+						<div style="float:left;"><?php echo $this->linkage->getSelect('134',0,'warrant3'); ?></div>
+						<div style="clear:both"></div>
+				        <span id="war3_insert" style="float:left; line-height:0px;"></span>
+				    </td>
+			  	</tr>
+			    <tr>
+				     <td>其他担保方式（选填）</td>
+				     <td style="text-align:left" ><input type="text" name="form[WARRANT_O]" ></td>
+			    </tr>
+				<tr>
+					<td>其他银行授信情况</td>
+					<td>
+						<div style="float:left;"><input type="radio" value="1" name="form[DEMAND_O][]" id="demand1" data-rule="checked"/>建行、工行、农行有授信 &nbsp;&nbsp;<input type="radio" value="2" name="form[DEMAND_O][]" id="demand2"/>其他行有授信 &nbsp;&nbsp;<input type="radio" value="3" name="form[DEMAND_O][]" id="demand3"/>无授信</div>
+						<span id="tall_insert"></span>
+					</td>
+				</tr>
+			    <tr>
+			      	<td>企业主是否愿意连带责任担保</td>
+				    <td><div style="float:left;"><select name="form[ISRELATE]"  id="isrelate" data-rule="required">
+				      		<option value="">--请选择--</option>
+				            <option value="1">是</option>
+				            <option value="2">否</option>
+				        </select></div>
+				    </td>
+			    </tr>
+			    <tr>
+				    <td>手机号码</td>
+				    <td style="text-align:left" ><input type="text" name="form[TEL]" id="tel" data-rule="required;mobile;"><div><span style="color:#ABABAB;">*&nbsp;本项目可以提供一对一的视频或电话服务，请留下您的手机号码以便我行提供上述服务。</span></div></td>
+			    </tr>
+	    		<th style="font-size:15px;height:100%" colspan="4">欢迎您提供企业现场的照片或者视频，有助于我行后台人员了解您的企业，加快审核速度。</th>
+              	<tr>
+	                <td>企业现场照片：<div  style="color:#ADABAB">(最多上传五张图片 每个小于2M)</div></td>
+	                <td>
+						<div style="clear:both">
+							<ul class="attachList">
+							<?php if(!empty($attach['thumb'])) { foreach( $attach['thumb'] as $k => $v) {?>
+								<li><?php echo $v['name']; ?><a id="1_<?php echo $k;?>" class="attachDel" href="javascript:void(0)"  title="删除">×</a></li>
+							<?php } } ?>
+							</ul>
+						</div>
+					</td>
+              	</tr>
+              	<tr>
+	                <td>其他补充情况：</td>
+	                <td style="text-align:left;"><input type="text" name="form[THUMB2]" id="thumb2"></td>
+              	</tr>
+              	<tr>
+	                <td>视频：<div  style="color:#ADABAB">(最多一个视频 小于20M)</div></td>
+	                <td>
+						<div style="clear:both">
+							<ul class="attachListVideo">
+							<?php if(!empty($attach['video'])) { foreach( $attach['video'] as $k => $v) {?>
+								<li><?php echo $v['name']; ?><a id="0_<?php echo $k;?>" class="attachDel" href="javascript:void(0)" title="删除">×</a></li>
+							<?php } } ?>
+							</ul>
+						</div>
+					</td>
+              	</tr>
+			  	<tr><td></td><td>
+					<div style="text-align:left">
+					 	<span id="spanButtonPlaceHolder"></span> 
+						<input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled"  /><div style="clear:both;"></div>
+						<span style="color:#ADABAB">(请点击添加按钮，上传图片或视频，图片格式可以是jpg、gif、png、bmp，视频格式可以是flv、mp4、rmvb)</span>
+					</div>
+					<div class="fieldset flash" id="fsUploadProgress" ><span class="legend">上传队列</span></div>
+					<div id="divStatus">0 文件已上传</div></td>
+				</tr>		
+			    <tr>
+			        <td colspan="4" class="btn"><input type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/>			<div style=" margin-top: 5px;color: #B20E0D; ">(提交之后将无法修改申请表单，请核实表单无误后提交)</div></td>
+			    </tr>
+			</table>   
+  			<input type="hidden" name="dopost" value="step3_mid" />
+		</form>            
+        <!--  内容end   -->
+      </div>
+</div>
+<div class="clear"></div>
+ 
+</div>
+<div style="width:2px; height:60px; border:1px solid #333"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#form_1").submit(function(){
+		if( $("#main").isValid())
+			return true;
+		return false;
+	});
+
+	$('.attachDel').live("click",function(e){
+	if( !confirm('确定删除此文件') )
+		return;
+		var datas = $(this).attr('id').split('_');
+
+		$.post('<?php echo site_url('apply/rmattachment');?>',{ 'a' : datas[0], 'b' : datas[1]},function(data){
+			if(data.data == '1'){
+				$(e.target).parent('li').remove();
+			}
+		},'json');
+	});
+
+});
+
+var swfu;
+window.onload = function() {
+	var settings = {
+		flash_url : "<?php echo base_url('/statics/js/swfupload/swfupload.swf');?>",
+		upload_url: "<?php echo site_url('/apply/attachmentup'); ?>",
+		file_size_limit : "20 MB",
+		file_types : "*.jpg;*.gif;*.png;*.bmp;*.flv;*.mp4;*.rmvb",
+		file_types_description : "Image Video Files",
+		file_upload_limit : 10,
+		file_queue_limit : 6,
+		custom_settings : {
+			progressTarget : "fsUploadProgress",
+			cancelButtonId : "btnCancel"
+		},
+		debug: false,
+		button_image_url: "<?php echo base_url('/statics/js/swfupload/images/TestImageNoText_65x29.png');?>",
+		button_width: "65",
+		button_height: "29",
+		button_placeholder_id: "spanButtonPlaceHolder",
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_start_handler : uploadStart,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadSuccess,
+		upload_complete_handler : uploadComplete,
+		queue_complete_handler : queueComplete
+	};
+	function fileQueued(file) {
+		switch(file.type){
+			case '.jpg':
+			case '.gif':
+			case '.png':
+			case '.bmp': if( file.size > 2465792){ alert('图片文件过大');swfu.cancelQueue();return false;} break;
+			case '.flv':
+			case '.mp4':
+			case '.rmvb': break;
+		}
+		try {
+			var progress = new FileProgress(file, this.customSettings.progressTarget);
+			progress.setStatus("Pending...");
+			progress.toggleCancel(true, this);
+		} catch (ex) {
+			this.debug(ex);
+		}
+
+	}
+
+	function uploadSuccess(file, serverData)
+	{
+		if( serverData == '-1'){
+			$('.attachListVideo').append(
+				'<li>'+file.name+'<a id="0_0" class="attachDel" href="javascript:void(0)" >×</a></li>'
+			);
+		}else{
+			$('.attachList').append(
+				'<li>'+file.name+'<a id="1_'+serverData+'" class="attachDel" href="javascript:void(0)" >×</a></li>'
+			);
+		}
+		try {
+			var progress = new FileProgress(file, this.customSettings.progressTarget);
+			progress.setComplete();
+			progress.setStatus("Complete.");
+			progress.toggleCancel(true);	
+		} catch (ex) {
+			this.debug(ex);
+		}
+	}
+	swfu = new SWFUpload(settings);
+};
+</script>

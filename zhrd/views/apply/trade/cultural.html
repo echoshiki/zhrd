@@ -1,0 +1,314 @@
+<link rel="stylesheet" href="../statics/css/table.css">
+<style type="text/css">
+    .zh_table textarea{ border:1px solid #CCC; padding:6px;}
+	.zh_table td{ vertical-align:middle}
+    .zh_table.bordered{border-collapse:collapse;}
+.attachListVideo,.attachList{list-style:none;padding-left:35px; list-style-image: url(/statics/imgs/lsit_style.gif); }
+.attachDel { margin-left:10px;}
+
+</style>
+
+ <table class="form_mid zh_table bordered zebra">
+ 			  <tr>
+ 			  	<td>所属行业：</td>
+ 			  	<td><?php echo $this->linkage->getSelect('156',0,'form[TRADE_2]','','','  data-rule="required" data-msg-required="请选择"'); ?></td>
+ 			  </tr>	
+              <tr>
+                <td width='180'>主营业务：</td>
+                <td><input type="text" name="form[MAIN]" id="main" data-rule="required;"></td>
+              </tr>
+              <tr>
+                <td>行业内地位：</td>
+                <td><input type="radio" name="form[PLACE]" value="1" data-rule="checked;"/>领先  
+                    <input type="radio" name="form[PLACE]" value="2"/>一般
+                    <input type="radio" name="form[PLACE]" value="3"/>靠后</td>
+              </tr>
+              <tr>
+                <td>本年度预计销售收入：</td>
+                <td><input  type="text" name="form_main[SALE_THIS]" id="sale_this" data-rule="required;integer[*];">(万元)<span class="msg-box n-right" data-for="form_main[SALE_THIS]" ></span></td>
+              </tr>
+              <tr>
+                <td>上年销售成本：</td>
+                <td><input  type="text" name="form_main[COST]" id="cost" data-rule="required;integer[*];">(万元)<span class="msg-box n-right" data-for="form_main[COST]" ></span></td>
+              </tr>
+              <tr>
+                <td>上年净利润：</td>
+                <td><input  type="text" name="form_main[PROFIT]" id="profit" data-rule="required;integer[*];">(万元)<span class="msg-box n-right" data-for="form_main[PROFIT]" ></span></td>
+              </tr>
+              <tr>
+                <td>当前企业资产总额：</td>
+                <td><input  type="text" name="form_main[ASSET]" id="asset" data-rule="required;integer[*];">(万元)<span class="msg-box n-right" data-for="form_main[ASSET]" ></span></td>
+              </tr>
+              <tr>
+                <td>当前企业负债总额：</td>
+                <td><input  type="text" name="form_main[DEBT]" id="debt" data-rule="required;integer[*];">(万元)<span class="msg-box n-right" data-for="form_main[DEBT]" ></span></td>
+              </tr>
+
+
+              <tr>
+                <td>应收账款余额：</td>
+                <td>去年末<input  type="text" name="form_main[ACCOUNT_LAST_C]" id="account_last_c" data-rule="required;integer[*];"><span class="msg-box n-left" data-for="form_main[ACCOUNT_LAST_C]" ></span>(万元)&nbsp;前年末<input  type="text" name="form_main[ACCOUNT_BEFORE_C]" id="account_before_c" data-rule="required;integer[*];"><span class="msg-box n-left" data-for="form_main[ACCOUNT_BEFORE_C]" ></span>(万元)</td>
+              </tr>
+              <tr>
+                <td>存货余额：</td>
+                <td>去年末<input  type="text" name="form_main[STOCK_LAST]" id="stock_last" data-rule="required;integer[*];"><span class="msg-box n-left" data-for="form_main[STOCK_LAST]" ></span>(万元)&nbsp;前年末<input  type="text" name="form_main[STOCK_BEFORE]" id="stock_before" data-rule="required;integer[*];"><span class="msg-box n-left" data-for="form_main[STOCK_BEFORE]" ></span>(万元)</td>
+              </tr>
+              <tr>
+                <td>应付账款余额：</td>
+                <td>去年末<input  type="text" name="form_main[ACCOUNT_LAST_P]" id="account_last_p" data-rule="required;integer[*];"><span class="msg-box n-left" data-for="form_main[ACCOUNT_LAST_P]" ></span>(万元)&nbsp;前年末<input  type="text" name="form_main[ACCOUNT_BEFORE_P]" id="account_before_p" data-rule="required;integer[*];"><span class="msg-box n-left" data-for="form_main[ACCOUNT_BEFORE_P]" ></span>(万元)</td>
+              </tr>
+
+              <tr>
+                <td>资金用途：</td>
+                <td><?php echo $this->linkage->getSelect('350',0,'form','','','  data-rule="required" data-msg-required="请选择"','USE'); ?></td>
+                <!-- <td><input type="text" name="form[USE]" id="use" data-rule="required;" /></td> -->
+              </tr>
+
+              <tr>
+                <td>当前主要合作银行：</td>
+                <td><?php echo $this->linkage->getCheckbox('145','form[COOPERATION]','','','class="hzyh"  data-rule="checked"'); ?></td>
+              </tr>
+              <tr>
+                <td>当前在外融资金额：</td>
+                <td><input  type="text" name="form_main[FINANCE_THIS]" id="finance_this" data-rule="required;integer[*];">(万元)<span class="msg-box n-right" data-for="form_main[FINANCE_THIS]" ></span></td>
+              </tr>
+
+              <tr>
+                <td>企业主籍贯：</td>
+                <td><input type="text" name="form[OWNER_HOME]" id="own_home" data-rule="required;"></td>
+              </tr>
+              <tr>
+                <td>企业主职称：</td>
+                <td><input type="text" name="form[OWNER_TITLE]" id="own_title" data-rule="required;"></td>
+              </tr>
+              <tr>
+                <td>企业主从业年限：</td>
+                <td><input  type="text" name="form[OWNER_TIME]" id="own_time" data-rule="required;integer[+];">(年)<span class="msg-box n-right" data-for="form[OWNER_TIME]" ></span></td>
+              </tr>
+              <tr>
+                <td>企业经营年限：</td>
+                <td><input  type="text" name="form[COM_TIME]" id="com_time" data-rule="required;integer[+];">(年)<span class="msg-box n-right" data-for="form[COM_TIME]" ></span></td>
+              </tr>
+              <tr>
+                <td>企业员工数：</td>
+                <td><input  type="text" name="form[STAFF]" id="staff" data-rule="required;integer[+];"></td>
+              </tr>
+              
+              <tr>
+                <td>企业荣誉：</td>
+                <td><?php echo $this->linkage->getCheckbox('172','form[COM_HONOR]','','','class="qyry" data-rule="checked"'); ?><span id="tall_insert"></span></td>
+              </tr>              
+              <tr>
+                <td>是否有上市预期：</td>
+                <td><select name="form[ISLIST]"  id="islist" data-rule="required;">
+                      <option value="">---请选择-</option>
+                      <option value="1">是</option>
+                      <option value="2">否</option>
+                    </select></td>
+              </tr>
+             <tr>
+                <td>经营场所权属</td>
+                <td><input type="radio" value="1" name="form[BELONG]"  data-rule="checked;"/>自有 &nbsp;&nbsp;<input type="radio" value="2" name="form[BELONG]" />租赁</td>
+              </tr>
+              <tr>
+                <td>当前固定资产：</td>
+                <td><input  type="text" name="form_main[ASSET_FIXED]" id="asset_fixed" data-rule="required;integer[+]"><span class="msg-box n-left" data-for="form_main[ASSET_FIXED]" ></span>(万元)</td>
+              </tr>
+
+              <tr>
+                <td>担保方式：</td>
+                <td>
+                  <?php echo $this->linkage->getSelect('134',0,'warrant','','','  data-rule="required" data-msg-required="请选择"');  ?>
+                  <span id="war_insert"></span><span class="msg-box n-right" data-for="warrant[]" ></span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>担保方式2（选填）</td>
+                <td>
+                <div style="float:left;"><?php echo $this->linkage->getSelect('134',0,'warrant2'); ?></div>
+                <div style="clear:both"></div>
+                    <span id="war2_insert" style="float:left; line-height:0px;"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>担保方式3（选填）</td>
+                <td>
+                <div style="float:left;"><?php echo $this->linkage->getSelect('134',0,'warrant3'); ?></div>
+                <div style="clear:both"></div>
+                    <span id="war3_insert" style="float:left; line-height:0px;"></span>
+                </td>
+              </tr>
+              <tr>
+                 <td>其他担保方式（选填）</td>
+                 <td style="text-align:left" ><input type="text" name="form[WARRANT_O]" ></td>
+              </tr>
+
+
+              
+              <tr>
+                <td>企业主是否愿意连带责任担保：</td>
+                <td><select name="form[ISRELATE]"  id="isrelate" data-rule="required;">
+                      <option value="">---请选择-</option>
+                      <option value="1">是</option>
+                      <option value="2">否</option>
+                    </select></td>
+              </tr>
+              <tr>
+                <td>手机号码：</td>
+                <td><input  type="text" name="form_main[TEL]" id="tel" data-rule="required;mobile;">
+                  <div>
+                    <span style="color:#ABABAB;">*&nbsp;本项目可以提供一对一的视频或电话调查服务，请留下您的手机号码以便我行联系开展上述服务。</span>
+                  </div><!-- / -->
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>企业现场照片：</td>
+                <td>
+
+
+<div style="clear:both">
+<ul class="attachList">
+<?php if(!empty($attach['thumb'])) { foreach( $attach['thumb'] as $k => $v) {?>
+<li>
+<?php echo $v['name']; ?><a id="1_<?php echo $k;?>" class="attachDel" href="javascript:void(0)">×</a>
+</li>
+<?php } } ?>
+</ul>
+</div>
+				</td>
+              </tr>
+
+              <tr>
+                <td>其他补充情况：</td>
+                <td><input type="text" name="form[THUMB2]" id="thumb2"></td>
+              </tr>
+
+              <tr>
+                <td>视频：</td>
+                <td>
+<div style="clear:both">
+<ul class="attachListVideo">
+<?php if(!empty($attach['video'])) { foreach( $attach['video'] as $k => $v) {?>
+<li>
+<?php echo $v['name']; ?><a id="0_<?php echo $k;?>" class="attachDel" href="javascript:void(0)">×</a>
+</li>
+<?php } } ?>
+</ul>
+</div>
+				</td>
+              </tr>
+			  <tr><td></td><td >
+			  
+<div>
+ 	<span id="spanButtonPlaceHolder"></span> 
+	<input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled"  /><div style="clear:both;"></div>
+	<span style="color:#ADABAB">(请点击添加按钮，上传图片或视频，图片格式可以是jpg、gif、png、bmp，视频格式可以是flv、mp4、rmvb)</span>
+</div>
+
+<div class="fieldset flash" id="fsUploadProgress" >
+	<span class="legend">上传队列</span>
+</div>
+<div id="divStatus">0 文件已上传</div>
+
+			  </td></tr>
+
+</table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#form_1").submit(function(){
+		if( $("#main").isValid())
+			return true;
+		return false;
+	});
+
+	$('.attachDel').live("click",function(e){
+	if( !confirm('确定删除此文件') )
+		return;
+		var datas = $(this).attr('id').split('_');
+
+		$.post('<?php echo site_url('apply/rmattachment');?>',{ 'a' : datas[0], 'b' : datas[1]},function(data){
+			if(data.data == '1'){
+				$(e.target).parent('li').remove();
+			}
+		},'json');
+	});
+
+});
+
+var swfu;
+window.onload = function() {
+	var settings = {
+		flash_url : "<?php echo base_url('/statics/js/swfupload/swfupload.swf');?>",
+    post_params: {"<?php echo 'zhrd_session'; ?>" : "<?php echo base64_encode($_COOKIE['zhrd_session']); ?>"},
+		upload_url: "<?php echo site_url('/apply/attachmentup'); ?>",
+		file_size_limit : "20 MB",
+		file_types : "*.jpg;*.gif;*.png;*.bmp;*.flv;*.mp4;*.rmvb",
+		file_types_description : "Image Video Files",
+		file_upload_limit : 10,
+		file_queue_limit : 6,
+		custom_settings : {
+			progressTarget : "fsUploadProgress",
+			cancelButtonId : "btnCancel"
+		},
+		debug: false,
+		button_image_url: "<?php echo base_url('/statics/js/swfupload/images/TestImageNoText_65x29.png');?>",
+		button_width: "65",
+		button_height: "29",
+		button_placeholder_id: "spanButtonPlaceHolder",
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_start_handler : uploadStart,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadSuccess,
+		upload_complete_handler : uploadComplete,
+		queue_complete_handler : queueComplete
+	};
+	function fileQueued(file) {
+		switch(file.type){
+			case '.jpg':
+			case '.gif':
+			case '.png':
+			case '.bmp': if( file.size > 2097152){ alert('图片文件过大');swfu.cancelQueue();return false;} break;
+			case '.flv':
+			case '.mp4':
+			case '.rmvb':if( file.size > 20971520){ alert('视频文件过大');swfu.cancelQueue();return false;} break;
+		}
+		try {
+			var progress = new FileProgress(file, this.customSettings.progressTarget);
+			progress.setStatus("上传中...");
+			progress.toggleCancel(true, this);
+		} catch (ex) {
+			this.debug(ex);
+		}
+
+	}
+
+	function uploadSuccess(file, serverData)
+	{
+		if( serverData == '-1'){
+			$('.attachListVideo').append(
+				'<li>'+file.name+'<a id="0_0" class="attachDel" href="javascript:void(0)" >×</a></li>'
+			);
+		}else{
+			$('.attachList').append(
+				'<li>'+file.name+'<a id="1_'+serverData+'" class="attachDel" href="javascript:void(0)" >×</a></li>'
+			);
+		}
+		try {
+			var progress = new FileProgress(file, this.customSettings.progressTarget);
+			progress.setComplete();
+			progress.setStatus("上传成功.");
+			progress.toggleCancel(true);	
+		} catch (ex) {
+			this.debug(ex);
+		}
+	}
+	swfu = new SWFUpload(settings);
+};
+</script>

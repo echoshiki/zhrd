@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<script src="<?php echo base_url('statics/js/jquery-1.3.2.min.js') ?>"></script>
+</head>
+
+<body>
+        <form method="POST" action="<?php echo site_url('/admin/member/add'); ?>" id="add_form" name="add_form">
+
+
+
+          用户名称：<input type="text" name="USERNAME" id="username_add" value="" maxlength="15"/><br />
+
+          公司名称：<input type="text" name="COMPANY" id="company_add" value="" maxlength="23"/><br />
+          用户邮箱：<input type="text" name="EMAIL" maxlength="50"/><br /><br />
+          手机号码：<input type="text" name="MOBILE" maxlength="50"/><br /><br />
+          用户密码：<input type="password" name="PASSWD" id="passwd_add" maxlength="20"><br />
+          重复密码：<input type="password" name="PASSWD2" id="passwd2_add" maxlength="20"><br />
+          <div>所属地区：<?php echo $this->linkage->getSelect('35'); ?></div>
+                    <input type="hidden" name="USERID" value=""/>
+                    <input type="hidden" name="dopost" value="add"><br />
+                    <input type="button" class="button deepblue" id="picAdd" value="添加用户" onclick="checkform_ad('add');">
+
+        </form>
+
+
+</body>
+
+</html>

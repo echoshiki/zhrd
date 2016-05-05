@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+
+
+</head>
+
+<body>
+        <form method="POST" action="<?php echo site_url('/admin/member/edit/'); ?>" id="edit_form" name="edit_form">
+
+          用户名称：<input type="text" name="USERNAME" id="username_edit" value="<?php echo $username; ?>"  maxlength="15"/><br />
+          用户密码：<input type="password" id="passwd" name="PASSWD" value=""/><br />
+          重复密码：<input type="password" id="passwd2" name="PASSWD2" value=""/><br />
+          公司名称：<input type="text" name="COMPANY" id="company_edit" value="<?php echo $company; ?>" maxlength="23"/><br />
+          用户邮箱：<input type="text" name="EMAIL" value="<?php echo $email; ?>" maxlength="50"/><br />
+
+          <div>
+          	所属地区： <?php echo $this->linkage->getSelect('35',$areaid); ?></div>
+                    
+            
+           
+                    <input type="hidden" name="USERID" value="<?php echo $userid; ?>"/>
+                    <input type="hidden" name="USERNAME_OLD" value="<?php echo $username; ?>"/>
+                    <input type="hidden" name="EMAIL_OLD" value="<?php echo $email; ?>"/>
+                    <input type="hidden" name="dopost" value="edit"><br />
+                    <input type="button" class="button deepblue" id="picAdd" value="修改" onClick="checkform_ad('edit');">
+
+        </form>
+
+
+</body>
+
+</html>

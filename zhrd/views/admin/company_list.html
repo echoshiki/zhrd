@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+ 
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<style type="text/css">
+	.workflow { margin:0; padding:0; display:block;}
+	.workflow li{ width:85px;list-style:none; list-style:none; padding-right:30px; background:url(/statics/images/process/flow_r.jpg) right 5px no-repeat; float:left} 
+	.workflow li a{ display:block;width:80px; height:42px; background:url(/statics/images/process/flow_1.jpg) left top no-repeat; text-decoration:none; height:42px; line-height:42px; text-align:center; color:#FFF; font-size:small;font-weight:bold; font-family:"微软雅黑","黑体"}
+	.workflow .t2{background:url(/statics/images/process/flow_r2.jpg) right 5px no-repeat; }
+	.workflow .t3{background:url(/statics/images/process/flow_r2.jpg) right 5px no-repeat; }
+	.workflow .nbg{ background:none}
+	.workflow .t2 a{ background:url(/statics/images/process/flow_2.jpg) left top no-repeat;}
+	.workflow .t3 a{ background:url(/statics/images/process/flow_1.jpg) left top no-repeat;}
+	.nfl li{ float:none!important}
+	.zyc{float:left;width: 80px;_margin-top:-20px;}
+	.zyc li{list-style:none;padding-left:20px;text-align: center;padding-top:22px;}
+	.zyc li a{color:#fff;font-weight:bold;font-size:small;}
+</style>
+</head>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$('.process').click(function(){
+			var id = $(this).attr('data');
+			art.dialog({
+				title: '节点流程',
+				content: getC('<?php echo site_url('processstatus'); ?>/'+id),
+				okValue: '确定',
+				ok: function(){}
+			});
+		});
+	
+	
+		$('#checkbox_all').click(function(){
+			if($('#checkbox_all').attr('checked')=='checked'){
+				$("#c_list :checkbox").attr('checked','checked');	
+			}else{
+				$("#c_list :checkbox").removeAttr('checked');	
+			}								  
+		});
+		
+		$('#export_selected').click(function(){
+			$('#dopost').val('selected');
+			$('#company_f').submit();
+		});
+		
+		$('#export_all').click(function(){
+			$('#dopost').val('all');
+			$('#company_f').submit();
+		});
+
+
+    $('#jieqia_1').live("click",function(){
+      var html = '';
+      if ($('#jieqia_1').attr('checked') == 'checked') {
+        html = '授信总量：<input name="manageview" type="text" style="padding:2px;width: 40px;" value="">万元'; 
+      };
+      $('#jieqia_insert').html(html);
+    });
+  
+    $('#jieqia_2').live("click",function(){
+      var html = '';
+      if ($('#jieqia_2').attr('checked') == 'checked') {
+        html = '<span style="display:block;">否决原因：</span><textarea name="manageview" cols="25" rows="5" style="display:block;margin-bottom: 10px;"></textarea>'; 
+      };
+      $('#jieqia_insert').html(html);
+    });
+		
+		$('#dosearch').click(function(){
+			$('#search').submit();
+		});
+		
+		$('#forVerify').live("change",function(){
+    		var html = '';
+    		if ($('#forVerify').val() == '58') {
+    			html = '同意的授信总量：<input name="agreeDemand" type="text" style="padding:2px;width: 40px;" value="">万元';	
+    		}else if ($('#forVerify').val() == '59') {
+    			html = '原因：<input name="error" type="text" style="padding:2px;" value="">';
+    		}else if ($('#forVerify').val() == '60') {
+    			html = '如客户接受，则同意授信总量：<input name="agreeDemand" type="text" style="padding:2px;width: 40px;" value="">万元';
+    		}
+    		$('#changeForVerify').html(html);
+	   });
+
+    //批复
+    $('.pifuradio').live('click', function() {
+      if( $(this).val() == '1'){
+        $('.pifuinput').show();
+      }else{
+        $('.pifuinput').hide();
+      }
+    });
+
+    $('#zhrd_note_text').live('click', function() {
+         $(this).hide().siblings('#note_text').show();
+         $(this).siblings('#note_submit').show().attr('disabled', false);
+
+    });
+
+	});
+</script>
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+    	          
+          <div class="datatable">
+          	 <div class="tip">
+             	<div class="left">
+                    <abbr> 
+                    		<?php
+                            	$action=$this->uri->segment(3,0);
+                                switch ($action){
+                                	case 'comLarge' 	: echo '大企管理';break;
+                                    case 'comMedium' 	: echo '中企管理';break;
+                                    case 'comSmall' 	: echo '小企管理';break;
+                                    case 'comPersonal' 	: echo '个金管理';break;
+                                    case 'comDel' 		: echo '废弃数据';break;
+                                }
+                            ?>              
+                    </abbr>
+                </div>
+                <div class="right">
+                	<?php
+		  $udata  = $this->session->all_userdata();
+			$result=$this->db->select('GROUPID,ROLEIDS')->where('GROUPID',$udata[GROUPID])->get('ADMIN_GROUP')->result_array();
+			$roleids=$result[0][ROLEIDS];
+
+			
+			$roleArr=explode(',',$roleids);
+			$query=$this->db->get_where('ADMIN_ROLE',array('M'=>'admin',
+																'C'=>'excel',
+																'A'=>'CompanyImport',
+										));
+			$result2 = $query->result_array();
+			$roleid=$result2[0]['ROLEID'];
+
+
+
+			if(in_array($udata['GROUPID'],array(1,5,10))){
+          ?>
+			  <?php if($action=='comSmall'){?>   
+					  <button class="button medium2 green" target="_blank" id="import_excel" onClick="location.href='<?php echo site_url('admin/excel/CompanyImport'); ?>'">导入数据</button>
+			  <button class="button medium2 deepblue" target="_blank" id="dataPic"  onClick="location.href='<?php echo site_url('admin/analysis/'); ?>'">统计分析</button>
+
+				<?php } elseif($action == 'comMedium'){?>
+			  
+			  <button class="button medium2 deepblue" target="_blank" id="dataPic"  onClick="location.href='<?php echo site_url('admin/analysis/'); ?>'">统计分析</button>
+			  
+			<?php
+						}
+             }elseif(in_array($roleid,$roleArr)&&($action=='comSmall')){
+			?>
+				<button class="button medium2 green" target="_blank" id="import_excel" onClick="location.href='<?php echo site_url('admin/excel/CompanyImport'); ?>'">导入数据</button>
+			<?php
+			 }
+            ?>
+                </div>
+             </div>
+             <div class="head">
+             	
+                <div class="left">
+                    <form name="search" id="search" action="<?php echo site_url('admin/company/').'/'.$action;?>" method="post">
+                    <?php
+                    	$area 	= empty($area) ? '0' : $area;
+                      $trade 	= empty($trade) ? '0' : $trade;
+                      $status = empty($status) ? '0' : $status;                        
+                    	$area_linkage  = $this->linkage->getSelect('35',$area,'area','','','','','选择区域');
+                    	$trade_linkage = $this->linkage->getSelect('26',$trade,'trade','','','','','选择类型');
+                    	$status_linkage = $this->linkage->getSelect('42',$status,'status','','','','','选择状态');
+	        			      $uareaid     = $udata['AREAID'];
+                        
+                      if(($uareaid==35) || ($udata['GROUPID']=='1')){
+                        echo '<span>'.$area_linkage.'</span>';
+                      }
+                    	echo '<span>'.$trade_linkage.'</span>';
+                      echo '<span>'.$status_linkage.'</span>';
+                    ?>
+
+<!--                     <select name="IUsers">
+                      <option value="0">选择导入者</option>
+                      <?php foreach ($arrIUsers as $key => $value) { ?>
+                        <option value="<?php echo $value['IMPORTUSERID'] ?>"><?php echo $value['name'] ?></option>                        
+                      <?php } ?>
+                    </select> -->
+
+                    <select name="cType">
+                        <option value="1" <?php if($ctype=='1'){echo ' selected';} ?> >企业名称</option>
+                        <option value="2" <?php if($ctype=='2'){echo ' selected';} ?> >执照代码</option>
+                        <option value="3" <?php if($ctype=='3'){echo ' selected';} ?> >联系电话</option>
+                    </select>
+                    <input name="keys" type="text" style="padding:2px;" value="<?php echo $keys;?>">
+                    <input type="hidden" name="dopost" value="search">
+                    <button id="dosearch" class="button medium2 green">查询</button>
+                    </form>
+                </div>
+             </div>
+             <div class="body">
+             
+             <form name="company_f" id="company_f" action="<?php echo site_url('admin/company/export'); ?>" method="post">
+             	<table width="100%" border="0" class="table bordered zebra" id="c_list">
+                      <thead>
+                      <tr>
+                        <td width="2%"><input name="checkbox_all" type="checkbox" class="select_box " id="checkbox_all"></td>
+                        <td width="2%">ID</td>
+                        <td width="23%">企业名称</td>
+                        <td>区域</td>
+                        <td>类型</td>
+                        <td>申请金额</td>
+                        <td>申请融<br/>资时间</td>
+                        <td>审核完<br/>成时间</td>
+                        <td>分配客<br/>户时间</td>
+                        <td>客户经理</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                        </tr>
+                        </thead>
+  <?php
+  	$lists	= $companyList['list']['data'];
+    
+    $page	= $companyList['page'];
+
+  	if(is_array($lists)){
+    foreach($lists as $k=>$v){
+    	$areaName=$tradeName='';
+
+      $need = $this->apply->get_exp($v);
+      $need = $need[0];
+      $need = round($need);
+
+    	if(!empty($v['AREAID'])){
+        	$areaInfo	= $this->linkage->getLinkage($v['AREAID']);
+        	$areaName	= $areaInfo['NAME'];
+        }
+        
+        if(!empty($v['TRADEID'])){
+        	$tradeInfo	= $this->linkage->getLinkage($v['TRADEID']);
+          $tradeName	= $tradeInfo['NAME'];
+        }
+        $v['STATUS'] = !empty($v['STATUS']) ? $v['STATUS'] : 43 ; //如果状态值为空则默认为43状态就是等待审核状态
+        if(!empty($v['STATUS'])){
+        	$statusInfo	= $this->linkage->getLinkage($v['STATUS']);
+            $statusName	= $statusInfo['NAME'];
+        }
+        
+        $userInfo=$this->admin->userInfo_id($v['ADMINID']);
+        
+  ?>  
+                      <tr>
+                        <td><input type="checkbox" name="checkbox[]" id="checkbox_<?php echo $v['ID'] ;?>" class="checkboxForDel" value="<?php echo $v['ID'] ;?>"></td>
+                        <td>&nbsp;<?php echo $v['ID'] ;?></td>
+                        <td>&nbsp;<?php echo $v['COMPANY'] ;?></td>
+                        <td>&nbsp;<?php echo $areaName ;?></td>
+                        <td>&nbsp;<?php echo $tradeName?$tradeName:'&nbsp;';?></td>
+                        <td>&nbsp;<?php echo $v['DEMAND']?></td>
+                    <td><?php 
+                          echo date('Y-m-d',$v['CREATETIME']);
+                        ?></td> 
+                    <td><?php 
+                          if (!empty($v['VERIFYTIME'])) {
+                            echo date('Y-m-d',$v['VERIFYTIME']);
+                          }else{
+                            echo "未审核";
+                          }  
+                        ?></td> 
+                    <td><?php 
+                          if (!empty($v['ALLOTTIME'])) {
+                            echo date('Y-m-d',$v['ALLOTTIME']);
+                          }else{
+                            echo "未分配";
+                          } 
+                        ?></td> 
+                        <td><?php $userinfo = $this->admin->userInfo_id($v['ADMINID']); echo $userinfo['USERNAME']?$userinfo['USERNAME']:'&nbsp;'; ?></td> 
+                        <td>&nbsp;
+                          <span  class="button medium2 process" data="<?php echo $v['ID'];?>" title="<?php if(in_array($v['STATUS'],array(63,209,226))){echo '客户经理：'.$userInfo['USERNAME'];} ?>" style="cursor:pointer; ">
+                        				<?php
+                                 echo $statusName ;
+                                  ?>
+                                  
+                                  </span>
+                        </td>
+                        <td>
+<!--    信息操作    -->
+			   <a href="<?php echo site_url('admin/company/show/'.$v['ID'].'');?>" class="button medium2 deepblue">详细</a>
+<?php
+//GROUPID 13456 superadmin  后台大中小个金 用户
+ if(!in_array($v['STATUS'],array(63))&&in_array($udata['GROUPID'],array(1,3,4,5,6))){ ?>
+                       <a href="javascript:void(0)" class="button medium2 red" onClick="art.dialog({title: '推送',content:getC('<?php echo site_url('admin/company/push/'.$v['ID'].''); ?>')});">推送</a>
+<?php } ?>
+                       
+<?php
+//GROUPID 1 superadmin 显示
+if($udata['GROUPID']==1){
+?> 
+<a href="javascript:void(0)" class="button medium2 gray " onClick="art.dialog({title: '备注',content:getC('<?php echo site_url('admin/company/note/'.$v['ID'].''); ?>')});">备注</a>  
+<?php /* if(in_array($v['STATUS'],array(43))&&($v['TYPE']!=5)){ ?>
+						<a href="javascript:void(0)" onClick="art.dialog({title: '审核',content:getC('<?php echo site_url('admin/company/verify/'.$v['ID'].'/'.$v['USERID'].'/');?>')});" class="button medium2 green ">审核</a>
+<?php } */ ?>
+
+<?php /* if(in_array($v['STATUS'],array(58,61))){ ?>
+						<a href="javascript:void(0)" class="button medium2 red" onClick="art.dialog({title: '选择客户经理',content:getC('<?php echo site_url('admin/company/allot/'.$v['ID'].'/'.$v['AREAID']);?>')});">分配</a>
+<?php }  */ ?>
+
+<!-- <div style="width: 100%;border-bottom: 1px solid #FFF4F4;;margin-top: 4px;margin-bottom: 4px;"></div> -->
+<?php  /* if( in_array($v['STATUS'], array('226','209','63')) ) { 
+ ?> 
+  <a href="javascript:void(0)" class="button medium2 blue" onClick="art.dialog({title: '报批',content:getC('<?php echo site_url('admin/company/baopi/'.$v['ID']);?>')});" title="报批">报批</a>
+<?php } */ ?>
+<?php /* if( in_array($v['STATUS'], array('388','391')) ) { ?>
+  <a href="javascript:void(0)" class="button medium2 green" onClick="art.dialog({title: '批复',content:getC('<?php echo site_url('admin/company/pifu/'.$v['ID']);?>')});" title="批复">批复</a>
+<?php } */ ?>
+
+<?php /* if(in_array($v['STATUS'],array(63,209))){ ?>
+                        <a href="javascript:void(0)" class="button medium2 yellow" onClick="art.dialog({title: '反馈信息',content:getC('<?php echo site_url('admin/company/manageview/'.$v['ID']);?>')});" title="反馈信息">反馈</a>
+<?php } */ ?>
+
+<!---->
+<?php 
+}
+?>
+                        
+<?php
+//GROUPID 后台大中小个金 用户
+if(in_array($udata['GROUPID'],array(3,4,5,6)))
+{
+?> 
+ <a href="javascript:void(0)" class="button medium2 gray " onClick="art.dialog({title: '备注',content:getC('<?php echo site_url('admin/company/note/'.$v['ID'].''); ?>')});">备注</a> 
+<?php if($v['STATUS']==43 && $udata['GROUPID'] != 3){ ?> 
+						<a href="javascript:void(0)" onClick="art.dialog({title: '审核',content:getC('<?php echo site_url('admin/company/verify/'.$v['ID'].'/'.$v['USERID'].'/');?>')});" class="button medium2 green ">审核</a>
+<?php } ?>
+
+<!-- <div style="width: 100%;border-bottom: 1px solid #FFF4F4;;margin-top: 4px;margin-bottom: 4px;"></div> -->
+<?php  if( in_array($v['STATUS'], array('226','209','63')) ) { /* 226正常数据 209 63 兼容以前的数据 20131210 */?> 
+  <a href="javascript:void(0)" class="button medium2 blue" onClick="art.dialog({title: '报批',content:getC('<?php echo site_url('admin/company/baopi/'.$v['ID']);?>')});" title="报批">报批</a>
+<?php } ?>
+<?php  if( in_array($v['STATUS'], array('388','391')) ) { ?>
+  <a href="javascript:void(0)" class="button medium2 green" onClick="art.dialog({title: '批复',content:getC('<?php echo site_url('admin/company/pifu/'.$v['ID']);?>')});" title="批复">批复</a>
+<?php } ?>
+
+<?php /* if(in_array($v['STATUS'],array(63,209))){ ?>
+                        <a href="javascript:void(0)" class="button medium2 blue" onClick="art.dialog({title: '反馈信息',content:getC('<?php echo site_url('admin/company/manageview/'.$v['ID']);?>')});" title="反馈信息">反馈</a>
+<?php } */ ?>
+<?php  
+}
+?>
+                        
+<?php
+// GROUPID 7 支行后台人员
+if($udata['GROUPID']==7)
+{
+?>
+
+<?php if(in_array($v['STATUS'],array(58,61))){ ?>
+				            		<a href="javascript:void(0)" class="button medium2 red" onClick="art.dialog({title: '选择客户经理',content:getC('<?php echo site_url('admin/company/allot/'.$v['ID'].'/'.$v['AREAID']);?>')});">分配</a> 
+<?php } ?>
+
+<?php /* if(in_array($v['STATUS'],array(63,209))){ ?>
+                        <a href="javascript:void(0)" class="button medium2 blue" onClick="art.dialog({title: '反馈信息',content:getC('<?php echo site_url('admin/company/manageview/'.$v['ID']);?>')});" title="反馈信息">反馈</a>
+<?php } */ ?>
+
+<?php  
+}
+?>
+                        
+<?php
+//GROUPID 银行客户经理
+/*
+if($udata['GROUPID']==10)
+{
+?>
+                       
+                        <a href="javascript:void(0)" class="button medium2 blue" onClick="art.dialog({title: '反馈信息',content:getC('<?php echo site_url('admin/company/manageview/'.$v['ID']);?>')});" title="反馈信息">反馈信息</a>
+                       	
+<?php if(in_array($v['STATUS'],array(226))) { ?>
+                        <a href="javascript:void(0)" class="button medium2 blue" onClick="art.dialog({title: '接洽反馈',content:getC('<?php echo site_url('admin/company/adopt/'.$v['ID']);?>')});" title="接洽反馈">反馈</a>
+<?php } ?>
+                        
+                        
+<?php  
+} */
+?>
+<!-- 信息操作 end -->
+                    </td>
+                      </tr>
+<?php
+                      	}
+                        }
+?>
+                      
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="11">&nbsp;
+                        <input type="hidden" name="dopost" id="dopost" value="1">
+                        <input type="hidden" name="ex_where" value="<?php echo $companyList['where'];?>">
+                        <input type="hidden" name="post_action" id="post_action" value="<?php echo $action; ?>">
+                        <button class="button medium2 green" target="_blank" id="export_selected">导出选中项</button>
+                        <button  class="button medium2 green" target="_blank" id="export_all">导出全部</button>
+                        <?php
+                        	$action  = $this->uri->segment(3,0);
+                        	if($action=='comDel'){
+                        ?>
+                        <a id="del_selected" class="button medium2 red" onClick="delAll()" href="javascript:void(0)">删除选中项目</a>
+<script type="text/javascript">
+
+function delAll(){
+    art.dialog({
+      title:'删除确认',
+      content:'确认删除所选项<span style="color:#ccc">(删除用户提交的表单会同时删除用户上传的文件)</span>',
+      button: [
+		  { name: '确认',
+            focus: true,
+			callback: function () {
+				var delstring = '';
+			//	$('input:checked[class=checkbox[]]').each(function(){
+				$('.checkboxForDel:checked').each(function(){
+					delstring = delstring + $(this).val()+',';
+				});
+				if(delstring == ''){
+					art.dialog({title: '系统提示',content: '请选择删除项',okValue: '确定',ok: function(){}});
+				}else{
+					delstring = delstring.substr(0,delstring.length-1); 
+					$.post("<?php echo site_url('admin/company/del');?>",{formid:delstring},
+						function(data){
+							switch(data.code){
+								case  "1": location.reload();break;
+								case  "0": art.dialog({title: '系统提示',content: '删除失败',okValue: '确定',ok: function(){}});break;
+							}
+						},
+						'json');
+				}
+			}
+          },
+		  {name :'关闭'}
+		  ]
+	});
+}
+
+</script>
+                        <?php } ?>
+                        </td>
+                        </tr>
+                    </table>
+                </form>    
+            </div>
+             <div class="foot">
+             	<div class="left">每页显示<?php echo $companyList['per_page'];?>条，共<?php echo $companyList['list']['total'] ?>条 </div>
+                <div class="right">
+                    <div class="pager">
+                    <?php echo $page; ?>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+             </div>
+          </div>
+    </div>
+</body>
+</html>

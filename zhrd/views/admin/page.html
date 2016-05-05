@@ -1,0 +1,42 @@
+<?php
+
+echo $link;
+
+
+?>
+             <div class="body">
+
+             	<table width="200" border="0" class="table bordered zebra">
+                      <tr>
+                        <td width="4%"><input onclick="select_all(0);" type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="11%">ID</td>
+                        <td width="17%">排序</td>
+                        <td width="27%">栏目名</td>
+                        <td width="13%">类型</td>
+                        <td width="20%">操作</td>
+                      </tr>
+
+                <?php foreach($result as $item): ?>
+                      <tr>
+                        <td><input type="checkbox" name="checkbox2" id="checkbox2" value="<?php echo $item['ADID']; ?>"></td>
+                        <td><?php  echo $item['ADID']; ?></td>
+                        <td><?php  echo $item['LISTORDER']; ?></td>
+                        <td><?php  echo $item['ADNAME']; ?></td>
+                        <td><?php  if($item['ADTYPE'] == 1) echo "图片"; ?></td>
+                        <td><!-- <a id="show_edit" href="#" class="button medium2 blue" onclick="ad_update('<?php echo $item['ADNAME']; ?>','<?php echo $item['LISTORDER']; ?>','<?php echo $item['ADTYPE']; ?>','<?php echo $item['ADID']; ?>');">修改</a> -->
+
+                          <a id="show_edit" href="#" class="button medium2 blue" onclick="art.dialog({content:getC('<?php echo site_url('/admin/ad/edit?adid='.$item['ADID'].'&adname='.$item['ADNAME'].'&order='.$item['LISTORDER']); ?>')});">修改</a>
+
+
+                            <a href="<?php echo site_url('/admin/ad/set?adid=').$item['ADID']; ?>" class="button medium2 green">设定</a>
+                            <a href="#" class="button medium2 red" onclick="return del(<?php echo $item['ADID']; ?>);">删除</a></td>
+                        </tr>
+                      <tr>
+                <?php endforeach; ?>
+
+
+                        <td><input type="checkbox" onclick="select_all(1);" name="checkbox" id="checkbox"></td>
+                        <td colspan="5"><button class="button" onclick="return del2();">删除选中项</button></td>
+                        </tr>
+                    </table>
+             </div>

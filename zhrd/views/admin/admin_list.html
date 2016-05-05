@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content="用户列表页"/>
+<meta name="description" content=""/>
+<meta name="author" content="BOC">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script type = "text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script type = "text/javascript" src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+
+
+<script type = "text/javascript" >
+
+  function select_all(q){
+    var cks = document.getElementsByName('checkbox');
+    var cks2 = document.getElementsByName('checkbox2');
+    for (var i = cks.length - 1; i >= 0; i--) {
+          for (var i = cks2.length - 1; i >= 0; i--) {
+            cks2[i].checked = cks[q].checked;
+          }
+    }
+  }   
+
+  function checkform(i){
+
+      var n = document.getElementById('username');
+      var p = document.getElementById('passwd');
+      var p2 = document.getElementById('passwd2');
+      // var a = document.getElementById('show_area');
+
+
+      if (n.value == '' || n.value.length < 3 || n.value.length > 20 ) {
+        art.dialog({
+            title: '系统提示',
+            content: '用户名称不能为空或长度不合要求，请重新填写！',
+            okValue: '确定',
+            ok: function () {
+            }
+        });
+        return false;
+      }
+
+      // if (a.value == '') {
+      //       var area = document.getElementById('lxcd_24');
+
+      //       if (area.value == '0') {
+      //             art.dialog({
+      //                 title: '系统提示',
+      //                 content: '请选择用户所属的区域！',
+      //                 okValue: '确定',
+      //                 ok: function () {
+      //                 }
+      //             });
+      //             return false;        
+      //       };       
+      // };
+
+      if (n.value == '' || n.value.length < 3 || n.value.length > 20 ) {
+        art.dialog({
+            title: '系统提示',
+            content: '用户名称不能为空或长度不合要求，请重新填写！',
+            okValue: '确定',
+            ok: function () {
+            }
+        });
+        return false;
+      }
+
+      if (p.value != '' || p2.value != '') {
+            if (p.value == '' || p.value.length < 6 || p.value.length > 20 ) {
+              art.dialog({
+                  title: '系统提示',
+                  content: '用户密码不能为空或长度不合要求（6-20），请重新填写！',
+                  okValue: '确定',
+                  ok: function () {
+                  }
+              });
+              return false;
+            }
+
+            if (p.value !== p2.value ) {
+              art.dialog({
+                  title: '系统提示',
+                  content: '两次输入的密码不一致，请重新填写！',
+                  okValue: '确定',
+                  ok: function () {
+                  }
+              });
+              return false;
+            }
+        }
+
+     
+      if (i == 'add') {
+            var p   = document.getElementById('passwd');
+            var p2  = document.getElementById('passwd2');
+
+            if (p.value == '' || p2.value == '') {
+                  art.dialog({
+                      title: '系统提示',
+                      content: '密码不能为空，请重新填写！',
+                      okValue: '确定',
+                      ok: function () {
+                      }
+                  });
+                  return false;             
+            }
+
+            if (p.value.length < 6 || p.value.length > 20) {
+                  art.dialog({
+                      title: '系统提示',
+                      content: '密码长度必须在6到20位之间，请重新填写！',
+                      okValue: '确定',
+                      ok: function () {
+                      }
+                  });
+                  return false;            
+            }
+
+
+            if (p.value !== p2.value) {
+                  art.dialog({
+                      title: '系统提示',
+                      content: '两次填写的密码不一样，请重新填写！',
+                      okValue: '确定',
+                      ok: function () {
+                      }
+                  });
+                  return false;            
+            }
+
+      }
+
+     document.getElementById(i+'_form').submit();
+  }   
+
+  function del(i){
+      art.dialog({
+          title:'删除确认',
+          content:'该操作将会删除所选的用户且不能恢复，确认要删除所选的用户么？',
+          button: [
+              {  
+                  name: '确认',
+                  callback: function () {
+                       window.location.href="<?php echo site_url('/admin/admin/del?uid='); ?>"+i;
+                  },
+                  focus: true
+              },
+              {
+                 name: '关闭'
+              }
+          ]
+      });
+  }
+
+  function del2(){
+    art.dialog({
+      title:'删除确认',
+      content:'该操作将会删除所选的用户且不能恢复，确认要删除所选的用户么？',
+      button: [
+          {  
+              name: '确认',
+              callback: function () {
+                  var ck = document.getElementsByName("checkbox2");
+                  var ck_s = "";
+                  for (var i = ck.length - 1; i >= 0; i--) {
+                    if (ck[i].checked) {
+                        ck_s += ck[i].value +",";
+                    }
+                  }
+                  ck_s = ck_s.substr(0,ck_s.length-1);
+                  if (ck_s == "") { 
+                        art.dialog({
+                            title: '系统提示',
+                            content: '请选择要删除的用户！',
+                            okValue: '确定',
+                            ok: function(){}
+                            
+                        });
+                  } else{
+                    window.location.href="<?php echo site_url('/admin/admin/del?uid=') ?>"+ck_s;
+                  }
+                  
+             },
+             focus: true
+          },
+          {
+             name: '关闭'
+          }
+     ]
+  });
+
+  }
+
+  $('#xg_area').live("click",function(){
+       $('#show_area').remove();
+	   if ($("#gcd").html() != null){
+	   return;
+	   } 
+       var html = "<?php echo str_replace('"','\"',str_replace('
+          ','',$this->linkage->getSelect('24','0','lxcd','','','',''))); ?>";
+       $('#xg_area').after(html);          
+  });
+
+  
+
+
+</script>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+    	
+          
+          <div class="datatable">
+          	 <div class="tip">
+             	<div class="left">
+                    <abbr> 用户列表</abbr>
+                </div>
+                <div class="right">
+                	<span class="button deepblue" onClick="art.dialog({content:getC('<?php echo site_url('/admin/admin/add'); ?>')});">添加用户</span>
+                    <span class="button green" onClick=" location.href='<?php echo site_url('admin/excel/adminimport'); ?>'; ">批量导入用户(excel)</span>
+                    <span class="button deepblue" onClick="window.history.go(-1);">返回</span>
+                </div>
+             </div>
+             <div class=" head" >
+                  <form name="search" id="searchs" action="<?php echo site_url('admin/admin/search');?>" method="post">
+                    <?php
+                      echo '<table><tr><td width="40" stlye="height:20px;">区域：</td><td width="60">'.$area_linkage.'</td>';
+                    ?>
+					<td width="55" style="height:20px;">用户组：</td><td width="60">
+					<select name="select" id="select">
+					<option value="0">请选择</option>
+					<option value="1" <?php if($groupid=='1'){echo ' selected="selected" ';} ?> >超级管理员</option>
+					<option value="2" <?php if($groupid=='2'){echo ' selected="selected" ';} ?> >站点管理员</option>
+					<option value="3" <?php if($groupid=='3'){echo ' selected="selected" ';} ?> >银行大企用户</option>
+					<option value="4" <?php if($groupid=='4'){echo ' selected="selected" ';} ?> >银行中企用户</option>
+					<option value="5" <?php if($groupid=='5'){echo ' selected="selected" ';} ?> >银行小企用户</option>
+					<option value="6" <?php if($groupid=='6'){echo ' selected="selected" ';} ?> >银行个金用户</option>
+					<option value="7" <?php if($groupid=='7'){echo ' selected="selected" ';} ?> >支行后台人员</option>
+					<option value="9" <?php if($groupid=='9'){echo ' selected="selected" ';} ?> >担保公司用户</option>
+					<option value="10" <?php if($groupid=='10'){echo ' selected="selected" ';} ?> >银行客户经理</option>
+					<option value="11" <?php if($groupid=='11'){echo ' selected="selected" ';} ?> >银行合作伙伴</option>
+					<option value="12" <?php if($groupid=='12'){echo ' selected="selected" ';} ?> >其他组别</option>		
+					</select></td>
+					<td>
+                    <span>用户名：</span>
+                    <input type="hidden" name="dopost" value="1">
+                    <input type="text"  name="c_name" value="<?php echo $keywords;?>"  id="c_name" style="padding:2px;">
+
+                    <input type="submit" class="button medium2 green" value="查询"/>
+					</td></table>
+                     </form>        
+             </div>
+                  
+             <div class="body">
+             
+             	<table border="0" class="table bordered zebra">
+                      
+                      <tr>
+                        <td width="4%"><input type="checkbox" name="checkbox" id="checkbox" onClick="select_all(0);"></td>
+                        <td width="4%">ID</td>
+                        <td>用户名</td>
+                        <td width="120">用户组</td>
+                        <td width="10%">区域</td>
+                        <td width="180">操作</td>
+                      </tr>
+
+                      <?php   
+                      if(is_array($list)){
+
+                         foreach ($list as $v) {  ?>
+
+                      <tr>
+                        <td>
+                          <?php if ($v['GROUPID'] !== '1'){ ?>
+                          <input type="checkbox" name="checkbox2" id="checkbox2" value="<?php echo $v['USERID']; ?>">
+                          <?php }else{echo '&nbsp;';}; ?>
+                        </td>
+                        <td><?php echo $v['USERID'];    ?></td>
+                        <td><?php echo $v['USERNAME'];  ?></td>
+                        <td><?php echo $v['GROUPNAME']; ?></td>
+                        <td><?php $a = get_area($v['AREAID']); echo $a?$a:'&nbsp;'; ?></td>
+
+                        <td>
+                        <?php if ($v['GROUPID'] !== '1') { ?>
+
+                        	<a href="#" class="button  medium2" onClick="art.dialog({content:getC('<?php echo site_url('/admin/admin/edit').'/'.$v['USERID']; ?>')});" >修改</a>
+                          <a href="#" class="button red medium2" onClick="return del(<?php echo $v['USERID']; ?>);">删除</a> 
+
+                          <?php }else{echo '&nbsp;';}; ?>
+                         </td>
+                      </tr>
+
+                  <?php  }  } ?>
+
+                      <tr>
+                        <td><input type="checkbox" name="checkbox" id="checkbox" onClick="select_all(1);"></td>
+                        <td colspan="6">
+                        	<button class="button medium" onClick="del2();">删除选中项</button>
+<!--                         	<button class="button green medium">排序</button> -->
+                        </td>
+                        </tr>
+                    </table>
+         </div>
+             <div class="foot">
+             	<div class="left">每页显示<?php echo $per_page; ?>行 共<?php echo $total; ?>行</div>
+                <div class="right">
+                    
+                    <div class="pager">
+                    <?php echo $link; ?>
+                    </div>
+            
+                </div>
+                <div style="clear:both"></div>
+             </div>
+          </div>
+   
+   
+  
+   
+  
+   
+   
+    </div>
+</body>
+</html>    

@@ -1,0 +1,67 @@
+<style type="text/css">
+.category{margin-top:20px;float:left;width:100%;border-bottom: 2px solid #B20E0D;padding-bottom: 4px;margin-bottom:4px;}
+.category span { float:left;display:block;font-size: 16px;font-weight: bold;}
+.category a { float:right;display:block;}
+.list_product{ clear:both; height:auto; margin:0; padding:0; padding-top:15x;}
+.list_product li{ list-style:none;float:left; width:146px; height:130px; overflow:hidden; margin:6px 12px;_margin:0px 12px;}
+.list_product li .list_img img{ width:140px; height:100px;  padding:2px; border:1px solid #CCC}
+.list_product li .list_img img:hover{  border:1px solid #B20E0D; }
+.list_product li .list_title{ width:140px; height:20px;  padding:3px; text-align:center}
+</style>
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a>
+<?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php }  } ?>
+	</td>
+  </tr>
+</table>
+
+
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+	
+	<td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF"  style="padding-top:0px;">
+          
+          	<!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="28" align="left" valign="top" class="txt08"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表名 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?></td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>-->
+
+<div style="clear:both"></div>
+
+<?php if(!empty( $categoryList)) { foreach( $categoryList as $value) { ?>
+
+		<div class="category"><span><?php echo $value['CATNAME'];?></span><a href="<?php echo $value['URL'];?>" title="<?php echo $value['CATNAME' ];?>">更多></a></div>
+		<ul class="list_product">
+<?php if( !empty($value['contentList'])){ foreach($value['contentList'] as $k=> $v) { ?>
+		<li>
+			<div class="list_img">
+				<a href="<?php echo site_url($v['URL']); ?> " title="<?php echo $v['TITLE']; ?>">
+				<img src="<?php echo img($v['THUMB']);?>" />
+				</a>
+			</div>
+			<div class="list_title">
+				<a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['TITLE']; ?>"><?php echo str_cut($v['TITLE'],36); ?></a>
+			</div>
+		</li>
+<?php }  }else{ echo '暂无数据'; } ?>
+			<div style="clear:both"></div>
+		</ul>
+<?php } }else{ echo '暂无数据'; }  ?>
+      </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>

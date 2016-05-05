@@ -1,0 +1,86 @@
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" class="link_dqwz">首页</a>
+<?php  if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { 
+?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php } ?>
+<?php if($categoryOfThisId['TYPE'] != 0) { /* 如果是单页 不显示单页title */?>
+		> <a href="javascript:void(0)" title="<?php echo $content['TITLE']; ?>" class="link_dqwz"><?php echo $content['TITLE']; ?></a>
+<?php } } ?>
+	</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+              <td height="35" align="left" valign="top" class="txt08">活动介绍</td>
+            </tr>
+            <tr>
+              <td height="35" align="center" valign="top" class="txt08"><?php echo $content['TITLE']; ?></td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>
+            <table width="50%" height="10" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="td160">
+				<?php echo $content['CONTENT'];?>
+				</td>
+              </tr>
+            </table><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+              <td height="35" align="left" valign="top" class="txt08">在线报名</td>
+            </tr>
+            <tr>
+              <td height="35" align="center" valign="top" class="txt08"><form action="<?php echo site_url('activities/show/'.$content['ID']); ?>" method="POST"><table width="100%" border="0">
+                <tr>
+                  <td width="22%">姓名：</td>
+                  <td width="78%"><input type="text" name="form[TRUENAME]" value="" data-rule="required;chinese"></td>
+                </tr>
+                <tr>
+                  <td>联系电话：</td>
+                  <td><input type="text" name="form[TEL]" value="" data-rule="required;mobile"></td>
+                </tr>
+                <tr>
+                  <td>企业名称：</td>
+                  <td><input type="text" name="form[COMPANY]" value="" data-rule="required;chinese"></td>
+                </tr>
+                <tr>
+                  <td>企业年销售总额：</td>
+                  <td> 
+<label><input type="radio" name="form[SALES]" value="100万以下" data-rule="checked">100万以下</label>&nbsp;
+<label><input type="radio" name="form[SALES]" value="100-300万">100-300万</label>&nbsp;
+<label><input type="radio" name="form[SALES]" value="300-700万">300-700万</label>&nbsp;
+<label><input type="radio" name="form[SALES]" value="700-1000万">700-1000万</label>&nbsp;
+<label><input type="radio" name="form[SALES]" value="1000-2000万">1000-2000万</label>&nbsp;
+<label><input type="radio" name="form[SALES]" value="2000-5000万">2000-5000万</label>&nbsp;
+<label><input type="radio" name="form[SALES]" value="5000万以上">5000万以上</label>&nbsp;
+
+</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td><input type="submit" value="提交" style="width:200px;"><input type="hidden" value="1" name="dopost" /> <input type="hidden" value="<?php echo $content['ID'];?>" name="form[AID]" /> </td>
+                </tr>
+              </table></form></td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+	  <td width="13" valign="top"></td>	  
+<?php if(isset($showRight)){ echo $showRight; } ?>
+  </tr>
+</table>

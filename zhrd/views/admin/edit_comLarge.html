@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>">
+<script type = "text/javascript" src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script>
+<!--/*dialog__start*/-->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<!--/*dialog__end*/-->
+
+<link rel="stylesheet" type="text/css"  href="<?php echo base_url('/statics/js/validator/jquery.validator.css'); ?>"/>
+<script src="<?php echo base_url('/statics/js/validator/jquery.validator.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('/statics/js/validator/local/zh_CN.js'); ?>" type="text/javascript"></script>
+
+<style type="text/css">
+	#table_1 th{ font-size:17px; margin:7px 0 0 0; height: 30px; line-height: 35px;}	
+</style>
+<script type="text/javascript">
+
+	 var trade = "<?php echo str_replace('"','\"',str_replace('
+					','',$this->linkage->getSelect('81','0','trade','','','',''))); ?>";
+	 
+</script>
+<script src="<?php echo base_url('statics/js/edit_company.js') ?>"></script>
+
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+
+          <div class="datatable">
+          	 <div class="tip" >
+             	<div class="left">
+                    <abbr> 查看详细</abbr>
+                </div>
+				<div class="right"><a href="javascript:window.history.go(-1);" class="button deepblue" id="show_add" >返回</a></div>
+             </div>
+             <div class="head"></div>
+             <div class="body">
+				<div class="form_1" >
+		          <form action="<?php echo site_url('admin/company/edit'); ?>" name="form" id="form_1" method="POST">
+		            <table width="100%" id="table_1" class="table bordered zebra">
+		              <tr>
+                      <td colspan="2"><b>总括</b></td>
+		              </tr>
+                      <tr>
+		                <td width='180'>所在区域：</td>
+		                <td><?php echo $this->linkage->getSelect('35',$list['AREAID'],'form_main','','',' data-rule="required" data-msg-required="请选择"','AREAID'); ?></td>
+		              </tr>
+
+		              <tr>
+		                <td>公司名称：</td>
+		                <td><input type="text" name="form_main[COMPANY]" value="<?php echo $list['COMPANY']; ?>" data-rule="required" /></td>
+		              </tr>
+		              <tr>
+		                <td>营业执照编号：</td>
+		                <td><input type="text" name="form_main[LICENCE]" value="<?php echo $list['LICENCE']; ?>" data-rule="required" /></td>
+		              </tr>
+
+
+		              <tr id="trade_tr">
+		                <td>行业：</td>
+		                <td><?php echo $list['TRADE_I'];?>
+		                	<a href="#" id="edit_trade">修改</a>
+		                	<span id="insert_trade"></span>
+		                </td>
+		              </tr>
+
+		              <tr>
+		                <td>上年度销售收入：</td>
+		                <td><input type="text" name="form_main[SALE_LAST]" value="<?php if ($list['SALE_LAST']){ echo $list['SALE_LAST'];} ?>"  />(万元)</td>
+		              </tr>
+
+		              <tr>
+		                <td>授信需求：</td>
+		                <td><input type="text" name="form_main[DEMAND]" value="<?php if ($list['DEMAND']){ echo $list['DEMAND'];} ?>"  />(万元)</td>
+		              </tr>
+
+		              <tr id="trade_tr">
+		                <td>联系方式：</td>
+		                <td><input type="text" name="form_main[TEL]" value="<?php echo $list['TEL']; ?>" data-rule="required" data-rule="required" /></td>
+		              </tr>
+
+
+		              <tr>
+		              	<td colspan="2">
+		              		<input type="submit" class="button blue" value="修改" />
+		              	</td>
+		              </tr>
+		            </table>
+		            <input type="hidden" name="id" value="<?php echo $list['ID']; ?>" />
+		            <input type="hidden" name="dopost" value="edit" />     
+		          </form>
+				</div> 
+
+             </div>
+          </div>    
+    </div>
+
+  </body>
+  </html>

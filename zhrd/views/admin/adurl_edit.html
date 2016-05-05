@@ -1,0 +1,8 @@
+        <form method="POST" action="<?php echo site_url('/admin/ad/editadurl'); ?>" id="edit_form" name="edit_form">
+          链接地址：<input type="text" name="URLTO" id="adname_edit" value="<?php echo $this->input->get('URLTO') ?>"/><br />
+          <div style="display:;">状态：<input name="ISCHECK" type="radio" value="1" <?php if($this->input->get('ISCHECK')==1){ ?> checked<?php }?> />通过 <input name="ISCHECK" type="radio" value="0" <?php if(!$this->input->get('ISCHECK')){ ?> checked<?php }?>/>审核中</div>
+                    <input type="hidden" name="ITEMID" id="adid_e" value="<?php echo $this->input->get('ITEMID') ?>"/>
+					<input type="hidden" name="ADID" id="adid_e" value="<?php echo $this->input->get('ADID') ?>"/>
+                    <input type="hidden" name="dopost" value="edit"><br />
+                    <input type="button" class="button deepblue" id="picAdd" value="修改" onclick="checkform_ad('edit');">
+        </form>

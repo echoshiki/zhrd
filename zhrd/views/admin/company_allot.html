@@ -1,0 +1,16 @@
+<form method="POST" action="<?php echo site_url('/admin/company/allot'); ?>" id="push_form" name="push_form">
+<?php  if($beAlloted['status']){?>
+<span style="display:block;"><span style="color: #DB2B2B;">客户经理已分配 </span>(<?php foreach($customerManager as $v) { if($v['USERID'] == $beAlloted['CustomerManager']) echo $v['USERNAME']; } ?>)</span>
+<?php } ?>
+<span>选择客户经理：</span>
+					<select name='customerManager'>
+						<option value=''>-请选择-</option>
+<?php foreach($customerManager as $v){?>
+						<option value='<?php echo $v['USERID']; ?>' <?php if( $beAlloted['status'] && $v['USERID'] == $beAlloted['CustomerManager']) echo 'selected="selected"';  ?>><?php echo $v['USERNAME']; ?></option>
+<?php } ?>				
+					</select>
+                    <input type="hidden" name="dopost" value="allot">
+                    <input type="hidden" name="formid" value="<?php echo $formid; ?>">
+                    <input type="hidden" name="areaid" value="<?php echo $areaid; ?>">
+                    <input type="submit" class="button deepblue" value="分配">
+</form>

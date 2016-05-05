@@ -1,0 +1,61 @@
+<style type="text/css">
+table td { vertical-align: middle!important;  }
+</style>
+
+        <span>温馨提示：如不需修改密码，用户密码和重复密码两项请留空。</span>
+        
+        <form action="<?php echo site_url('admin/admin/edit'); ?>" id="edit_form" method="post">
+
+        <table border="0" id="user_edit">
+
+            <tr>
+              <td>用户名：</td>
+              <td><input type="text" id="username" name="USERNAME" value="<?php echo $username; ?>"/></td>
+            </tr>
+            <tr>
+              <td>用户密码：</td>
+              <td><input type="password" id="passwd" name="PASSWD" value=""/></td>
+            </tr>
+            <tr>
+              <td>重复密码：</td>
+              <td><input type="password" id="passwd2" name="PASSWD2" value=""/></td>
+            </tr>
+            <tr>
+              <td>用户组：</td>
+              <td>
+                <select name="GROUPID" id="groupList">
+                  <?php foreach ($gArr as $v) { 
+                          if ($v['GROUPID'] !== '1') { ?>
+                          <option <?php if ($v['GROUPID'] == $gid) { ?> selected="selected" <?php } ?> value="<?php echo $v['GROUPID']; ?>"><?php echo $v['GROUPNAME']; ?></option>
+                   <?php } }?>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>所属地区：</td>
+              <td><input type="hidden" value="<?php echo $areaid; ?>" id="show_area" name="lxcd[]" />
+                        &nbsp;<?php echo get_area($areaid); ?>&nbsp;<span id="xg_area"><a href="#">修改</a></span>
+                        
+              </td>
+            </tr>
+            <tr>
+              <td>手机号码：</td>
+              <td><input type="text" id="tel" name="TEL" value="<?php echo $tel; ?>"/></span>
+                        
+              </td>
+            </tr>
+
+            <tr>
+
+              <td colspan="3">
+                  <input type="button" class="button blue" value="修改" onclick="checkform('edit');"/>
+                 
+              </td>
+
+            </tr>
+            <input type="hidden" name="dopost" value="edit">
+            <input type="hidden" name="USERID" value="<?php echo $userid; ?>">
+        </table> </form>
+
+    

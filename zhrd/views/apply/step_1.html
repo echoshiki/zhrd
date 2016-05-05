@@ -1,0 +1,156 @@
+<style type="text/css">
+  .link_dqwz { color:#333;}
+  .box{ width:150px; height:150px;position:relative; font-family:"微软雅黑"; color:#FFF; cursor:pointer; }
+  /*科技0*/
+  .t1{ background-color:#1999D7; background-image: url(<?php echo $company_type[0]['THUMB'] ?>); background-repeat: no-repeat;}
+  /*文化1*/
+  .t2{ background-color:#B0EB17; background-image: url(<?php echo $company_type[1]['THUMB'] ?>); background-repeat: no-repeat;}
+  /*三农3*/
+  .t3{ background-color:#39AB3E; background-image: url(<?php echo $company_type[3]['THUMB'] ?>); background-repeat: no-repeat;}
+  /*商贸4*/
+  .t4{ background-color:#8F2145; background-image: url(<?php echo $company_type[4]['THUMB'] ?>); background-repeat: no-repeat;}
+  .t_img{ 
+    position:absolute; width:215px; height:150px;overflow:hidden;border-radius:5px;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;  
+  }
+  .t_img:hover{overflow:auto;
+    -webkit-transform:scale(1.5); 
+    -moz-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    z-index:999;
+  }
+  /*其他3*/
+  .t5{ background-color:#FCD208; height:310px;background-image: url(<?php echo $company_type[2]['THUMB'] ?>); background-repeat: no-repeat;}
+  .box_c{ padding-top:12px; padding-left:10px; }
+  .box_c h3{ line-height:14px; margin:0; padding:0; }
+  .box_c  ul{ padding-left: 15px;_margin-left:10px; list-style: none;}  
+</style>
+
+
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+      <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+          <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+      </div>
+      <div style="margin-top:25px;">
+        <!--  内容start -->
+        <?php if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?>我的融资申请 第二阶段<span style="color:red">(1/2)</span>
+        <p>为便于您的融资意向获得高效准确地处理，点击下列标签选择企业类型</p>
+        <div class="form_1" style="margin-top:15px;width:700px;">
+          <form action="<?php echo site_url('apply/index/step1'); ?>" name="form" id="form_1" method="POST">
+            <table style="display:none;"  width="700" id="table_1">
+              <tr>
+                <td style='width:180px;padding-left:5px;'>企业类型：</td>
+                <td style="text-align:left;"><?php echo $this->linkage->getSelect('26',0,'trade'); ?></td>
+              </tr>
+              <tr>
+                <td colspan='2' id='insert_place'></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding:28px; padding-left:136px;"><input id="btn_3" type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/></td>
+              </tr>
+            </table>
+            <input type="hidden" name="dopost" value="step1" />      
+          </form>
+          <table width="98%"  border="0" cellpadding="0" cellspacing="10" style=" margin: 0 auto; ">
+            <tr>
+              <td>
+                <div class="box"  value="44">
+                  <div class="t_img t1" >
+                      <div class="box_c">
+                        <h3><?php echo $company_type[0]['TITLE'] ?></h3>
+                        <div><?php echo $company_type[0]['CONTENT'] ?></div>
+                      </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="box"  value="45">
+                  <div class="t_img t2">
+                    <div class="box_c">
+                      <h3><?php echo $company_type[1]['TITLE'] ?></h3>
+                      <div><?php echo $company_type[1]['CONTENT'] ?></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td rowspan="3" valign="top">
+                <div class="box"  value="48">
+                  <div class="t_img t5">
+                    <div class="box_c">
+                      <h3><?php echo $company_type[2]['TITLE'] ?></h3>
+                      <div><?php echo $company_type[2]['CONTENT'] ?></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="box"  value="47">
+                  <div class="t_img t3">
+                    <div class="box_c">
+                      <h3><?php echo $company_type[3]['TITLE'] ?></h3>
+                      <div><?php echo $company_type[3]['CONTENT'] ?></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="box"  value="46">
+                  <div class="t_img t4">
+                    <div class="box_c">
+                      <h3><?php echo $company_type[4]['TITLE'] ?></h3>
+                      <div><?php echo $company_type[4]['CONTENT'] ?></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>   
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".box").click(function(){
+            var type = $(this).attr('value');
+            $('#trade_26 option[value='+type+']').attr('selected','selected');
+            $('#form_1').submit();
+      })
+  });
+</script>
+
+        <!--  内容end   -->
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div style="width:2px; height:80px; border:1px solid #333"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

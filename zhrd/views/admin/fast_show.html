@@ -1,0 +1,61 @@
+<html>
+<head>
+	<link rel="stylesheet" href="<?php echo base_url('statics/css/table.css') ?>">
+	<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>">
+	<title>详细资料</title>
+</head>
+<body>
+<table width="100%" style="border:1px grey;" class="form_mid zh_table bordered zebra">
+	<tr>
+		<td>ID</td><td><?php echo $list['ID']; ?></td>
+	</tr>
+	<tr>
+		<td>姓名</td><td><?php echo $list['NAME']; ?></td>
+	</tr>
+	<tr>
+		<td>手机号码</td><td><?php echo $list['TEL']; ?></td>
+	</tr>
+	<tr>
+		<td>身份</td><td><?php echo get_area($list['DEGREE']); ?></td>
+	</tr>
+	<tr>
+		<td>年龄</td><td><?php echo $list['AGE']; ?></td>
+	</tr>
+	<tr>
+		<td>婚姻状况</td><td><?php echo get_area($list['MARRY']); ?></td>
+	</tr>
+	<tr>
+		<td>企业类型</td><td><?php echo get_area($list['TRADEID']); ?></td>
+	</tr>
+	<tr>
+		<td>类型补充</td>
+		<td>
+			<?php if($list['PS']['ISHI']) echo "高新企业<br/>";  ?>
+			所属人才计划：
+			<?php foreach ($list['PS']['TALLENT'] as $key => $value) {
+				 echo get_area($value)."&nbsp;<br/>";
+			}  ?>
+			<?php if($list['PS']['OTHER']) echo "其他人才计划：".$list['PS']['OTHER']."<br/>";  ?>
+			<?php if($list['PS']['DES']) echo "产品竞争性描述：".$list['PS']['DES']."<br/>"; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>所有房产状况</td><td><?php echo get_area($list['STATUS']); ?></td>
+	</tr>
+	<tr>
+		<td>信用状况</td><td><?php echo get_area($list['CREDIT']); ?></td>
+	</tr>
+	<tr>
+		<td>现所在地</td><td><?php echo get_area($list['AREAID']); ?></td>
+	</tr>
+	<tr>
+		<td>是否申请服务卡</td><td><?php echo $list['ISAPPLY']=='1' ? '是' : '否'; ?></td>
+	</tr>
+	<tr>
+		<td>申请日期</td>
+		<td><?php echo date('Y年m月d日',$list['APPLYDATE']); ?></td>
+	</tr>
+
+</table>
+</body>
+</html>

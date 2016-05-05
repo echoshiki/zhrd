@@ -1,0 +1,70 @@
+<style type="text/css">
+.list_product{ clear:both; height:auto; margin:0; padding:0; padding-top:20px;}
+.list_product li{ list-style:none;float:left; width:146px; height:130px; overflow:hidden; margin:6px 12px;_margin:0px 12px;}
+.list_product li .list_img img{ width:140px; height:100px;  padding:2px; border:1px solid #CCC}
+.list_product li .list_img img:hover{  border:1px solid #F30; background-color:#F30;}
+.list_product li .list_title{ width:140px; height:20px;  padding:3px; text-align:center}-
+</style>
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="left" class="dqwz">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a>
+<?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?>
+		 > <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a>
+<?php }  } ?>
+	</td>
+  </tr>
+</table>
+
+
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+	
+	<td width="13" valign="top"></td>
+    <td width="750" valign="top"><table width="100%" border="0" cellpadding="20" cellspacing="1" bgcolor="#c7c7c7">
+        <tr>
+          <td align="left" bgcolor="#FFFFFF">
+          
+          	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="28" align="left" valign="top" class="txt08"><img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?></td>
+            </tr>
+            <tr>
+              <td height="2" bgcolor="#B20E0D"></td>
+            </tr>
+          </table>
+
+<div style="clear:both"></div>
+<ul class="list_product">
+<?php if(isset($lists)){ foreach($lists as $k=> $v) { ?>
+    <li>
+        <div class="list_img">
+            <a href="<?php echo site_url($v['URL']); ?> " title="<?php echo $v['TITLE']; ?>">
+            <img src="<?php echo img( $v['THUMB']);?>" />
+            </a>
+        </div>
+        <div class="list_title">
+            <a href="<?php echo site_url($v['URL']); ?>" title="<?php echo $v['TITLE']; ?>"><?php echo str_cut($v['TITLE'],36); ?></a>
+        </div>
+    </li>
+<?php }  }else{ echo '<p style="color:#CCC;font-size: 17px;font-weight: bold;">暂无数据</p>';} ?>
+    <div style="clear:both"></div>
+</ul>
+
+<div style="clear:both"></div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+			<tr>
+				<td height="12" colspan="2" style="text-align:right">
+					<?php echo $paginationLink; ?>
+				</td>
+			</tr>
+            </table>
+
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>

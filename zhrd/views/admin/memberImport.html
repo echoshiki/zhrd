@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>智慧网贷 </title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="">
+<link rel="stylesheet" href="<?php echo base_url('statics/css/cutter.css') ?>"> 
+<script src="<?php echo base_url('statics/js/jquery-1.7.2.min.js') ?>"></script> 
+<script src="<?php echo base_url('statics/js/cutter.js') ?>"></script> 
+<!-- artDialog -->
+<link  href="<?php echo base_url('statics/artDialog/skins/blue.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('statics/artDialog/artDialog.source.js');?>" type="text/javascript"></script>
+<link href="<?php echo base_url('/statics/js/swfupload/default.css');?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/swfupload.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/swfupload.queue.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/fileprogress.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/statics/js/swfupload/handlers.js');?>"></script>
+</head>
+
+<body class="usa" style="padding:10px; background-color:#E9EAED">
+    <div class="righter">
+
+          <div class="datatable">
+       	    <div class="tip">
+             	<div class="left">
+                    <abbr> Excel上传</abbr>
+                </div>
+                <div class="right">
+                 
+                  <!-- <span  onclick="settingFormSubmit()" class="button deepblue">保存</span> -->
+                  <a href="javascript:history.go(-1)" class="button deepblue">返回</a>
+                </div>
+            </div>
+             <div class=" head" >
+
+             </div>
+<form name="form_excel" action="<?php echo site_url('/admin/excel/memberImport/'); ?>" method="post">
+	<div id="hiddenInput">
+		
+	</div>
+	
+             <div class="body">
+   	      			<table width="200" border="0" class="table bordered zebra">
+                    <tr>
+                       <td style=""> 
+<div class="fieldset flash" id="fsUploadProgress">
+	<span class="legend">上传队列</span>
+</div>
+<div id="divStatus">0 文件已上传</div>
+<div>
+	<span id="spanButtonPlaceHolder"></span>
+	<input id="btnCancel" type="button" value="Cancel All Uploads" onClick="swfu.cancelQueue();" disabled="disabled" style="display:none;"  />
+</div>					   </td>
+                     </tr>
+                      
+
+                    </table>
+				<div class="foot">
+					<input type="submit" onClick="" value="保存" class="button deepblue"><span style="color:#ccc">( 点击<上传Excel>,然后保存 )</span>
+				</div>
+
+             </div>
+</form>
+
+          </div>
+    </div>
+
+
+	</body>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("form[name=form_excel]").submit(function(){
+		if( $("input[name=excelPath]").val() == '' ){
+			art.dialog({title: '系统提示',content: '请上传excel文件',okValue: '确定',ok: function(){}});
+			return false;
+		}
+		return true;
+	});
+
+
+
+
+});
+
+function settingFormSubmit(){
+	$('#form_excel').submit();
+}
+
+
+var swfu;
+
+window.onload = function() {
+	var settings = {
+		flash_url : "<?php echo base_url('/statics/js/swfupload/swfupload.swf');?>",
+		upload_url: "<?php echo site_url('admin/swfupload/excelup/'); ?>",
+		//post_params: {"PHPSESSID" : ""},
+		file_size_limit : "2 MB",
+		file_types : "*.xls;*.xlsx",
+		file_types_description : "excel文件上传",
+		file_upload_limit : 10,
+		file_queue_limit : 10,
+		custom_settings : {
+			progressTarget : "fsUploadProgress",
+			cancelButtonId : "btnCancel"
+		},
+		debug: false,
+
+		// Button settings
+		button_image_url: "<?php echo base_url('/statics/js/swfupload/images/TestImageNoText_65x29.png');?>",
+		button_width: "65",
+		button_height: "29",
+		button_placeholder_id: "spanButtonPlaceHolder",
+		button_text: '<span class="theFont">&nbsp;</span>',
+		button_text_style: ".theFont { font-size: 13px; }",
+		button_text_left_padding: 5,
+		button_text_top_padding: 3,
+		
+		// The event handler functions are defined in handlers.js
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_start_handler : uploadStart,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadSuccess,
+		upload_complete_handler : uploadComplete,
+		queue_complete_handler : queueComplete	// Queue plugin event
+	};
+
+function uploadSuccess(file, serverData) {
+	try {
+		//alert(serverData);
+		html='<input id="" type="hidden" name="excelPath[]" value="'+serverData+'"><input type="hidden" name="excelName[]" value="'+file.name+'">';
+		//$("input[name='excelName']").val(file.name);
+		//$("input[name='excelPath']").val(serverData);
+		$("#hiddenInput").html($("#hiddenInput").html()+html);
+
+		var progress = new FileProgress(file, this.customSettings.progressTarget);
+		progress.setComplete();
+		progress.setStatus("Complete.");
+		progress.toggleCancel(true);
+	} catch (ex) {
+		this.debug(ex);
+	}
+}
+	swfu = new SWFUpload(settings);
+ };
+</script>
+
+</html>

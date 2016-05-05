@@ -1,0 +1,17 @@
+
+        <form method="POST" action="<?php echo site_url('/admin/company/push'); ?>" id="push_form" name="push_form">
+
+					<select name='TYPE' id='type_com'>
+						<option value='0'>-请选择-</option>
+						<option value='1'>大型企业</option>
+						<option value='2'>中型企业</option>
+						<option value='3'>小型企业</option>
+						<option value='4'>个金数据</option>
+						<option value='5'>废弃数据</option>
+					</select>
+					<br />
+                    <input type="hidden" name="dopost" value="push"><br />
+                    <input type="hidden" name="id" value="<?php echo $ID; ?>">
+                    <input type="submit" class="button deepblue" value="推送">
+
+        </form>

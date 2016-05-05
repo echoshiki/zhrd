@@ -1,0 +1,36 @@
+<style type="text/css">
+  .link_dqwz { color:#333;}
+  .s-title { color:#666; margin-left:5px;}
+</style>
+
+<?php if(isset($categoryLeft)){  echo $categoryLeft;} ?>
+<div style="float:right; width:730px; border-left:1px #CCCCCC solid; padding-left:30px;">
+  <div style=" border-bottom:1px #CCCCCC solid; padding-bottom:15px;">当前位置：<a href="<?php echo site_url(); ?>" title="首页" class="link_dqwz">首页</a><?php if(isset( $breadcrumbs)) { foreach($breadcrumbs as $k => $v) { ?> > 
+      <a href="<?php site_url($v['URL']); ?>" title="<?php echo $v['CATNAME']; ?>" class="link_dqwz"><?php echo $v['CATNAME']; ?></a><?php }} ?>
+  </div>
+  <div style="margin-top:25px;">
+    <!--  内容start -->
+    <img src="<?php echo base_url('statics/images/') ; ?>/ico01.gif" width="3" height="5" align="absmiddle" />&nbsp;<?php /*列表 catname */ if(isset($categoryOfThisId)){ echo $categoryOfThisId['CATNAME']; }?>我的融资申请 第二阶段<span style="color:red">(2/2)</span>
+    <p class="s-title">为便于您的融资意向获得高效准确地处理，请如实填写以下信息。</p>
+    <div class="form_1" style="margin-top:15px" >
+      <form action="<?php echo site_url('apply/step1'); ?>" name="form" id="form_1" method="POST">
+        <table width="780" id="table_1">
+          <tr>
+            <td style='width:200px; padding-left:5px;'>企业类型：</td>
+            <td style="text-align:left;"><?php echo $companyType; ?><span style="color:#ccc">(若需要修改企业类型，请退出登录重新填写表单)</span></td>
+          </tr>
+          <tr><td colspan='2' ><?php echo $tradeHtmlData;?></td></tr>            
+          <tr>
+            <td colspan="2" style="padding:28px; padding-left:136px;"><input id="btn_3" type="image" src="<?php echo site_url('statics/images/gonext.jpg');?>"/><div style=" margin-top: 5px;color: #B20E0D; ">(提交之后将无法修改申请表单，请核实表单无误后提交)</div></td>
+          </tr>
+        </table>
+        <input type="hidden" name="dopost" value="step1" />     
+      </form>
+    </div>            
+    <!--  内容end   -->
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div style="width:2px; height:60px; border:1px solid #333"></div>
+</div>
